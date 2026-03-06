@@ -1,0 +1,12 @@
+D:\Projects\Bookstore\ClassLibraryBookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.deps.json
+D:\Projects\Bookstore\ClassLibraryBookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.dll
+D:\Projects\Bookstore\ClassLibraryBookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.pdb
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.AssemblyInfoInputs.cache
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.AssemblyInfo.cs
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.csproj.CoreCompileInputs.cache
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.sourcelink.json
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.dll
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\refint\ClassLibraryBookstore.dll
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.pdb
+D:\Projects\Bookstore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ref\ClassLibraryBookstore.dll
