@@ -35,3 +35,4 @@ D:\Projects\Bookstore\Bookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.p
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.csproj.AssemblyReference.cache
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.sourcelink.json
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.csproj.Up2Date
+D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.Properties.Resources.resources

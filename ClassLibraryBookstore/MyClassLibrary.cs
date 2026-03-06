@@ -156,7 +156,7 @@ namespace ClassLibraryBookstore
             BookShelf[] shelves = myShop.GetShelfs();
             for (int i = 0; i < shelves.Count(); i++)
             {
-                buttons[i].Text = shelves.ElementAt(i).GetGenre().ToString();
+                buttons[i].Text = String.Join("\n", shelves.ElementAt(i).GetGenre().ToString().ToCharArray());
             }
             textBoxBalance.Text = myShop.GetBalance().ToString();
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
@@ -213,12 +213,14 @@ namespace ClassLibraryBookstore
         public static void textBoxGenre_TextChanged(object sender, EventArgs e)
         {
             String newText = "";
+            int i = 0;
             foreach (char letter in textBoxGenre.Text)
             {
-                if ("ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ ".Contains(char.ToUpper(letter)))
+                if ("QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ ".Contains(char.ToUpper(letter)) && i < 9)
                 {
                     newText += letter;
                 }
+                i++;
             }
             textBoxGenre.Text = newText;
         }

@@ -85,6 +85,7 @@ namespace Bookstore
             // 
             // panelNewBook
             // 
+            panelNewBook.BackgroundImage = Properties.Resources.library_backgroud;
             panelNewBook.Controls.Add(labelErrors);
             panelNewBook.Controls.Add(buttonAddBook);
             panelNewBook.Controls.Add(buttonRandom);
@@ -217,7 +218,7 @@ namespace Bookstore
             // textBoxGenre
             // 
             textBoxGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxGenre.Location = new Point(135, 65);
+            textBoxGenre.Location =  new Point(135, 120);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
             textBoxGenre.Size = new Size(561, 35);
@@ -238,7 +239,7 @@ namespace Bookstore
             // textBoxAuthor
             // 
             textBoxAuthor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxAuthor.Location = new Point(135, 120);
+            textBoxAuthor.Location = new Point(135, 65);
             textBoxAuthor.Margin = new Padding(10);
             textBoxAuthor.Name = "textBoxAuthor";
             textBoxAuthor.Size = new Size(561, 35);
@@ -279,6 +280,7 @@ namespace Bookstore
             // 
             // panelStore
             // 
+            panelStore.BackgroundImage = Properties.Resources.backgroundLibrary2;
             panelStore.Controls.Add(buttonSellBook);
             panelStore.Controls.Add(panelBookInfo);
             panelStore.Controls.Add(buttonCloset11);
@@ -315,6 +317,7 @@ namespace Bookstore
             // 
             // panelBookInfo
             // 
+            panelBookInfo.BackgroundImage = Properties.Resources.bordersBook1;
             panelBookInfo.Controls.Add(listBoxPrice);
             panelBookInfo.Controls.Add(label_panel_price);
             panelBookInfo.Controls.Add(listBoxPages);
@@ -447,7 +450,9 @@ namespace Bookstore
             // 
             // buttonCloset11
             // 
-            buttonCloset11.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset11.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset11.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset11.ForeColor = SystemColors.ControlLightLight;
             buttonCloset11.Location = new Point(672, 80);
             buttonCloset11.Margin = new Padding(5);
             buttonCloset11.Name = "buttonCloset11";
@@ -455,11 +460,14 @@ namespace Bookstore
             buttonCloset11.TabIndex = 18;
             buttonCloset11.Text = "Хуйня";
             buttonCloset11.UseVisualStyleBackColor = true;
+            buttonCloset11.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset11.Click += MyClassLibrary.buttonCloset11_Click;
             // 
             // buttonCloset10
             // 
-            buttonCloset10.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset10.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset10.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset10.ForeColor = SystemColors.ControlLightLight;
             buttonCloset10.Location = new Point(612, 80);
             buttonCloset10.Margin = new Padding(5);
             buttonCloset10.Name = "buttonCloset10";
@@ -467,11 +475,14 @@ namespace Bookstore
             buttonCloset10.TabIndex = 17;
             buttonCloset10.Text = "Хоррор";
             buttonCloset10.UseVisualStyleBackColor = true;
+            buttonCloset10.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset10.Click += MyClassLibrary.buttonCloset10_Click;
             // 
             // buttonCloset9
             // 
-            buttonCloset9.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset9.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset9.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset9.ForeColor = SystemColors.ControlLightLight;
             buttonCloset9.Location = new Point(552, 80);
             buttonCloset9.Margin = new Padding(5);
             buttonCloset9.Name = "buttonCloset9";
@@ -479,11 +490,14 @@ namespace Bookstore
             buttonCloset9.TabIndex = 16;
             buttonCloset9.Text = "Научная литература";
             buttonCloset9.UseVisualStyleBackColor = true;
+            buttonCloset9.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset9.Click += MyClassLibrary.buttonCloset9_Click;
             // 
             // buttonCloset8
             // 
-            buttonCloset8.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset8.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset8.ForeColor = SystemColors.ControlLightLight;
             buttonCloset8.Location = new Point(492, 80);
             buttonCloset8.Margin = new Padding(5);
             buttonCloset8.Name = "buttonCloset8";
@@ -491,11 +505,14 @@ namespace Bookstore
             buttonCloset8.TabIndex = 15;
             buttonCloset8.Text = "Биография";
             buttonCloset8.UseVisualStyleBackColor = true;
+            buttonCloset8.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset8.Click += MyClassLibrary.buttonCloset8_Click;
             // 
             // buttonCloset7
             // 
-            buttonCloset7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset7.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset7.ForeColor = SystemColors.ControlLightLight;
             buttonCloset7.Location = new Point(432, 80);
             buttonCloset7.Margin = new Padding(5);
             buttonCloset7.Name = "buttonCloset7";
@@ -503,11 +520,14 @@ namespace Bookstore
             buttonCloset7.TabIndex = 14;
             buttonCloset7.Text = "Психология";
             buttonCloset7.UseVisualStyleBackColor = true;
+            buttonCloset7.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset7.Click += MyClassLibrary.buttonCloset7_Click;
             // 
             // buttonCloset6
             // 
-            buttonCloset6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset6.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset6.ForeColor = SystemColors.ControlLightLight;
             buttonCloset6.Location = new Point(372, 80);
             buttonCloset6.Margin = new Padding(5);
             buttonCloset6.Name = "buttonCloset6";
@@ -515,11 +535,14 @@ namespace Bookstore
             buttonCloset6.TabIndex = 13;
             buttonCloset6.Text = "Классическая литература";
             buttonCloset6.UseVisualStyleBackColor = true;
+            buttonCloset6.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset6.Click += MyClassLibrary.buttonCloset6_Click;
             // 
             // buttonCloset5
             // 
-            buttonCloset5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset5.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset5.ForeColor = SystemColors.ControlLightLight;
             buttonCloset5.Location = new Point(312, 80);
             buttonCloset5.Margin = new Padding(5);
             buttonCloset5.Name = "buttonCloset5";
@@ -527,11 +550,14 @@ namespace Bookstore
             buttonCloset5.TabIndex = 12;
             buttonCloset5.Text = "Поэзия";
             buttonCloset5.UseVisualStyleBackColor = true;
+            buttonCloset5.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset5.Click += MyClassLibrary.buttonCloset5_Click;
             // 
             // buttonCloset4
             // 
-            buttonCloset4.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset4.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset4.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset4.ForeColor = SystemColors.ControlLightLight;
             buttonCloset4.Location = new Point(252, 80);
             buttonCloset4.Margin = new Padding(5);
             buttonCloset4.Name = "buttonCloset4";
@@ -539,11 +565,14 @@ namespace Bookstore
             buttonCloset4.TabIndex = 11;
             buttonCloset4.Text = "Приключение";
             buttonCloset4.UseVisualStyleBackColor = true;
+            buttonCloset4.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset4.Click += MyClassLibrary.buttonCloset4_Click;
             // 
             // buttonCloset3
             // 
-            buttonCloset3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset3.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset3.ForeColor = SystemColors.ControlLightLight;
             buttonCloset3.Location = new Point(192, 80);
             buttonCloset3.Margin = new Padding(5);
             buttonCloset3.Name = "buttonCloset3";
@@ -551,11 +580,14 @@ namespace Bookstore
             buttonCloset3.TabIndex = 10;
             buttonCloset3.Text = "Роман";
             buttonCloset3.UseVisualStyleBackColor = true;
+            buttonCloset3.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset3.Click += MyClassLibrary.buttonCloset3_Click;
             // 
             // buttonCloset2
             // 
-            buttonCloset2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset2.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset2.ForeColor = SystemColors.ControlLightLight;
             buttonCloset2.Location = new Point(132, 80);
             buttonCloset2.Margin = new Padding(5);
             buttonCloset2.Name = "buttonCloset2";
@@ -563,11 +595,14 @@ namespace Bookstore
             buttonCloset2.TabIndex = 9;
             buttonCloset2.Text = "Фентези";
             buttonCloset2.UseVisualStyleBackColor = true;
+            buttonCloset2.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset2.Click += MyClassLibrary.buttonCloset2_Click;
             // 
             // buttonCloset1
             // 
-            buttonCloset1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset1.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset1.ForeColor = SystemColors.ControlLightLight;
             buttonCloset1.Location = new Point(72, 80);
             buttonCloset1.Margin = new Padding(5);
             buttonCloset1.Name = "buttonCloset1";
@@ -575,6 +610,7 @@ namespace Bookstore
             buttonCloset1.TabIndex = 8;
             buttonCloset1.Text = "Философия";
             buttonCloset1.UseVisualStyleBackColor = true;
+            buttonCloset1.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset1.Click += MyClassLibrary.buttonCloset1_Click;
             // 
             // textBoxFindBook
@@ -614,6 +650,7 @@ namespace Bookstore
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(190, 33);
             textBoxBalance.TabIndex = 1;
+            textBoxBalance.Enabled = false;
             // 
             // labelBalance
             // 
@@ -811,6 +848,7 @@ namespace Bookstore
             // 
             // panelNewBook
             // 
+            panelNewBook.BackgroundImage = Properties.Resources.library_backgroud;
             panelNewBook.Controls.Add(labelErrors);
             panelNewBook.Controls.Add(buttonAddBook);
             panelNewBook.Controls.Add(buttonRandom);
@@ -941,9 +979,9 @@ namespace Bookstore
             labelPages.Text = "Страницы";
             // 
             // textBoxGenre
-            // 
+            //  
             textBoxGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxGenre.Location = new Point(135, 65);
+            textBoxGenre.Location =  new Point(135, 120);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
             textBoxGenre.Size = new Size(561, 35);
@@ -964,7 +1002,7 @@ namespace Bookstore
             // textBoxAuthor
             // 
             textBoxAuthor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxAuthor.Location = new Point(135, 120);
+            textBoxAuthor.Location = new Point(135, 65);
             textBoxAuthor.Margin = new Padding(10);
             textBoxAuthor.Name = "textBoxAuthor";
             textBoxAuthor.Size = new Size(561, 35);
@@ -1005,6 +1043,7 @@ namespace Bookstore
             // 
             // panelStore
             // 
+            panelStore.BackgroundImage = Properties.Resources.backgroundLibrary2;
             panelStore.Controls.Add(buttonSellBook);
             panelStore.Controls.Add(panelBookInfo);
             panelStore.Controls.Add(buttonCloset11);
@@ -1041,6 +1080,7 @@ namespace Bookstore
             // 
             // panelBookInfo
             // 
+            panelBookInfo.BackgroundImage = Properties.Resources.bordersBook1;
             panelBookInfo.Controls.Add(listBoxPrice);
             panelBookInfo.Controls.Add(label_panel_price);
             panelBookInfo.Controls.Add(listBoxPages);
@@ -1173,7 +1213,9 @@ namespace Bookstore
             // 
             // buttonCloset11
             // 
-            buttonCloset11.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset11.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset11.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset11.ForeColor = SystemColors.ControlLightLight;
             buttonCloset11.Location = new Point(672, 80);
             buttonCloset11.Margin = new Padding(5);
             buttonCloset11.Name = "buttonCloset11";
@@ -1181,11 +1223,14 @@ namespace Bookstore
             buttonCloset11.TabIndex = 18;
             buttonCloset11.Text = "Хуйня";
             buttonCloset11.UseVisualStyleBackColor = true;
+            buttonCloset11.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset11.Click += MyClassLibrary.buttonCloset11_Click;
             // 
             // buttonCloset10
             // 
-            buttonCloset10.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset10.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset10.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset10.ForeColor = SystemColors.ControlLightLight;
             buttonCloset10.Location = new Point(612, 80);
             buttonCloset10.Margin = new Padding(5);
             buttonCloset10.Name = "buttonCloset10";
@@ -1193,11 +1238,14 @@ namespace Bookstore
             buttonCloset10.TabIndex = 17;
             buttonCloset10.Text = "Хоррор";
             buttonCloset10.UseVisualStyleBackColor = true;
+            buttonCloset10.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset10.Click += MyClassLibrary.buttonCloset10_Click;
             // 
             // buttonCloset9
             // 
-            buttonCloset9.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset9.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset9.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset9.ForeColor = SystemColors.ControlLightLight;
             buttonCloset9.Location = new Point(552, 80);
             buttonCloset9.Margin = new Padding(5);
             buttonCloset9.Name = "buttonCloset9";
@@ -1205,11 +1253,14 @@ namespace Bookstore
             buttonCloset9.TabIndex = 16;
             buttonCloset9.Text = "Научная литература";
             buttonCloset9.UseVisualStyleBackColor = true;
+            buttonCloset9.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset9.Click += MyClassLibrary.buttonCloset9_Click;
             // 
             // buttonCloset8
             // 
-            buttonCloset8.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset8.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset8.ForeColor = SystemColors.ControlLightLight;
             buttonCloset8.Location = new Point(492, 80);
             buttonCloset8.Margin = new Padding(5);
             buttonCloset8.Name = "buttonCloset8";
@@ -1217,11 +1268,14 @@ namespace Bookstore
             buttonCloset8.TabIndex = 15;
             buttonCloset8.Text = "Биография";
             buttonCloset8.UseVisualStyleBackColor = true;
+            buttonCloset8.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset8.Click += MyClassLibrary.buttonCloset8_Click;
             // 
             // buttonCloset7
             // 
-            buttonCloset7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset7.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset7.ForeColor = SystemColors.ControlLightLight;
             buttonCloset7.Location = new Point(432, 80);
             buttonCloset7.Margin = new Padding(5);
             buttonCloset7.Name = "buttonCloset7";
@@ -1229,11 +1283,14 @@ namespace Bookstore
             buttonCloset7.TabIndex = 14;
             buttonCloset7.Text = "Психология";
             buttonCloset7.UseVisualStyleBackColor = true;
+            buttonCloset7.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset7.Click += MyClassLibrary.buttonCloset7_Click;
             // 
             // buttonCloset6
             // 
-            buttonCloset6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset6.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset6.ForeColor = SystemColors.ControlLightLight;
             buttonCloset6.Location = new Point(372, 80);
             buttonCloset6.Margin = new Padding(5);
             buttonCloset6.Name = "buttonCloset6";
@@ -1241,11 +1298,14 @@ namespace Bookstore
             buttonCloset6.TabIndex = 13;
             buttonCloset6.Text = "Классическая литература";
             buttonCloset6.UseVisualStyleBackColor = true;
+            buttonCloset6.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset6.Click += MyClassLibrary.buttonCloset6_Click;
             // 
             // buttonCloset5
             // 
-            buttonCloset5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset5.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset5.ForeColor = SystemColors.ControlLightLight;
             buttonCloset5.Location = new Point(312, 80);
             buttonCloset5.Margin = new Padding(5);
             buttonCloset5.Name = "buttonCloset5";
@@ -1253,11 +1313,14 @@ namespace Bookstore
             buttonCloset5.TabIndex = 12;
             buttonCloset5.Text = "Поэзия";
             buttonCloset5.UseVisualStyleBackColor = true;
+            buttonCloset5.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset5.Click += MyClassLibrary.buttonCloset5_Click;
             // 
             // buttonCloset4
             // 
-            buttonCloset4.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset4.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset4.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset4.ForeColor = SystemColors.ControlLightLight;
             buttonCloset4.Location = new Point(252, 80);
             buttonCloset4.Margin = new Padding(5);
             buttonCloset4.Name = "buttonCloset4";
@@ -1265,11 +1328,14 @@ namespace Bookstore
             buttonCloset4.TabIndex = 11;
             buttonCloset4.Text = "Приключение";
             buttonCloset4.UseVisualStyleBackColor = true;
+            buttonCloset4.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset4.Click += MyClassLibrary.buttonCloset4_Click;
             // 
             // buttonCloset3
             // 
-            buttonCloset3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset3.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset3.ForeColor = SystemColors.ControlLightLight;
             buttonCloset3.Location = new Point(192, 80);
             buttonCloset3.Margin = new Padding(5);
             buttonCloset3.Name = "buttonCloset3";
@@ -1277,11 +1343,14 @@ namespace Bookstore
             buttonCloset3.TabIndex = 10;
             buttonCloset3.Text = "Роман";
             buttonCloset3.UseVisualStyleBackColor = true;
+            buttonCloset3.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset3.Click += MyClassLibrary.buttonCloset3_Click;
             // 
             // buttonCloset2
             // 
-            buttonCloset2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset2.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset2.ForeColor = SystemColors.ControlLightLight;
             buttonCloset2.Location = new Point(132, 80);
             buttonCloset2.Margin = new Padding(5);
             buttonCloset2.Name = "buttonCloset2";
@@ -1289,11 +1358,15 @@ namespace Bookstore
             buttonCloset2.TabIndex = 9;
             buttonCloset2.Text = "Фентези";
             buttonCloset2.UseVisualStyleBackColor = true;
+            buttonCloset2.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset2.Click += MyClassLibrary.buttonCloset2_Click;
+            textBoxBalance.Enabled = false;
             // 
             // buttonCloset1
             // 
-            buttonCloset1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonCloset1.BackgroundImage = Properties.Resources.shelf9;
+            buttonCloset1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCloset1.ForeColor = SystemColors.ControlLightLight;
             buttonCloset1.Location = new Point(72, 80);
             buttonCloset1.Margin = new Padding(5);
             buttonCloset1.Name = "buttonCloset1";
@@ -1301,6 +1374,7 @@ namespace Bookstore
             buttonCloset1.TabIndex = 8;
             buttonCloset1.Text = "Философия";
             buttonCloset1.UseVisualStyleBackColor = true;
+            buttonCloset1.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset1.Click += MyClassLibrary.buttonCloset1_Click;
             // 
             // textBoxFindBook
