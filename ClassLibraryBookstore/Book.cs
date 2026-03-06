@@ -26,11 +26,11 @@ public class Book {
 
     private void RandomGenerate() {
         Random rnd = new Random((int) DateTimeOffset.UtcNow.ToUnixTimeSeconds());
-        string[] firstNames = new string[] {"Pelagiya", "Nelli", "Lazar", "Olya", "Alex", "Evgeniy", "Dorofey", "Lyuba", "Glikeriya", "Snezhana", "Lyuba", "Feodor", "Roma", "Abort", "Yelisey", "Evelina", "Irakliy", "Diana", "Yaroslav", "Taisiya"};
-        string[] lastNames = new string[] {"Golubev", "Nikitina", "Sobol", "Naoumova", "Alekseyev", "Mikhailova", "Sokolof", "Mikhaylov", "Fedotov", "Kuzmina", "Mikhailov", "Gerasimova", "Ivankova", "Volkov", "Antonov", "Naoumova", "Krupin", "Matveeva", "Krupina", "Trifonov"};
-        string[] nameParts = new string[] {"Rain", "The Titan", "Winged", "Six", "The Beast", "Moons", "The Hollow", "The Plague", "Wild", "Prince's", "The Starless", "Xeno", "Taste", "Day", "Enemy", "Case"};
-        string[] nameEndings = new string[] {"of Wolves", "in the Gorge", "Clock", "Seven", "in the Glass", "of Artemis", "Piano", "of the Plant People", "and Wicked", "of the Legacy", "of Prophecy", "of Exile", "of Algorab", "of the Unnatural Jury", "of Silence", "of the Winged Goose"};
-        string[] genres = new string[] {"Romance", "Fantasy", "Science Fiction", "Thriller", "Mystery", "Horror", "Historical Fiction", "Biography", "History", "Memoir"};
+        string[] firstNames = System.IO.File.ReadAllText("firstNames.txt").Split(" ");
+        string[] lastNames = System.IO.File.ReadAllText("lastNames.txt").Split(" ");
+        string[] nameParts = System.IO.File.ReadAllText("nameParts.txt").Split(",");
+        string[] nameEndings = System.IO.File.ReadAllText("nameEndings.txt").Split(",");
+        string[] genres = System.IO.File.ReadAllText("genres.txt").Split(" ");
 
         this.author += firstNames[rnd.Next(firstNames.Length)] + " " + lastNames[rnd.Next(lastNames.Length)];
         this.name += nameParts[rnd.Next(nameParts.Length)] + " " + nameEndings[rnd.Next(nameEndings.Length)];

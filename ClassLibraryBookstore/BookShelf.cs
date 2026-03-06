@@ -10,7 +10,7 @@ public class BookShelf {
 
     public BookShelf() {
         Random rnd = new Random((int) DateTimeOffset.UtcNow.ToUnixTimeSeconds());
-        this.size = rnd.Next(3, 15);
+        this.size = rnd.Next(8, 16);
         this.books = new Book[this.size];
         this.genre = "";
         this.lastBookId = 0;
@@ -24,9 +24,7 @@ public class BookShelf {
         this.books[this.lastBookId] = book;
         this.lastBookId++;
 
-        if (this.books.Length == 1) {
-            this.genre = book.GetGenre();
-        }
+        this.genre = book.GetGenre();
     }
 
     public void RemoveBook(Book book) {
@@ -40,17 +38,21 @@ public class BookShelf {
                 i++;
             }
         }
+        for (int j = i;  j < booksBuffer.Length; j++)
+        {
+            booksBuffer[j] = null;
+        }
         this.books = (Book[]) booksBuffer.Clone();
         this.lastBookId--;
 
-        if (this.books.Length == 0) {
+        if (this.books[0] == null) {
             this.genre = "";
         }
     }
 
     public Book SearchBook(string name) {
         foreach (Book book in this.books) {
-            if (book.GetName() == name) {
+            if (book != null && (book.GetName().Contains(name) || book.GetId().ToString() == name)) {
                 return book;
             }
         }
@@ -59,7 +61,7 @@ public class BookShelf {
 
     public Book SearchBook(int id) {
         foreach (Book book in this.books) {
-            if (book.GetId() == id) {
+            if (book != null && (book.GetId() == id)) {
                 return book;
             }
         }

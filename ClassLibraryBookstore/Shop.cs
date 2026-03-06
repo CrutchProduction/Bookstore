@@ -75,6 +75,8 @@ public class Shop {
         return null;
     }
 
+    public void AddBalance(int income) { this.balance += income; }
     public BookShelf[] GetShelfs() { return this.shelfs; }
     public int GetBalance() { return this.balance; }
+    public int GetLastBookId() { return this.lastBookId; }
 }
