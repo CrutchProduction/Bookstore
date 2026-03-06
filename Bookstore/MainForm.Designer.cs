@@ -31,7 +31,6 @@ namespace Bookstore
         private void InitializeComponent()
         {
             panelNewBook = new Panel();
-            labelErrors = new Label();
             buttonAddBook = new Button();
             buttonRandom = new Button();
             labelRUB = new Label();
@@ -86,7 +85,6 @@ namespace Bookstore
             // panelNewBook
             // 
             panelNewBook.BackgroundImage = Properties.Resources.library_backgroud;
-            panelNewBook.Controls.Add(labelErrors);
             panelNewBook.Controls.Add(buttonAddBook);
             panelNewBook.Controls.Add(buttonRandom);
             panelNewBook.Controls.Add(labelRUB);
@@ -106,16 +104,6 @@ namespace Bookstore
             panelNewBook.Name = "panelNewBook";
             panelNewBook.Size = new Size(706, 500);
             panelNewBook.TabIndex = 0;
-            // 
-            // labelErrors
-            // 
-            labelErrors.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelErrors.Location = new Point(10, 350);
-            labelErrors.Margin = new Padding(10);
-            labelErrors.Name = "labelErrors";
-            labelErrors.Size = new Size(686, 140);
-            labelErrors.TabIndex = 14;
-            labelErrors.Text = "Обработка ошибок";
             // 
             // buttonAddBook
             // 
@@ -216,9 +204,9 @@ namespace Bookstore
             labelPages.Text = "Страницы";
             // 
             // textBoxGenre
-            // 
+            //  
             textBoxGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxGenre.Location =  new Point(135, 120);
+            textBoxGenre.Location = new Point(135, 120);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
             textBoxGenre.Size = new Size(561, 35);
@@ -597,6 +585,7 @@ namespace Bookstore
             buttonCloset2.UseVisualStyleBackColor = true;
             buttonCloset2.TextAlign = ContentAlignment.MiddleLeft;
             buttonCloset2.Click += MyClassLibrary.buttonCloset2_Click;
+            textBoxBalance.Enabled = false;
             // 
             // buttonCloset1
             // 
@@ -650,7 +639,6 @@ namespace Bookstore
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(190, 33);
             textBoxBalance.TabIndex = 1;
-            textBoxBalance.Enabled = false;
             // 
             // labelBalance
             // 
@@ -728,7 +716,6 @@ namespace Bookstore
         private Label labelRUB;
         private Button buttonRandom;
         private Button buttonAddBook;
-        private Label labelErrors;
         private Label labelBalance;
         private Label labelRUBL;
         private TextBox textBoxBalance;
@@ -794,7 +781,6 @@ namespace Bookstore
         private void InitializeComponent()
         {
             panelNewBook = new Panel();
-            labelErrors = new Label();
             buttonAddBook = new Button();
             buttonRandom = new Button();
             labelRUB = new Label();
@@ -849,7 +835,6 @@ namespace Bookstore
             // panelNewBook
             // 
             panelNewBook.BackgroundImage = Properties.Resources.library_backgroud;
-            panelNewBook.Controls.Add(labelErrors);
             panelNewBook.Controls.Add(buttonAddBook);
             panelNewBook.Controls.Add(buttonRandom);
             panelNewBook.Controls.Add(labelRUB);
@@ -869,16 +854,6 @@ namespace Bookstore
             panelNewBook.Name = "panelNewBook";
             panelNewBook.Size = new Size(706, 500);
             panelNewBook.TabIndex = 0;
-            // 
-            // labelErrors
-            // 
-            labelErrors.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelErrors.Location = new Point(10, 350);
-            labelErrors.Margin = new Padding(10);
-            labelErrors.Name = "labelErrors";
-            labelErrors.Size = new Size(686, 140);
-            labelErrors.TabIndex = 14;
-            labelErrors.Text = "Обработка ошибок";
             // 
             // buttonAddBook
             // 
@@ -1491,7 +1466,6 @@ namespace Bookstore
         private Label labelRUB;
         private Button buttonRandom;
         private Button buttonAddBook;
-        private Label labelErrors;
         private Label labelBalance;
         private Label labelRUBL;
         private TextBox textBoxBalance;
