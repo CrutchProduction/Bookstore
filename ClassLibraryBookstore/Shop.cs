@@ -24,7 +24,12 @@ public class Shop {
             Book newBook = new Book(name, author, genre, this.lastBookId, pageAmount, price);
             CheckBookName(newBook);
             curShelf.AddBook(newBook);
-            this.lastBookId++;
+            if (this.lastBookId != Int32.MaxValue) {
+                this.lastBookId++;
+            } else
+            {
+                this.lastBookId = 0;
+            }
         }
     }
 
@@ -34,7 +39,14 @@ public class Shop {
         if (curShelf != null) {
             CheckBookName(newBook);
             curShelf.AddBook(newBook);
-            this.lastBookId++;
+            if (this.lastBookId != Int32.MaxValue)
+            {
+                this.lastBookId++;
+            }
+            else
+            {
+                this.lastBookId = 0;
+            }
         }
     }
 

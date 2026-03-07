@@ -62,7 +62,7 @@ namespace ClassLibraryBookstore
         private static int tempX;
         private static int tempY;
         private static int currentShelfId;
-        private const string alphabet = "0123456789QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ \n";
+        private static readonly string[] alphabets = {"0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
 
         public MyClassLibrary(Panel panelNewBook_, Panel panelStore_, Button buttonNewBook_, Label labelNameBook_, Button buttonStore_, TextBox textBoxGenre_, Label labelGenre_, TextBox textBoxAuthor_, Label labelAuthor_, TextBox textBoxNameBook_, Label labelPages_, TextBox textBoxPrice_, Label labelPrice_, TextBox textBoxPages_, Label label_idBook_, TextBox textBoxIDBook_, Label labelRUB_, Button buttonRandom_, Button buttonAddBook_, Label labelBalance_, Label labelRUBL_, TextBox textBoxBalance_, Label labelFindBook_, TextBox textBoxFindBook_, Button buttonCloset1_, Button buttonCloset5_, Button buttonCloset4_, Button buttonCloset3_, Button buttonCloset2_, Button buttonCloset11_, Button buttonCloset10_, Button buttonCloset9_, Button buttonCloset8_, Button buttonCloset7_, Button buttonCloset6_, Panel panelBookInfo_, Label label_panel_id_, Label label_panel_namebook_, ListBox listBoxID_, ListBox listBoxNameBook_, Label label_panel_author_, Label label_panel_pages_, ListBox listBoxAuthor_, ListBox listBoxPrice_, Label label_panel_price_, ListBox listBoxPages_, Button buttonSellBook_) {
             myShop = new Shop();
@@ -146,6 +146,7 @@ namespace ClassLibraryBookstore
             listBoxPages.Items.Clear();
             listBoxPrice.Items.Clear();
             buttonSellBook.Enabled = false;
+            panelStore.Visible = false;
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
         }
 
@@ -200,7 +201,7 @@ namespace ClassLibraryBookstore
             String newText = "";
             foreach (char letter in textBoxNameBook.Text)
             {
-                if ("0123456789QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ :-()!*.,".Contains(char.ToUpper(letter)))
+                if ((alphabets[0] + alphabets[1] + alphabets[2] + alphabets[3]).Contains(char.ToUpper(letter)))
                 {
                     newText += letter;
                 }
@@ -214,7 +215,7 @@ namespace ClassLibraryBookstore
             int i = 0;
             foreach (char letter in textBoxGenre.Text)
             {
-                if ("QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ ".Contains(char.ToUpper(letter)) && i < 9)
+                if ((alphabets[1] + alphabets[2] + " ").Contains(char.ToUpper(letter)) && i < 9)
                 {
                     newText += letter;
                 }
@@ -228,7 +229,7 @@ namespace ClassLibraryBookstore
             String newText = "";
             foreach (char letter in textBoxAuthor.Text)
             {
-                if ("QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ -".Contains(char.ToUpper(letter)))
+                if ((alphabets[1] + alphabets[2] + alphabets[3]).Contains(char.ToUpper(letter)))
                 {
                     newText += letter;
                 }
@@ -241,9 +242,20 @@ namespace ClassLibraryBookstore
             String newText = "";
             foreach (char letter in textBoxPages.Text)
             {
-                if ("0123456789".Contains(char.ToUpper(letter)))
+                if (alphabets[0].Contains(char.ToUpper(letter)))
                 {
                     newText += letter;
+                }
+            }
+            if (newText != "")
+            {
+                try
+                {
+                    Convert.ToInt32(newText);
+                }
+                catch
+                {
+                    newText = Int32.MaxValue.ToString();
                 }
             }
             textBoxPages.Text = newText;
@@ -254,9 +266,20 @@ namespace ClassLibraryBookstore
             String newText = "";
             foreach (char letter in textBoxPrice.Text)
             {
-                if ("0123456789".Contains(char.ToUpper(letter)))
+                if (alphabets[0].Contains(char.ToUpper(letter)))
                 {
                     newText += letter;
+                }
+            }
+            if (newText != "")
+            {
+                try
+                {
+                    Convert.ToInt32(newText);
+                }
+                catch
+                {
+                    newText = Int32.MaxValue.ToString();
                 }
             }
             textBoxPrice.Text = newText;
@@ -267,7 +290,7 @@ namespace ClassLibraryBookstore
             String newText = "";
             foreach (char letter in textBoxFindBook.Text)
             {
-                if (alphabet.Contains(char.ToUpper(letter)))
+                if (string.Join("", alphabets).Contains(char.ToUpper(letter)))
                 {
                     newText += letter;
                 }
