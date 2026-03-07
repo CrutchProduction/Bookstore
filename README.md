@@ -6,7 +6,7 @@
   * [Таблица Содержимого](#таблица-содержимого)
   * [Использование](#использование)
       * [BookStore]()
-      * [ClassLibraryBookstore](#classlibrarybookstore)
+      * [ClassLibraryBookstore](tab=readme-ov-file#classlibrarybookstore)
           - [Shop](#класс-shop)
           - [BookShelf](#класс-bookshelf)
           - [Book](#класс-book)
