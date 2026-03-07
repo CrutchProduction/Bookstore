@@ -4,12 +4,19 @@
 ## Таблица Содержимого
 * [Книжный Магазин](#книжный-магазин)
   * [Таблица Содержимого](#таблица-содержимого)
+  * [Установка](#установка)
   * [Использование](#использование)
       * [BookStore](#bookstore)
       * [ClassLibraryBookstore](#classlibrarybookstore)
           - [Shop](#класс-shop)
           - [BookShelf](#класс-bookshelf)
           - [Book](#класс-book)
+
+## Установка
+Данный проект использует [.Net 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+```
+git clone https://github.com/CrutchProduction/Bookstore.git
+```
 
 ## Использование
 
