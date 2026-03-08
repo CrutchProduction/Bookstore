@@ -9,8 +9,9 @@ public class Book {
     private int id;
     private int pageAmount;
     private int price;
+    private int copyId;
 
-    public Book(string name, string author, string genre, int id, int pageAmount, int price) {
+    public Book(string name, string author, string genre, int id, int pageAmount, int price, Random rnd) {
         this.name = name;
         this.author = author;
         this.genre = genre;
@@ -19,15 +20,23 @@ public class Book {
         this.price = price;
     }
 
-    public Book(int id) {
+    public Book(int id, Random rnd) {
         this.id = id;
-        RandomGenerate();
+        RandomGenerate(rnd);
     }
 
-    private void RandomGenerate() {
-        Random rnd = new Random((int) DateTimeOffset.UtcNow.ToUnixTimeSeconds());
-        string[] firstNames = System.IO.File.ReadAllText("firstNames.txt").Split(" ");
-        string[] lastNames = System.IO.File.ReadAllText("lastNames.txt").Split(" ");
+    private void RandomGenerate(Random rnd) {
+        int gender = rnd.Next(2);
+        string[] firstNames;
+        string[] lastNames;
+        if (gender == 0) {
+            firstNames = System.IO.File.ReadAllText("firstNamesM.txt").Split(" ");
+            lastNames = System.IO.File.ReadAllText("lastNamesM.txt").Split(" ");
+        } else
+        {
+            firstNames = System.IO.File.ReadAllText("firstNamesF.txt").Split(" ");
+            lastNames = System.IO.File.ReadAllText("lastNamesF.txt").Split(" ");
+        }
         string[] nameParts = System.IO.File.ReadAllText("nameParts.txt").Split(",");
         string[] nameEndings = System.IO.File.ReadAllText("nameEndings.txt").Split(",");
         string[] genres = System.IO.File.ReadAllText("genres.txt").Split(" ");
@@ -39,9 +48,11 @@ public class Book {
         this.price = rnd.Next(200, 6767);
     }
 
-    public void SetNewName(string name) { this.name = name; }
-
-    public string GetName() { return this.name; }
+    public void SetCopyId(int copyId) { this.copyId = copyId; }
+    public string GetName(bool withCopyId) { 
+        if (withCopyId && this.copyId != 1) return this.name + " " + this.copyId; 
+        return this.name;
+    }
     public string GetAuthor() { return this.author; }
     public string GetGenre() { return this.genre; }
     public int GetId() { return this.id; }

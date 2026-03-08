@@ -8,8 +8,7 @@ public class BookShelf {
     private int lastBookId;
     private int size;
 
-    public BookShelf() {
-        Random rnd = new Random((int) DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+    public BookShelf(Random rnd) {
         this.size = rnd.Next(8, 16);
         this.books = new Book[this.size];
         this.genre = "";
@@ -52,7 +51,7 @@ public class BookShelf {
 
     public Book SearchBook(string name) {
         foreach (Book book in this.books) {
-            if (book != null && (book.GetName().Contains(name) || book.GetId().ToString() == name)) {
+            if (book != null && (book.GetId().ToString() == name || book.GetName(true).Contains(name))) {
                 return book;
             }
         }

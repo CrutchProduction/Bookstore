@@ -150,7 +150,7 @@ namespace ClassLibraryBookstore
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
         }
 
-        public static void updateClosets()
+        private static void updateClosets()
         {
             BookShelf[] shelves = myShop.GetShelfs();
             for (int i = 0; i < shelves.Count(); i++)
@@ -161,7 +161,7 @@ namespace ClassLibraryBookstore
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
         }
 
-        public static void loadBooks(int shelfId)
+        private static void loadBooks(int shelfId)
         {
             currentShelfId = shelfId;
             listBoxID.Items.Clear();
@@ -175,17 +175,30 @@ namespace ClassLibraryBookstore
                 if (book != null) {
                     listBoxID.Items.Add(book.GetId().ToString());
                     listBoxAuthor.Items.Add(book.GetAuthor());
-                    listBoxNameBook.Items.Add(book.GetName());
+                    listBoxNameBook.Items.Add(book.GetName(true));
                     listBoxPages.Items.Add(book.GetPageAmount().ToString());
                     listBoxPrice.Items.Add(book.GetPrice().ToString());
                 }
             }
         }
 
+        public static bool isNumber(string text)
+        {
+            try
+            {
+                Convert.ToInt32(text);
+                return true;
+            } catch { return false; }
+        }
+
         public static void buttonAddBook_Click(object sender, EventArgs e)
         {
             if (textBoxNameBook.Text != "" && textBoxAuthor.Text != "" && textBoxGenre.Text != "" && textBoxPages.Text != "" && textBoxPrice.Text != "")
             {
+                if (isNumber(textBoxNameBook.Text.Split(" ").ElementAt(textBoxNameBook.Text.Split(" ").Length - 1)))
+                {
+                    textBoxNameBook.Text = string.Join(" ", textBoxNameBook.Text.Split(" ")[..^1]);
+                }
                 myShop.AddBook(textBoxNameBook.Text, textBoxAuthor.Text, textBoxGenre.Text, Convert.ToInt32(textBoxPages.Text), Convert.ToInt32(textBoxPrice.Text));
                 textBoxNameBook.Text = "";
                 textBoxAuthor.Text = "";
@@ -249,12 +262,7 @@ namespace ClassLibraryBookstore
             }
             if (newText != "")
             {
-                try
-                {
-                    Convert.ToInt32(newText);
-                }
-                catch
-                {
+                if (!isNumber(newText)) {
                     newText = Int32.MaxValue.ToString();
                 }
             }
@@ -273,11 +281,7 @@ namespace ClassLibraryBookstore
             }
             if (newText != "")
             {
-                try
-                {
-                    Convert.ToInt32(newText);
-                }
-                catch
+                if (!isNumber(newText))
                 {
                     newText = Int32.MaxValue.ToString();
                 }
@@ -417,8 +421,12 @@ namespace ClassLibraryBookstore
 
         public static void buttonRandom_Click(object sender, EventArgs e)
         {
-            myShop.AddBook();
-            updateClosets();
+            Book newBookData = new Book(-1, myShop.GetRandom());
+            textBoxAuthor.Text = newBookData.GetAuthor();
+            textBoxGenre.Text = newBookData.GetGenre();
+            textBoxNameBook.Text = newBookData.GetName(false);
+            textBoxPages.Text = newBookData.GetPageAmount().ToString();
+            textBoxPrice.Text = newBookData.GetPrice().ToString();
         }
 
         public static void buttonCloset1_Click(object sender, EventArgs e)
