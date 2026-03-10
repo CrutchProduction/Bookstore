@@ -264,6 +264,8 @@ namespace ClassLibraryBookstore
             {
                 if (!isNumber(newText)) {
                     newText = Int32.MaxValue.ToString();
+                } else {
+                    newText = Convert.ToInt32(newText).ToString();
                 }
             }
             textBoxPages.Text = newText;
@@ -284,6 +286,8 @@ namespace ClassLibraryBookstore
                 if (!isNumber(newText))
                 {
                     newText = Int32.MaxValue.ToString();
+                } else {
+                    newText = Convert.ToInt32(newText).ToString();
                 }
             }
             textBoxPrice.Text = newText;
