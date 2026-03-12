@@ -11,6 +11,7 @@ public class Book {
     private int price;
     private int copyId;
 
+    // Конструктор
     public Book(string name, string author, string genre, int id, int pageAmount, int price, Random rnd) {
         this.name = name;
         this.author = author;
@@ -20,11 +21,13 @@ public class Book {
         this.price = price;
     }
 
+    // Конструктор для рандомной генерации
     public Book(int id, Random rnd) {
         this.id = id;
         RandomGenerate(rnd);
     }
 
+    // Рандомная генерация книги
     private void RandomGenerate(Random rnd) {
         int gender = rnd.Next(2);
         string[] firstNames;
@@ -48,6 +51,7 @@ public class Book {
         this.price = rnd.Next(200, 6767);
     }
 
+    // Внешне-доступные функции
     public void SetCopyId(int copyId) { this.copyId = copyId; }
     public string GetName(bool withCopyId) { 
         if (withCopyId && this.copyId != 1) return this.name + " " + this.copyId; 

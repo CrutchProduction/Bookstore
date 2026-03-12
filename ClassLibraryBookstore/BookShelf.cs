@@ -8,6 +8,7 @@ public class BookShelf {
     private int lastBookId;
     private int size;
 
+    // Конструктор
     public BookShelf(Random rnd) {
         this.size = rnd.Next(8, 16);
         this.books = new Book[this.size];
@@ -15,6 +16,7 @@ public class BookShelf {
         this.lastBookId = 0;
     }
 
+    // Добавление книги в шкаф
     public void AddBook(Book book) {
         if (this.size - 1 <= this.lastBookId) {
             return;
@@ -26,6 +28,7 @@ public class BookShelf {
         this.genre = book.GetGenre();
     }
 
+    // Удаление книги из шкафа
     public void RemoveBook(Book book) {
         if (Array.IndexOf(this.books, book) == -1) return;
         this.books[Array.IndexOf(this.books, book)] = null;
@@ -49,6 +52,7 @@ public class BookShelf {
         }
     }
 
+    // Поиск книги в шкафе по названию + строковому айди
     public Book SearchBook(string name) {
         foreach (Book book in this.books) {
             if (book != null && (book.GetId().ToString() == name || book.GetName(true).Contains(name))) {
@@ -58,6 +62,7 @@ public class BookShelf {
         return null;
     }
 
+    // Поиск книги в шкафе по численному айди
     public Book SearchBook(int id) {
         foreach (Book book in this.books) {
             if (book != null && (book.GetId() == id)) {
@@ -67,11 +72,13 @@ public class BookShelf {
         return null;
     }
 
+    // Продажа книги
     public int SellBook(Book book) {
         RemoveBook(book);
         return book.GetPrice();
     }
 
+    // Внешне-доступные функции
     public Book[] GetBooks() { return this.books; }
     public string GetGenre() { return this.genre; }
 }

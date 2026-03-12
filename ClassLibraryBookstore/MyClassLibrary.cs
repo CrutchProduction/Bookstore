@@ -4,6 +4,7 @@ namespace ClassLibraryBookstore
 {
     public class MyClassLibrary
     {
+        // Элементы интерфейса
         private static Shop myShop;
         private static Panel panelNewBook;
         private static Panel panelStore;
@@ -53,6 +54,8 @@ namespace ClassLibraryBookstore
         private static ListBox listBoxPages;
         private static Button buttonSellBook;
         private static Button[] buttons;
+
+        // Глобальные переменные
         private static bool closet_choice = false;
         private static bool closet_choice_peek = false;
         private const int constX = 10;
@@ -64,6 +67,7 @@ namespace ClassLibraryBookstore
         private static int currentShelfId;
         private static readonly string[] alphabets = {"0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
 
+        // Конструктор
         public MyClassLibrary(Panel panelNewBook_, Panel panelStore_, Button buttonNewBook_, Label labelNameBook_, Button buttonStore_, TextBox textBoxGenre_, Label labelGenre_, TextBox textBoxAuthor_, Label labelAuthor_, TextBox textBoxNameBook_, Label labelPages_, TextBox textBoxPrice_, Label labelPrice_, TextBox textBoxPages_, Label label_idBook_, TextBox textBoxIDBook_, Label labelRUB_, Button buttonRandom_, Button buttonAddBook_, Label labelBalance_, Label labelRUBL_, TextBox textBoxBalance_, Label labelFindBook_, TextBox textBoxFindBook_, Button buttonCloset1_, Button buttonCloset5_, Button buttonCloset4_, Button buttonCloset3_, Button buttonCloset2_, Button buttonCloset11_, Button buttonCloset10_, Button buttonCloset9_, Button buttonCloset8_, Button buttonCloset7_, Button buttonCloset6_, Panel panelBookInfo_, Label label_panel_id_, Label label_panel_namebook_, ListBox listBoxID_, ListBox listBoxNameBook_, Label label_panel_author_, Label label_panel_pages_, ListBox listBoxAuthor_, ListBox listBoxPrice_, Label label_panel_price_, ListBox listBoxPages_, Button buttonSellBook_) {
             myShop = new Shop();
             panelNewBook = panelNewBook_;
@@ -150,6 +154,7 @@ namespace ClassLibraryBookstore
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
         }
 
+        // Обновление шкафов в интерфейсе
         private static void updateClosets()
         {
             BookShelf[] shelves = myShop.GetShelfs();
@@ -161,6 +166,7 @@ namespace ClassLibraryBookstore
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
         }
 
+        // Загрузить содержимое шкафа
         private static void loadBooks(int shelfId)
         {
             currentShelfId = shelfId;
@@ -182,6 +188,7 @@ namespace ClassLibraryBookstore
             }
         }
 
+        // Проверка текст на число
         public static bool isNumber(string text)
         {
             try
@@ -190,7 +197,7 @@ namespace ClassLibraryBookstore
                 return true;
             } catch { return false; }
         }
-
+        
         public static void buttonAddBook_Click(object sender, EventArgs e)
         {
             if (textBoxNameBook.Text != "" && textBoxAuthor.Text != "" && textBoxGenre.Text != "" && textBoxPages.Text != "" && textBoxPrice.Text != "")
