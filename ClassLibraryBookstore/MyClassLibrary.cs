@@ -58,6 +58,7 @@ namespace ClassLibraryBookstore
         // Глобальные переменные
         private static bool closet_choice = false;
         private static bool closet_choice_peek = false;
+        private static bool easterEggActive = false;
         private const int constX = 10;
         private const int constY = 80;
         private const int constPanelX = 72;
@@ -67,6 +68,7 @@ namespace ClassLibraryBookstore
         private static int tempY;
         private static int currentShelfId;
         private static readonly string[] alphabets = {"0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
+        
         // Конструктор
         public MyClassLibrary(Panel panelNewBook_, Panel panelStore_, Button buttonNewBook_, Label labelNameBook_, Button buttonStore_, TextBox textBoxGenre_, Label labelGenre_, TextBox textBoxAuthor_, Label labelAuthor_, TextBox textBoxNameBook_, Label labelPages_, TextBox textBoxPrice_, Label labelPrice_, TextBox textBoxPages_, Label label_idBook_, TextBox textBoxIDBook_, Label labelRUB_, Button buttonRandom_, Button buttonAddBook_, Label labelBalance_, Label labelRUBL_, TextBox textBoxBalance_, Label labelFindBook_, TextBox textBoxFindBook_, Button buttonCloset1_, Button buttonCloset5_, Button buttonCloset4_, Button buttonCloset3_, Button buttonCloset2_, Button buttonCloset11_, Button buttonCloset10_, Button buttonCloset9_, Button buttonCloset8_, Button buttonCloset7_, Button buttonCloset6_, Panel panelBookInfo_, Label label_panel_id_, Label label_panel_namebook_, ListBox listBoxID_, ListBox listBoxNameBook_, Label label_panel_author_, Label label_panel_pages_, ListBox listBoxAuthor_, ListBox listBoxPrice_, Label label_panel_price_, ListBox listBoxPages_, Button buttonSellBook_) {
             myShop = new Shop();
@@ -133,7 +135,7 @@ namespace ClassLibraryBookstore
             BookShelf[] shelves = myShop.GetShelfs();
             for (int i = 0; i < 11; i++)
             {
-                if (i >= shelves.Count())
+                if (i >= myShop.GetMaxShelfs())
                 {
                     buttons[i].Enabled = false;
                     buttons[i].Visible = false;
@@ -158,9 +160,15 @@ namespace ClassLibraryBookstore
         private static void updateClosets()
         {
             BookShelf[] shelves = myShop.GetShelfs();
-            for (int i = 0; i < shelves.Count(); i++)
+            for (int i = 0; i < myShop.GetMaxShelfs(); i++)
             {
                 buttons[i].Text = String.Join("\n", shelves.ElementAt(i).GetGenre().ToString().ToCharArray());
+            }
+            if (easterEggActive)
+            {
+                buttons[10].Enabled = true;
+                buttons[10].Visible = true;
+                buttons[10].Text = String.Join("\n", shelves.ElementAt(10).GetGenre().ToString().ToCharArray());
             }
             textBoxBalance.Text = myShop.GetBalance().ToString();
             textBoxIDBook.Text = myShop.GetLastBookId().ToString();
@@ -206,12 +214,19 @@ namespace ClassLibraryBookstore
                 {
                     textBoxNameBook.Text = string.Join(" ", textBoxNameBook.Text.Split(" ")[..^1]);
                 }
+
+                if (textBoxGenre.Text == "ZOV")
+                {
+                    easterEggActive = true;
+                }
+
                 myShop.AddBook(textBoxNameBook.Text, textBoxAuthor.Text, textBoxGenre.Text, Convert.ToInt32(textBoxPages.Text), Convert.ToInt32(textBoxPrice.Text));
                 textBoxNameBook.Text = "";
                 textBoxAuthor.Text = "";
                 textBoxGenre.Text = "";
                 textBoxPages.Text = "";
                 textBoxPrice.Text = "";
+
                 updateClosets();
             }
         }
@@ -317,22 +332,24 @@ namespace ClassLibraryBookstore
                 int i = 0;
                 foreach (BookShelf shelf in myShop.GetShelfs())
                 {
-                    Book foundBook = shelf.SearchBook(textBoxFindBook.Text);
-                    if (foundBook != null)
-                    {
-                        closet_choice = closet_choice == false;
-                        tempX = buttons[i].Location.X;
-                        tempY = buttons[i].Location.Y;
-                        buttons[i].Location = new Point(constX, constY);
-                        enabled_buttons(buttons[i], closet_choice != false);
-                        panelBookInfo.Location = new Point(constPanelX, constPanelY);
-                        loadBooks(i);
-                        listBoxID.SelectedIndex = listBoxID.Items.IndexOf(foundBook.GetId().ToString());
-                        buttonSellBook.Enabled = true;
-                        textBoxFindBook.Enabled = false;
-                        return;
+                    if (shelf != null) {
+                        Book foundBook = shelf.SearchBook(textBoxFindBook.Text);
+                        if (foundBook != null)
+                        {
+                            closet_choice = closet_choice == false;
+                            tempX = buttons[i].Location.X;
+                            tempY = buttons[i].Location.Y;
+                            buttons[i].Location = new Point(constX, constY);
+                            enabled_buttons(buttons[i], closet_choice != false);
+                            panelBookInfo.Location = new Point(constPanelX, constPanelY);
+                            loadBooks(i);
+                            listBoxID.SelectedIndex = listBoxID.Items.IndexOf(foundBook.GetId().ToString());
+                            buttonSellBook.Enabled = true;
+                            textBoxFindBook.Enabled = false;
+                            return;
+                        }
+                        i++;
                     }
-                    i++;
                 }
             }
         }

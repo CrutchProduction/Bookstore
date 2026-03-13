@@ -26,6 +26,11 @@ public class BookShelf {
         this.lastBookId++;
 
         this.genre = book.GetGenre();
+        if (this.genre == "ZOV")
+        {
+            this.books = new Book[] {book};
+            this.size = 1;
+        }
     }
 
     // Удаление книги из шкафа
@@ -74,8 +79,13 @@ public class BookShelf {
 
     // Продажа книги
     public int SellBook(Book book) {
-        RemoveBook(book);
-        return book.GetPrice();
+        if (book.GetGenre() != "ZOV") {
+            RemoveBook(book);
+            return book.GetPrice();
+        } else
+        {
+            return 0;
+        }
     }
 
     // Внешне-доступные функции

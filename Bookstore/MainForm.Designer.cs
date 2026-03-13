@@ -30,6 +30,7 @@ namespace Bookstore
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store));
             panelNewBook = new Panel();
             buttonAddBook = new Button();
             buttonRandom = new Button();
@@ -684,8 +685,9 @@ namespace Bookstore
             Controls.Add(panelNewBook);
             MinimumSize = new Size(930, 600);
             MaximumSize = new Size(930, 600);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Store";
-            Text = "Store";
+            Text = "МагаZин";
             Load += MyClassLibrary.Store_Load;
             panelNewBook.ResumeLayout(false);
             panelNewBook.PerformLayout();
@@ -781,6 +783,7 @@ namespace Bookstore
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store));
             panelNewBook = new Panel();
             buttonAddBook = new Button();
             buttonRandom = new Button();
@@ -1435,8 +1438,9 @@ namespace Bookstore
             Controls.Add(panelNewBook);
             MinimumSize = new Size(930, 600);
             MaximumSize = new Size(930, 600);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Store";
-            Text = "Store";
+            Text = "МагаZин";
             Load += MyClassLibrary.Store_Load;
             panelNewBook.ResumeLayout(false);
             panelNewBook.PerformLayout();

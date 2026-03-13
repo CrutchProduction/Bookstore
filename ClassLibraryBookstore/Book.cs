@@ -13,12 +13,21 @@ public class Book {
 
     // Конструктор
     public Book(string name, string author, string genre, int id, int pageAmount, int price, Random rnd) {
-        this.name = name;
-        this.author = author;
-        this.genre = genre;
-        this.id = id;
-        this.pageAmount = pageAmount;
-        this.price = price;
+        if (genre == "ZOV") {
+            this.name = "Конституция";
+            this.author = "Владимир Владимирович Путин";
+            this.genre = "ZOV";
+            this.id = 67;
+            this.pageAmount = 96;
+            this.price = 87;
+        } else {
+            this.name = name;
+            this.author = author;
+            this.genre = genre;
+            this.id = id;
+            this.pageAmount = pageAmount;
+            this.price = price;
+        }
     }
 
     // Конструктор для рандомной генерации
