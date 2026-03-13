@@ -62,11 +62,11 @@ namespace ClassLibraryBookstore
         private const int constY = 80;
         private const int constPanelX = 72;
         private const int constPanelY = 80;
+        private const int constPanelBack = 860;
         private static int tempX;
         private static int tempY;
         private static int currentShelfId;
         private static readonly string[] alphabets = {"0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
-
         // Конструктор
         public MyClassLibrary(Panel panelNewBook_, Panel panelStore_, Button buttonNewBook_, Label labelNameBook_, Button buttonStore_, TextBox textBoxGenre_, Label labelGenre_, TextBox textBoxAuthor_, Label labelAuthor_, TextBox textBoxNameBook_, Label labelPages_, TextBox textBoxPrice_, Label labelPrice_, TextBox textBoxPages_, Label label_idBook_, TextBox textBoxIDBook_, Label labelRUB_, Button buttonRandom_, Button buttonAddBook_, Label labelBalance_, Label labelRUBL_, TextBox textBoxBalance_, Label labelFindBook_, TextBox textBoxFindBook_, Button buttonCloset1_, Button buttonCloset5_, Button buttonCloset4_, Button buttonCloset3_, Button buttonCloset2_, Button buttonCloset11_, Button buttonCloset10_, Button buttonCloset9_, Button buttonCloset8_, Button buttonCloset7_, Button buttonCloset6_, Panel panelBookInfo_, Label label_panel_id_, Label label_panel_namebook_, ListBox listBoxID_, ListBox listBoxNameBook_, Label label_panel_author_, Label label_panel_pages_, ListBox listBoxAuthor_, ListBox listBoxPrice_, Label label_panel_price_, ListBox listBoxPages_, Button buttonSellBook_) {
             myShop = new Shop();
@@ -459,7 +459,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset1, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(0);
@@ -484,7 +484,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset2, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(1);
@@ -509,7 +509,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset3, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(2);
@@ -534,7 +534,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset4, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(3);
@@ -559,7 +559,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset5, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(4);
@@ -584,7 +584,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset6, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(5);
@@ -609,7 +609,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset7, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(6);
@@ -639,7 +639,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset8, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(7);
@@ -664,7 +664,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset9, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(8);
@@ -689,7 +689,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset10, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(9);
@@ -714,7 +714,7 @@ namespace ClassLibraryBookstore
                 //включаем все остальные кнопки
                 enabled_buttons(buttonCloset11, true);
                 //не показываем книги в шкафу
-                panelBookInfo.Location = new Point(82, 560);
+                panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(10);

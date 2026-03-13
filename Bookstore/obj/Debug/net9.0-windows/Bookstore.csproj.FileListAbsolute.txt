@@ -36,3 +36,9 @@ D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.csproj.Assemb
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.sourcelink.json
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.csproj.Up2Date
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.Properties.Resources.resources
+D:\source\repos\BookStore\Bookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.dll
+D:\source\repos\BookStore\Bookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.pdb
+D:\source\repos\BookStore\Bookstore\obj\Debug\net9.0-windows\Bookstore.csproj.AssemblyReference.cache
+D:\source\repos\BookStore\Bookstore\obj\Debug\net9.0-windows\Bookstore.Properties.Resources.resources
+D:\source\repos\BookStore\Bookstore\obj\Debug\net9.0-windows\Bookstore.sourcelink.json
+D:\source\repos\BookStore\Bookstore\obj\Debug\net9.0-windows\Bookstore.csproj.Up2Date

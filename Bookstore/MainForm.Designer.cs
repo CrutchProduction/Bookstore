@@ -102,7 +102,7 @@ namespace Bookstore
             panelNewBook.Controls.Add(labelNameBook);
             panelNewBook.Location = new Point(0, 40);
             panelNewBook.Name = "panelNewBook";
-            panelNewBook.Size = new Size(706, 500);
+            panelNewBook.Size = new Size(916, 500);
             panelNewBook.TabIndex = 0;
             // 
             // buttonAddBook
@@ -120,7 +120,7 @@ namespace Bookstore
             // buttonRandom
             // 
             buttonRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonRandom.Location = new Point(428, 280);
+            buttonRandom.Location = new Point(628, 280);
             buttonRandom.Margin = new Padding(10);
             buttonRandom.Name = "buttonRandom";
             buttonRandom.Size = new Size(250, 50);
@@ -133,7 +133,7 @@ namespace Bookstore
             // 
             labelRUB.AutoSize = true;
             labelRUB.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUB.Location = new Point(626, 178);
+            labelRUB.Location = new Point(810, 178);
             labelRUB.Margin = new Padding(1, 10, 10, 10);
             labelRUB.Name = "labelRUB";
             labelRUB.Size = new Size(52, 30);
@@ -164,10 +164,10 @@ namespace Bookstore
             // textBoxPrice
             // 
             textBoxPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxPrice.Location = new Point(434, 175);
+            textBoxPrice.Location = new Point(534, 175);
             textBoxPrice.Margin = new Padding(10, 10, 1, 10);
             textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new Size(190, 35);
+            textBoxPrice.Size = new Size(270, 35);
             textBoxPrice.TabIndex = 7;
             textBoxPrice.TextChanged += MyClassLibrary.textBoxPrice_TextChanged;
             // 
@@ -175,7 +175,7 @@ namespace Bookstore
             // 
             labelPrice.AutoSize = true;
             labelPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPrice.Location = new Point(351, 180);
+            labelPrice.Location = new Point(451, 180);
             labelPrice.Margin = new Padding(10);
             labelPrice.Name = "labelPrice";
             labelPrice.Size = new Size(63, 30);
@@ -188,7 +188,7 @@ namespace Bookstore
             textBoxPages.Location = new Point(135, 175);
             textBoxPages.Margin = new Padding(10);
             textBoxPages.Name = "textBoxPages";
-            textBoxPages.Size = new Size(196, 35);
+            textBoxPages.Size = new Size(296, 35);
             textBoxPages.TabIndex = 6;
             textBoxPages.TextChanged += MyClassLibrary.textBoxPages_TextChanged;
             // 
@@ -209,8 +209,8 @@ namespace Bookstore
             textBoxGenre.Location = new Point(135, 120);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
-            textBoxGenre.Size = new Size(561, 35);
-            textBoxGenre.TabIndex = 4;
+            textBoxGenre.Size = new Size(731, 35);
+            textBoxGenre.TabIndex = 5;
             textBoxGenre.TextChanged += MyClassLibrary.textBoxGenre_TextChanged;
             // 
             // labelGenre
@@ -230,8 +230,8 @@ namespace Bookstore
             textBoxAuthor.Location = new Point(135, 65);
             textBoxAuthor.Margin = new Padding(10);
             textBoxAuthor.Name = "textBoxAuthor";
-            textBoxAuthor.Size = new Size(561, 35);
-            textBoxAuthor.TabIndex = 5;
+            textBoxAuthor.Size = new Size(731, 35);
+            textBoxAuthor.TabIndex = 4;
             textBoxAuthor.TextChanged += MyClassLibrary.textBoxAuthor_TextChanged;
             // 
             // labelAuthor
@@ -251,7 +251,7 @@ namespace Bookstore
             textBoxNameBook.Location = new Point(135, 10);
             textBoxNameBook.Margin = new Padding(10);
             textBoxNameBook.Name = "textBoxNameBook";
-            textBoxNameBook.Size = new Size(561, 35);
+            textBoxNameBook.Size = new Size(731, 35);
             textBoxNameBook.TabIndex = 3;
             textBoxNameBook.TextChanged += MyClassLibrary.textBoxNameBook_TextChanged;
             // 
@@ -287,9 +287,9 @@ namespace Bookstore
             panelStore.Controls.Add(labelRUBL);
             panelStore.Controls.Add(textBoxBalance);
             panelStore.Controls.Add(labelBalance);
-            panelStore.Location = new Point(761, 40);
+            panelStore.Location = new Point(1061, 40);
             panelStore.Name = "panelStore";
-            panelStore.Size = new Size(915, 910);
+            panelStore.Size = new Size(915, 1310);
             panelStore.TabIndex = 1;
             // 
             // buttonSellBook
@@ -316,9 +316,9 @@ namespace Bookstore
             panelBookInfo.Controls.Add(listBoxID);
             panelBookInfo.Controls.Add(label_panel_namebook);
             panelBookInfo.Controls.Add(label_panel_id);
-            panelBookInfo.Location = new Point(82, 564);
+            panelBookInfo.Location = new Point(82, 864);
             panelBookInfo.Name = "panelBookInfo";
-            panelBookInfo.Size = new Size(725, 323);
+            panelBookInfo.Size = new Size(800, 323);
             panelBookInfo.TabIndex = 3;
             // 
             // listBoxPrice
@@ -327,7 +327,7 @@ namespace Bookstore
             listBoxPrice.FormattingEnabled = true;
             listBoxPrice.HorizontalScrollbar = true;
             listBoxPrice.Items.AddRange(new object[] { "666", "100", "999", "1234" });
-            listBoxPrice.Location = new Point(657, 30);
+            listBoxPrice.Location = new Point(737, 30);
             listBoxPrice.Name = "listBoxPrice";
             listBoxPrice.Size = new Size(58, 279);
             listBoxPrice.TabIndex = 9;
@@ -337,7 +337,7 @@ namespace Bookstore
             // 
             label_panel_price.AutoSize = true;
             label_panel_price.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_price.Location = new Point(657, 3);
+            label_panel_price.Location = new Point(737, 3);
             label_panel_price.Margin = new Padding(3);
             label_panel_price.Name = "label_panel_price";
             label_panel_price.Size = new Size(57, 25);
@@ -350,7 +350,7 @@ namespace Bookstore
             listBoxPages.FormattingEnabled = true;
             listBoxPages.HorizontalScrollbar = true;
             listBoxPages.Items.AddRange(new object[] { "100", "67", "123", "1234567" });
-            listBoxPages.Location = new Point(593, 30);
+            listBoxPages.Location = new Point(673, 30);
             listBoxPages.Name = "listBoxPages";
             listBoxPages.Size = new Size(58, 279);
             listBoxPages.TabIndex = 7;
@@ -360,7 +360,7 @@ namespace Bookstore
             // 
             label_panel_pages.AutoSize = true;
             label_panel_pages.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_pages.Location = new Point(593, 3);
+            label_panel_pages.Location = new Point(673, 3);
             label_panel_pages.Margin = new Padding(3);
             label_panel_pages.Name = "label_panel_pages";
             label_panel_pages.Size = new Size(47, 25);
@@ -375,7 +375,7 @@ namespace Bookstore
             listBoxAuthor.Items.AddRange(new object[] { "пушкин", "александр", "хз кто", "долбоеб" });
             listBoxAuthor.Location = new Point(466, 30);
             listBoxAuthor.Name = "listBoxAuthor";
-            listBoxAuthor.Size = new Size(121, 279);
+            listBoxAuthor.Size = new Size(201, 279);
             listBoxAuthor.TabIndex = 5;
             listBoxAuthor.SelectedIndexChanged += MyClassLibrary.listBoxAuthor_SelectedIndexChanged;
             // 
@@ -607,7 +607,7 @@ namespace Bookstore
             textBoxFindBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             textBoxFindBook.Location = new Point(82, 411);
             textBoxFindBook.Name = "textBoxFindBook";
-            textBoxFindBook.Size = new Size(621, 38);
+            textBoxFindBook.Size = new Size(821, 38);
             textBoxFindBook.TabIndex = 7;
             textBoxFindBook.Multiline = true;
             textBoxFindBook.TextChanged += MyClassLibrary.textBoxFindBook_TextChanged;
@@ -626,7 +626,7 @@ namespace Bookstore
             // 
             labelRUBL.AutoSize = true;
             labelRUBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUBL.Location = new Point(656, 10);
+            labelRUBL.Location = new Point(856, 10);
             labelRUBL.Name = "labelRUBL";
             labelRUBL.Size = new Size(47, 25);
             labelRUBL.TabIndex = 2;
@@ -635,7 +635,7 @@ namespace Bookstore
             // textBoxBalance
             // 
             textBoxBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxBalance.Location = new Point(460, 7);
+            textBoxBalance.Location = new Point(660, 7);
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(190, 33);
             textBoxBalance.TabIndex = 1;
@@ -644,7 +644,7 @@ namespace Bookstore
             // 
             labelBalance.AutoSize = true;
             labelBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelBalance.Location = new Point(381, 10);
+            labelBalance.Location = new Point(581, 10);
             labelBalance.Name = "labelBalance";
             labelBalance.Size = new Size(73, 25);
             labelBalance.TabIndex = 0;
@@ -655,8 +655,8 @@ namespace Bookstore
             buttonNewBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonNewBook.Location = new Point(0, 0);
             buttonNewBook.Name = "buttonNewBook";
-            buttonNewBook.Size = new Size(345, 34);
-            buttonNewBook.TabIndex = 1;
+            buttonNewBook.Size = new Size(445, 34);
+            buttonNewBook.TabIndex = 2;
             buttonNewBook.Text = "Новая книга";
             buttonNewBook.UseVisualStyleBackColor = true;
             buttonNewBook.Click += MyClassLibrary.buttonNewBook_Click;
@@ -664,10 +664,10 @@ namespace Bookstore
             // buttonStore
             // 
             buttonStore.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonStore.Location = new Point(351, 0);
+            buttonStore.Location = new Point(451, 0);
             buttonStore.Name = "buttonStore";
-            buttonStore.Size = new Size(345, 34);
-            buttonStore.TabIndex = 2;
+            buttonStore.Size = new Size(445, 34);
+            buttonStore.TabIndex = 1;
             buttonStore.Text = "Магазин";
             buttonStore.UseVisualStyleBackColor = true;
             buttonStore.Click += MyClassLibrary.buttonStore_Click;
@@ -677,12 +677,13 @@ namespace Bookstore
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(800, 561);
+            ClientSize = new Size(910, 561);
             Controls.Add(buttonStore);
             Controls.Add(buttonNewBook);
             Controls.Add(panelStore);
             Controls.Add(panelNewBook);
-            MinimumSize = new Size(800, 600);
+            MinimumSize = new Size(930, 600);
+            MaximumSize = new Size(930, 600);
             Name = "Store";
             Text = "Store";
             Load += MyClassLibrary.Store_Load;
@@ -852,7 +853,7 @@ namespace Bookstore
             panelNewBook.Controls.Add(labelNameBook);
             panelNewBook.Location = new Point(0, 40);
             panelNewBook.Name = "panelNewBook";
-            panelNewBook.Size = new Size(706, 500);
+            panelNewBook.Size = new Size(916, 500);
             panelNewBook.TabIndex = 0;
             // 
             // buttonAddBook
@@ -870,7 +871,7 @@ namespace Bookstore
             // buttonRandom
             // 
             buttonRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonRandom.Location = new Point(428, 280);
+            buttonRandom.Location = new Point(628, 280);
             buttonRandom.Margin = new Padding(10);
             buttonRandom.Name = "buttonRandom";
             buttonRandom.Size = new Size(250, 50);
@@ -883,7 +884,7 @@ namespace Bookstore
             // 
             labelRUB.AutoSize = true;
             labelRUB.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUB.Location = new Point(626, 178);
+            labelRUB.Location = new Point(810, 178);
             labelRUB.Margin = new Padding(1, 10, 10, 10);
             labelRUB.Name = "labelRUB";
             labelRUB.Size = new Size(52, 30);
@@ -914,10 +915,10 @@ namespace Bookstore
             // textBoxPrice
             // 
             textBoxPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxPrice.Location = new Point(434, 175);
+            textBoxPrice.Location = new Point(534, 175);
             textBoxPrice.Margin = new Padding(10, 10, 1, 10);
             textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new Size(190, 35);
+            textBoxPrice.Size = new Size(270, 35);
             textBoxPrice.TabIndex = 7;
             textBoxPrice.TextChanged += MyClassLibrary.textBoxPrice_TextChanged;
             // 
@@ -925,7 +926,7 @@ namespace Bookstore
             // 
             labelPrice.AutoSize = true;
             labelPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPrice.Location = new Point(351, 180);
+            labelPrice.Location = new Point(451, 180);
             labelPrice.Margin = new Padding(10);
             labelPrice.Name = "labelPrice";
             labelPrice.Size = new Size(63, 30);
@@ -938,7 +939,7 @@ namespace Bookstore
             textBoxPages.Location = new Point(135, 175);
             textBoxPages.Margin = new Padding(10);
             textBoxPages.Name = "textBoxPages";
-            textBoxPages.Size = new Size(196, 35);
+            textBoxPages.Size = new Size(296, 35);
             textBoxPages.TabIndex = 6;
             textBoxPages.TextChanged += MyClassLibrary.textBoxPages_TextChanged;
             // 
@@ -956,11 +957,11 @@ namespace Bookstore
             // textBoxGenre
             //  
             textBoxGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxGenre.Location =  new Point(135, 120);
+            textBoxGenre.Location = new Point(135, 120);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
-            textBoxGenre.Size = new Size(561, 35);
-            textBoxGenre.TabIndex = 4;
+            textBoxGenre.Size = new Size(731, 35);
+            textBoxGenre.TabIndex = 5;
             textBoxGenre.TextChanged += MyClassLibrary.textBoxGenre_TextChanged;
             // 
             // labelGenre
@@ -980,8 +981,8 @@ namespace Bookstore
             textBoxAuthor.Location = new Point(135, 65);
             textBoxAuthor.Margin = new Padding(10);
             textBoxAuthor.Name = "textBoxAuthor";
-            textBoxAuthor.Size = new Size(561, 35);
-            textBoxAuthor.TabIndex = 5;
+            textBoxAuthor.Size = new Size(731, 35);
+            textBoxAuthor.TabIndex = 4;
             textBoxAuthor.TextChanged += MyClassLibrary.textBoxAuthor_TextChanged;
             // 
             // labelAuthor
@@ -1001,7 +1002,7 @@ namespace Bookstore
             textBoxNameBook.Location = new Point(135, 10);
             textBoxNameBook.Margin = new Padding(10);
             textBoxNameBook.Name = "textBoxNameBook";
-            textBoxNameBook.Size = new Size(561, 35);
+            textBoxNameBook.Size = new Size(731, 35);
             textBoxNameBook.TabIndex = 3;
             textBoxNameBook.TextChanged += MyClassLibrary.textBoxNameBook_TextChanged;
             // 
@@ -1037,9 +1038,9 @@ namespace Bookstore
             panelStore.Controls.Add(labelRUBL);
             panelStore.Controls.Add(textBoxBalance);
             panelStore.Controls.Add(labelBalance);
-            panelStore.Location = new Point(761, 40);
+            panelStore.Location = new Point(1061, 40);
             panelStore.Name = "panelStore";
-            panelStore.Size = new Size(915, 910);
+            panelStore.Size = new Size(915, 1310);
             panelStore.TabIndex = 1;
             // 
             // buttonSellBook
@@ -1066,9 +1067,9 @@ namespace Bookstore
             panelBookInfo.Controls.Add(listBoxID);
             panelBookInfo.Controls.Add(label_panel_namebook);
             panelBookInfo.Controls.Add(label_panel_id);
-            panelBookInfo.Location = new Point(82, 564);
+            panelBookInfo.Location = new Point(82, 864);
             panelBookInfo.Name = "panelBookInfo";
-            panelBookInfo.Size = new Size(725, 323);
+            panelBookInfo.Size = new Size(800, 323);
             panelBookInfo.TabIndex = 3;
             // 
             // listBoxPrice
@@ -1077,7 +1078,7 @@ namespace Bookstore
             listBoxPrice.FormattingEnabled = true;
             listBoxPrice.HorizontalScrollbar = true;
             listBoxPrice.Items.AddRange(new object[] { "666", "100", "999", "1234" });
-            listBoxPrice.Location = new Point(657, 30);
+            listBoxPrice.Location = new Point(737, 30);
             listBoxPrice.Name = "listBoxPrice";
             listBoxPrice.Size = new Size(58, 279);
             listBoxPrice.TabIndex = 9;
@@ -1087,7 +1088,7 @@ namespace Bookstore
             // 
             label_panel_price.AutoSize = true;
             label_panel_price.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_price.Location = new Point(657, 3);
+            label_panel_price.Location = new Point(737, 3);
             label_panel_price.Margin = new Padding(3);
             label_panel_price.Name = "label_panel_price";
             label_panel_price.Size = new Size(57, 25);
@@ -1100,7 +1101,7 @@ namespace Bookstore
             listBoxPages.FormattingEnabled = true;
             listBoxPages.HorizontalScrollbar = true;
             listBoxPages.Items.AddRange(new object[] { "100", "67", "123", "1234567" });
-            listBoxPages.Location = new Point(593, 30);
+            listBoxPages.Location = new Point(673, 30);
             listBoxPages.Name = "listBoxPages";
             listBoxPages.Size = new Size(58, 279);
             listBoxPages.TabIndex = 7;
@@ -1110,7 +1111,7 @@ namespace Bookstore
             // 
             label_panel_pages.AutoSize = true;
             label_panel_pages.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_pages.Location = new Point(593, 3);
+            label_panel_pages.Location = new Point(673, 3);
             label_panel_pages.Margin = new Padding(3);
             label_panel_pages.Name = "label_panel_pages";
             label_panel_pages.Size = new Size(47, 25);
@@ -1125,7 +1126,7 @@ namespace Bookstore
             listBoxAuthor.Items.AddRange(new object[] { "пушкин", "александр", "хз кто", "долбоеб" });
             listBoxAuthor.Location = new Point(466, 30);
             listBoxAuthor.Name = "listBoxAuthor";
-            listBoxAuthor.Size = new Size(121, 279);
+            listBoxAuthor.Size = new Size(201, 279);
             listBoxAuthor.TabIndex = 5;
             listBoxAuthor.SelectedIndexChanged += MyClassLibrary.listBoxAuthor_SelectedIndexChanged;
             // 
@@ -1357,7 +1358,7 @@ namespace Bookstore
             textBoxFindBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             textBoxFindBook.Location = new Point(82, 411);
             textBoxFindBook.Name = "textBoxFindBook";
-            textBoxFindBook.Size = new Size(621, 38);
+            textBoxFindBook.Size = new Size(821, 38);
             textBoxFindBook.TabIndex = 7;
             textBoxFindBook.Multiline = true;
             textBoxFindBook.TextChanged += MyClassLibrary.textBoxFindBook_TextChanged;
@@ -1376,7 +1377,7 @@ namespace Bookstore
             // 
             labelRUBL.AutoSize = true;
             labelRUBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUBL.Location = new Point(656, 10);
+            labelRUBL.Location = new Point(856, 10);
             labelRUBL.Name = "labelRUBL";
             labelRUBL.Size = new Size(47, 25);
             labelRUBL.TabIndex = 2;
@@ -1385,7 +1386,7 @@ namespace Bookstore
             // textBoxBalance
             // 
             textBoxBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxBalance.Location = new Point(460, 7);
+            textBoxBalance.Location = new Point(660, 7);
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(190, 33);
             textBoxBalance.TabIndex = 1;
@@ -1394,7 +1395,7 @@ namespace Bookstore
             // 
             labelBalance.AutoSize = true;
             labelBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelBalance.Location = new Point(381, 10);
+            labelBalance.Location = new Point(581, 10);
             labelBalance.Name = "labelBalance";
             labelBalance.Size = new Size(73, 25);
             labelBalance.TabIndex = 0;
@@ -1405,8 +1406,8 @@ namespace Bookstore
             buttonNewBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonNewBook.Location = new Point(0, 0);
             buttonNewBook.Name = "buttonNewBook";
-            buttonNewBook.Size = new Size(345, 34);
-            buttonNewBook.TabIndex = 1;
+            buttonNewBook.Size = new Size(445, 34);
+            buttonNewBook.TabIndex = 2;
             buttonNewBook.Text = "Новая книга";
             buttonNewBook.UseVisualStyleBackColor = true;
             buttonNewBook.Click += MyClassLibrary.buttonNewBook_Click;
@@ -1414,10 +1415,10 @@ namespace Bookstore
             // buttonStore
             // 
             buttonStore.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonStore.Location = new Point(351, 0);
+            buttonStore.Location = new Point(451, 0);
             buttonStore.Name = "buttonStore";
-            buttonStore.Size = new Size(345, 34);
-            buttonStore.TabIndex = 2;
+            buttonStore.Size = new Size(445, 34);
+            buttonStore.TabIndex = 1;
             buttonStore.Text = "Магазин";
             buttonStore.UseVisualStyleBackColor = true;
             buttonStore.Click += MyClassLibrary.buttonStore_Click;
@@ -1427,12 +1428,13 @@ namespace Bookstore
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(800, 561);
+            ClientSize = new Size(910, 561);
             Controls.Add(buttonStore);
             Controls.Add(buttonNewBook);
             Controls.Add(panelStore);
             Controls.Add(panelNewBook);
-            MinimumSize = new Size(800, 600);
+            MinimumSize = new Size(930, 600);
+            MaximumSize = new Size(930, 600);
             Name = "Store";
             Text = "Store";
             Load += MyClassLibrary.Store_Load;

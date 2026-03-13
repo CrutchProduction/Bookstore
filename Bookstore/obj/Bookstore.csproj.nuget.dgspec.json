@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Bookstore\\Bookstore\\Bookstore.csproj": {}
+    "D:\\source\\repos\\BookStore\\Bookstore\\Bookstore.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Bookstore\\Bookstore\\Bookstore.csproj": {
+    "D:\\source\\repos\\BookStore\\Bookstore\\Bookstore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Bookstore\\Bookstore\\Bookstore.csproj",
+        "projectUniqueName": "D:\\source\\repos\\BookStore\\Bookstore\\Bookstore.csproj",
         "projectName": "Bookstore",
-        "projectPath": "D:\\Projects\\Bookstore\\Bookstore\\Bookstore.csproj",
-        "packagesPath": "C:\\Users\\KolyaSG9183\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Bookstore\\Bookstore\\obj\\",
+        "projectPath": "D:\\source\\repos\\BookStore\\Bookstore\\Bookstore.csproj",
+        "packagesPath": "C:\\Users\\HomePC\\.nuget\\packages\\",
+        "outputPath": "D:\\source\\repos\\BookStore\\Bookstore\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\KolyaSG9183\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HomePC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net9.0-windows7.0": {
             "targetAlias": "net9.0-windows",
             "projectReferences": {
-              "D:\\Projects\\Bookstore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj": {
-                "projectPath": "D:\\Projects\\Bookstore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj"
+              "D:\\source\\repos\\BookStore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj": {
+                "projectPath": "D:\\source\\repos\\BookStore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj"
               }
             }
           }
@@ -60,6 +64,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -68,21 +90,25 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Projects\\Bookstore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj": {
+    "D:\\source\\repos\\BookStore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Bookstore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj",
+        "projectUniqueName": "D:\\source\\repos\\BookStore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj",
         "projectName": "ClassLibraryBookstore",
-        "projectPath": "D:\\Projects\\Bookstore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj",
-        "packagesPath": "C:\\Users\\KolyaSG9183\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Bookstore\\ClassLibraryBookstore\\obj\\",
+        "projectPath": "D:\\source\\repos\\BookStore\\ClassLibraryBookstore\\ClassLibraryBookstore.csproj",
+        "packagesPath": "C:\\Users\\HomePC\\.nuget\\packages\\",
+        "outputPath": "D:\\source\\repos\\BookStore\\ClassLibraryBookstore\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\KolyaSG9183\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HomePC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -124,6 +150,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -132,7 +172,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
