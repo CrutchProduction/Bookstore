@@ -13,7 +13,7 @@
           - [Book](#класс-book)
 
 ## Установка
-Данный проект использует [.Net 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+Данный проект использует [.Net 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) и преднозначен для запуска на Windows
 ```
 git clone https://github.com/CrutchProduction/Bookstore.git
 ```
