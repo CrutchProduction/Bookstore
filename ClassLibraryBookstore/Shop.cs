@@ -50,7 +50,7 @@ public class Shop {
 
     // Проверка книги на копии названия
     public void CheckBookName(Book book) {
-        int multiplier = 1;
+        int maxCopyId = 0;
         foreach (BookShelf shelf in this.shelfs) {
             if (shelf != null) {
                 foreach (Book book_ in shelf.GetBooks())
@@ -59,13 +59,16 @@ public class Shop {
                     {
                         if (book_.GetName(false).StartsWith(book.GetName(false)))
                         {
-                            multiplier++;
+                            if (maxCopyId < book_.GetCopyId())
+                            {
+                                maxCopyId = book_.GetCopyId();
+                            }
                         }
                     }
                 }
             }
         }
-        book.SetCopyId(multiplier);
+        book.SetCopyId(maxCopyId + 1);
     }
 
     // Поиск шкафа с заданным жанром

@@ -116,7 +116,7 @@ namespace Bookstore
             buttonAddBook.TabIndex = 12;
             buttonAddBook.Text = "Добавить книгу";
             buttonAddBook.UseVisualStyleBackColor = true;
-            buttonAddBook.Click += MyClassLibrary.buttonAddBook_Click;
+            buttonAddBook.Click += buttonAddBook_Click;
             // 
             // buttonRandom
             // 
@@ -128,7 +128,7 @@ namespace Bookstore
             buttonRandom.TabIndex = 13;
             buttonRandom.Text = "Случайная генерация";
             buttonRandom.UseVisualStyleBackColor = true;
-            buttonRandom.Click += MyClassLibrary.buttonRandom_Click;
+            buttonRandom.Click += buttonRandom_Click;
             // 
             // labelRUB
             // 
@@ -170,7 +170,7 @@ namespace Bookstore
             textBoxPrice.Name = "textBoxPrice";
             textBoxPrice.Size = new Size(270, 35);
             textBoxPrice.TabIndex = 7;
-            textBoxPrice.TextChanged += MyClassLibrary.textBoxPrice_TextChanged;
+            textBoxPrice.TextChanged += textBoxPrice_TextChanged;
             // 
             // labelPrice
             // 
@@ -191,7 +191,7 @@ namespace Bookstore
             textBoxPages.Name = "textBoxPages";
             textBoxPages.Size = new Size(296, 35);
             textBoxPages.TabIndex = 6;
-            textBoxPages.TextChanged += MyClassLibrary.textBoxPages_TextChanged;
+            textBoxPages.TextChanged += textBoxPages_TextChanged;
             // 
             // labelPages
             // 
@@ -212,7 +212,7 @@ namespace Bookstore
             textBoxGenre.Name = "textBoxGenre";
             textBoxGenre.Size = new Size(731, 35);
             textBoxGenre.TabIndex = 5;
-            textBoxGenre.TextChanged += MyClassLibrary.textBoxGenre_TextChanged;
+            textBoxGenre.TextChanged += textBoxGenre_TextChanged;
             // 
             // labelGenre
             // 
@@ -233,7 +233,7 @@ namespace Bookstore
             textBoxAuthor.Name = "textBoxAuthor";
             textBoxAuthor.Size = new Size(731, 35);
             textBoxAuthor.TabIndex = 4;
-            textBoxAuthor.TextChanged += MyClassLibrary.textBoxAuthor_TextChanged;
+            textBoxAuthor.TextChanged += textBoxAuthor_TextChanged;
             // 
             // labelAuthor
             // 
@@ -254,7 +254,7 @@ namespace Bookstore
             textBoxNameBook.Name = "textBoxNameBook";
             textBoxNameBook.Size = new Size(731, 35);
             textBoxNameBook.TabIndex = 3;
-            textBoxNameBook.TextChanged += MyClassLibrary.textBoxNameBook_TextChanged;
+            textBoxNameBook.TextChanged += textBoxNameBook_TextChanged;
             // 
             // labelNameBook
             // 
@@ -302,7 +302,7 @@ namespace Bookstore
             buttonSellBook.TabIndex = 19;
             buttonSellBook.Text = "Продать книгу";
             buttonSellBook.UseVisualStyleBackColor = true;
-            buttonSellBook.Click += MyClassLibrary.buttonSellBook_Click;
+            buttonSellBook.Click += buttonSellBook_Click;
             // 
             // panelBookInfo
             // 
@@ -332,7 +332,7 @@ namespace Bookstore
             listBoxPrice.Name = "listBoxPrice";
             listBoxPrice.Size = new Size(58, 279);
             listBoxPrice.TabIndex = 9;
-            listBoxPrice.SelectedIndexChanged += MyClassLibrary.listBoxPrice_SelectedIndexChanged;
+            listBoxPrice.SelectedIndexChanged += listBoxPrice_SelectedIndexChanged;
             // 
             // label_panel_price
             // 
@@ -355,7 +355,7 @@ namespace Bookstore
             listBoxPages.Name = "listBoxPages";
             listBoxPages.Size = new Size(58, 279);
             listBoxPages.TabIndex = 7;
-            listBoxPages.SelectedIndexChanged += MyClassLibrary.listBoxPages_SelectedIndexChanged;
+            listBoxPages.SelectedIndexChanged += listBoxPages_SelectedIndexChanged;
             // 
             // label_panel_pages
             // 
@@ -378,7 +378,7 @@ namespace Bookstore
             listBoxAuthor.Name = "listBoxAuthor";
             listBoxAuthor.Size = new Size(201, 279);
             listBoxAuthor.TabIndex = 5;
-            listBoxAuthor.SelectedIndexChanged += MyClassLibrary.listBoxAuthor_SelectedIndexChanged;
+            listBoxAuthor.SelectedIndexChanged += listBoxAuthor_SelectedIndexChanged;
             // 
             // label_panel_author
             // 
@@ -401,7 +401,7 @@ namespace Bookstore
             listBoxNameBook.Name = "listBoxNameBook";
             listBoxNameBook.Size = new Size(421, 279);
             listBoxNameBook.TabIndex = 3;
-            listBoxNameBook.SelectedIndexChanged += MyClassLibrary.listBoxNameBook_SelectedIndexChanged;
+            listBoxNameBook.SelectedIndexChanged += listBoxNameBook_SelectedIndexChanged;
             // 
             // listBoxID
             // 
@@ -413,7 +413,7 @@ namespace Bookstore
             listBoxID.Name = "listBoxID";
             listBoxID.Size = new Size(30, 279);
             listBoxID.TabIndex = 2;
-            listBoxID.SelectedIndexChanged += MyClassLibrary.listBoxID_SelectedIndexChanged;
+            listBoxID.SelectedIndexChanged += listBoxID_SelectedIndexChanged;
             // 
             // label_panel_namebook
             // 
@@ -450,7 +450,7 @@ namespace Bookstore
             buttonCloset11.Text = "Хуйня";
             buttonCloset11.UseVisualStyleBackColor = true;
             buttonCloset11.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset11.Click += MyClassLibrary.buttonCloset11_Click;
+            buttonCloset11.Click += buttonCloset11_Click;
             // 
             // buttonCloset10
             // 
@@ -465,7 +465,7 @@ namespace Bookstore
             buttonCloset10.Text = "Хоррор";
             buttonCloset10.UseVisualStyleBackColor = true;
             buttonCloset10.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset10.Click += MyClassLibrary.buttonCloset10_Click;
+            buttonCloset10.Click += buttonCloset10_Click;
             // 
             // buttonCloset9
             // 
@@ -480,7 +480,7 @@ namespace Bookstore
             buttonCloset9.Text = "Научная литература";
             buttonCloset9.UseVisualStyleBackColor = true;
             buttonCloset9.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset9.Click += MyClassLibrary.buttonCloset9_Click;
+            buttonCloset9.Click += buttonCloset9_Click;
             // 
             // buttonCloset8
             // 
@@ -495,7 +495,7 @@ namespace Bookstore
             buttonCloset8.Text = "Биография";
             buttonCloset8.UseVisualStyleBackColor = true;
             buttonCloset8.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset8.Click += MyClassLibrary.buttonCloset8_Click;
+            buttonCloset8.Click += buttonCloset8_Click;
             // 
             // buttonCloset7
             // 
@@ -510,7 +510,7 @@ namespace Bookstore
             buttonCloset7.Text = "Психология";
             buttonCloset7.UseVisualStyleBackColor = true;
             buttonCloset7.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset7.Click += MyClassLibrary.buttonCloset7_Click;
+            buttonCloset7.Click += buttonCloset7_Click;
             // 
             // buttonCloset6
             // 
@@ -525,7 +525,7 @@ namespace Bookstore
             buttonCloset6.Text = "Классическая литература";
             buttonCloset6.UseVisualStyleBackColor = true;
             buttonCloset6.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset6.Click += MyClassLibrary.buttonCloset6_Click;
+            buttonCloset6.Click += buttonCloset6_Click;
             // 
             // buttonCloset5
             // 
@@ -540,7 +540,7 @@ namespace Bookstore
             buttonCloset5.Text = "Поэзия";
             buttonCloset5.UseVisualStyleBackColor = true;
             buttonCloset5.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset5.Click += MyClassLibrary.buttonCloset5_Click;
+            buttonCloset5.Click += buttonCloset5_Click;
             // 
             // buttonCloset4
             // 
@@ -555,7 +555,7 @@ namespace Bookstore
             buttonCloset4.Text = "Приключение";
             buttonCloset4.UseVisualStyleBackColor = true;
             buttonCloset4.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset4.Click += MyClassLibrary.buttonCloset4_Click;
+            buttonCloset4.Click += buttonCloset4_Click;
             // 
             // buttonCloset3
             // 
@@ -570,7 +570,7 @@ namespace Bookstore
             buttonCloset3.Text = "Роман";
             buttonCloset3.UseVisualStyleBackColor = true;
             buttonCloset3.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset3.Click += MyClassLibrary.buttonCloset3_Click;
+            buttonCloset3.Click += buttonCloset3_Click;
             // 
             // buttonCloset2
             // 
@@ -585,7 +585,7 @@ namespace Bookstore
             buttonCloset2.Text = "Фентези";
             buttonCloset2.UseVisualStyleBackColor = true;
             buttonCloset2.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset2.Click += MyClassLibrary.buttonCloset2_Click;
+            buttonCloset2.Click += buttonCloset2_Click;
             textBoxBalance.Enabled = false;
             // 
             // buttonCloset1
@@ -601,7 +601,7 @@ namespace Bookstore
             buttonCloset1.Text = "Философия";
             buttonCloset1.UseVisualStyleBackColor = true;
             buttonCloset1.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset1.Click += MyClassLibrary.buttonCloset1_Click;
+            buttonCloset1.Click += buttonCloset1_Click;
             // 
             // textBoxFindBook
             // 
@@ -611,7 +611,7 @@ namespace Bookstore
             textBoxFindBook.Size = new Size(821, 38);
             textBoxFindBook.TabIndex = 7;
             textBoxFindBook.Multiline = true;
-            textBoxFindBook.TextChanged += MyClassLibrary.textBoxFindBook_TextChanged;
+            textBoxFindBook.TextChanged += textBoxFindBook_TextChanged;
             // 
             // labelFindBook
             // 
@@ -660,7 +660,7 @@ namespace Bookstore
             buttonNewBook.TabIndex = 2;
             buttonNewBook.Text = "Новая книга";
             buttonNewBook.UseVisualStyleBackColor = true;
-            buttonNewBook.Click += MyClassLibrary.buttonNewBook_Click;
+            buttonNewBook.Click += buttonNewBook_Click;
             // 
             // buttonStore
             // 
@@ -671,7 +671,7 @@ namespace Bookstore
             buttonStore.TabIndex = 1;
             buttonStore.Text = "Магазин";
             buttonStore.UseVisualStyleBackColor = true;
-            buttonStore.Click += MyClassLibrary.buttonStore_Click;
+            buttonStore.Click += buttonStore_Click;
             // 
             // Store
             // 
@@ -688,7 +688,7 @@ namespace Bookstore
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Store";
             Text = "МагаZин";
-            Load += MyClassLibrary.Store_Load;
+            Load += Store_Load;
             panelNewBook.ResumeLayout(false);
             panelNewBook.PerformLayout();
             panelStore.ResumeLayout(false);
@@ -869,7 +869,7 @@ namespace Bookstore
             buttonAddBook.TabIndex = 12;
             buttonAddBook.Text = "Добавить книгу";
             buttonAddBook.UseVisualStyleBackColor = true;
-            buttonAddBook.Click += MyClassLibrary.buttonAddBook_Click;
+            buttonAddBook.Click += buttonAddBook_Click;
             // 
             // buttonRandom
             // 
@@ -881,7 +881,7 @@ namespace Bookstore
             buttonRandom.TabIndex = 13;
             buttonRandom.Text = "Случайная генерация";
             buttonRandom.UseVisualStyleBackColor = true;
-            buttonRandom.Click += MyClassLibrary.buttonRandom_Click;
+            buttonRandom.Click += buttonRandom_Click;
             // 
             // labelRUB
             // 
@@ -923,7 +923,7 @@ namespace Bookstore
             textBoxPrice.Name = "textBoxPrice";
             textBoxPrice.Size = new Size(270, 35);
             textBoxPrice.TabIndex = 7;
-            textBoxPrice.TextChanged += MyClassLibrary.textBoxPrice_TextChanged;
+            textBoxPrice.TextChanged += textBoxPrice_TextChanged;
             // 
             // labelPrice
             // 
@@ -944,7 +944,7 @@ namespace Bookstore
             textBoxPages.Name = "textBoxPages";
             textBoxPages.Size = new Size(296, 35);
             textBoxPages.TabIndex = 6;
-            textBoxPages.TextChanged += MyClassLibrary.textBoxPages_TextChanged;
+            textBoxPages.TextChanged += textBoxPages_TextChanged;
             // 
             // labelPages
             // 
@@ -965,7 +965,7 @@ namespace Bookstore
             textBoxGenre.Name = "textBoxGenre";
             textBoxGenre.Size = new Size(731, 35);
             textBoxGenre.TabIndex = 5;
-            textBoxGenre.TextChanged += MyClassLibrary.textBoxGenre_TextChanged;
+            textBoxGenre.TextChanged += textBoxGenre_TextChanged;
             // 
             // labelGenre
             // 
@@ -986,7 +986,7 @@ namespace Bookstore
             textBoxAuthor.Name = "textBoxAuthor";
             textBoxAuthor.Size = new Size(731, 35);
             textBoxAuthor.TabIndex = 4;
-            textBoxAuthor.TextChanged += MyClassLibrary.textBoxAuthor_TextChanged;
+            textBoxAuthor.TextChanged += textBoxAuthor_TextChanged;
             // 
             // labelAuthor
             // 
@@ -1007,7 +1007,7 @@ namespace Bookstore
             textBoxNameBook.Name = "textBoxNameBook";
             textBoxNameBook.Size = new Size(731, 35);
             textBoxNameBook.TabIndex = 3;
-            textBoxNameBook.TextChanged += MyClassLibrary.textBoxNameBook_TextChanged;
+            textBoxNameBook.TextChanged += textBoxNameBook_TextChanged;
             // 
             // labelNameBook
             // 
@@ -1055,7 +1055,7 @@ namespace Bookstore
             buttonSellBook.TabIndex = 19;
             buttonSellBook.Text = "Продать книгу";
             buttonSellBook.UseVisualStyleBackColor = true;
-            buttonSellBook.Click += MyClassLibrary.buttonSellBook_Click;
+            buttonSellBook.Click += buttonSellBook_Click;
             // 
             // panelBookInfo
             // 
@@ -1085,7 +1085,7 @@ namespace Bookstore
             listBoxPrice.Name = "listBoxPrice";
             listBoxPrice.Size = new Size(58, 279);
             listBoxPrice.TabIndex = 9;
-            listBoxPrice.SelectedIndexChanged += MyClassLibrary.listBoxPrice_SelectedIndexChanged;
+            listBoxPrice.SelectedIndexChanged += listBoxPrice_SelectedIndexChanged;
             // 
             // label_panel_price
             // 
@@ -1108,7 +1108,7 @@ namespace Bookstore
             listBoxPages.Name = "listBoxPages";
             listBoxPages.Size = new Size(58, 279);
             listBoxPages.TabIndex = 7;
-            listBoxPages.SelectedIndexChanged += MyClassLibrary.listBoxPages_SelectedIndexChanged;
+            listBoxPages.SelectedIndexChanged += listBoxPages_SelectedIndexChanged;
             // 
             // label_panel_pages
             // 
@@ -1131,7 +1131,7 @@ namespace Bookstore
             listBoxAuthor.Name = "listBoxAuthor";
             listBoxAuthor.Size = new Size(201, 279);
             listBoxAuthor.TabIndex = 5;
-            listBoxAuthor.SelectedIndexChanged += MyClassLibrary.listBoxAuthor_SelectedIndexChanged;
+            listBoxAuthor.SelectedIndexChanged += listBoxAuthor_SelectedIndexChanged;
             // 
             // label_panel_author
             // 
@@ -1154,7 +1154,7 @@ namespace Bookstore
             listBoxNameBook.Name = "listBoxNameBook";
             listBoxNameBook.Size = new Size(421, 279);
             listBoxNameBook.TabIndex = 3;
-            listBoxNameBook.SelectedIndexChanged += MyClassLibrary.listBoxNameBook_SelectedIndexChanged;
+            listBoxNameBook.SelectedIndexChanged += listBoxNameBook_SelectedIndexChanged;
             // 
             // listBoxID
             // 
@@ -1166,7 +1166,7 @@ namespace Bookstore
             listBoxID.Name = "listBoxID";
             listBoxID.Size = new Size(30, 279);
             listBoxID.TabIndex = 2;
-            listBoxID.SelectedIndexChanged += MyClassLibrary.listBoxID_SelectedIndexChanged;
+            listBoxID.SelectedIndexChanged += listBoxID_SelectedIndexChanged;
             // 
             // label_panel_namebook
             // 
@@ -1203,7 +1203,7 @@ namespace Bookstore
             buttonCloset11.Text = "Хуйня";
             buttonCloset11.UseVisualStyleBackColor = true;
             buttonCloset11.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset11.Click += MyClassLibrary.buttonCloset11_Click;
+            buttonCloset11.Click += buttonCloset11_Click;
             // 
             // buttonCloset10
             // 
@@ -1218,7 +1218,7 @@ namespace Bookstore
             buttonCloset10.Text = "Хоррор";
             buttonCloset10.UseVisualStyleBackColor = true;
             buttonCloset10.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset10.Click += MyClassLibrary.buttonCloset10_Click;
+            buttonCloset10.Click += buttonCloset10_Click;
             // 
             // buttonCloset9
             // 
@@ -1233,7 +1233,7 @@ namespace Bookstore
             buttonCloset9.Text = "Научная литература";
             buttonCloset9.UseVisualStyleBackColor = true;
             buttonCloset9.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset9.Click += MyClassLibrary.buttonCloset9_Click;
+            buttonCloset9.Click += buttonCloset9_Click;
             // 
             // buttonCloset8
             // 
@@ -1248,7 +1248,7 @@ namespace Bookstore
             buttonCloset8.Text = "Биография";
             buttonCloset8.UseVisualStyleBackColor = true;
             buttonCloset8.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset8.Click += MyClassLibrary.buttonCloset8_Click;
+            buttonCloset8.Click += buttonCloset8_Click;
             // 
             // buttonCloset7
             // 
@@ -1263,7 +1263,7 @@ namespace Bookstore
             buttonCloset7.Text = "Психология";
             buttonCloset7.UseVisualStyleBackColor = true;
             buttonCloset7.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset7.Click += MyClassLibrary.buttonCloset7_Click;
+            buttonCloset7.Click += buttonCloset7_Click;
             // 
             // buttonCloset6
             // 
@@ -1278,7 +1278,7 @@ namespace Bookstore
             buttonCloset6.Text = "Классическая литература";
             buttonCloset6.UseVisualStyleBackColor = true;
             buttonCloset6.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset6.Click += MyClassLibrary.buttonCloset6_Click;
+            buttonCloset6.Click += buttonCloset6_Click;
             // 
             // buttonCloset5
             // 
@@ -1293,7 +1293,7 @@ namespace Bookstore
             buttonCloset5.Text = "Поэзия";
             buttonCloset5.UseVisualStyleBackColor = true;
             buttonCloset5.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset5.Click += MyClassLibrary.buttonCloset5_Click;
+            buttonCloset5.Click += buttonCloset5_Click;
             // 
             // buttonCloset4
             // 
@@ -1308,7 +1308,7 @@ namespace Bookstore
             buttonCloset4.Text = "Приключение";
             buttonCloset4.UseVisualStyleBackColor = true;
             buttonCloset4.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset4.Click += MyClassLibrary.buttonCloset4_Click;
+            buttonCloset4.Click += buttonCloset4_Click;
             // 
             // buttonCloset3
             // 
@@ -1323,7 +1323,7 @@ namespace Bookstore
             buttonCloset3.Text = "Роман";
             buttonCloset3.UseVisualStyleBackColor = true;
             buttonCloset3.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset3.Click += MyClassLibrary.buttonCloset3_Click;
+            buttonCloset3.Click += buttonCloset3_Click;
             // 
             // buttonCloset2
             // 
@@ -1338,7 +1338,7 @@ namespace Bookstore
             buttonCloset2.Text = "Фентези";
             buttonCloset2.UseVisualStyleBackColor = true;
             buttonCloset2.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset2.Click += MyClassLibrary.buttonCloset2_Click;
+            buttonCloset2.Click += buttonCloset2_Click;
             textBoxBalance.Enabled = false;
             // 
             // buttonCloset1
@@ -1354,7 +1354,7 @@ namespace Bookstore
             buttonCloset1.Text = "Философия";
             buttonCloset1.UseVisualStyleBackColor = true;
             buttonCloset1.TextAlign = ContentAlignment.MiddleLeft;
-            buttonCloset1.Click += MyClassLibrary.buttonCloset1_Click;
+            buttonCloset1.Click += buttonCloset1_Click;
             // 
             // textBoxFindBook
             // 
@@ -1364,7 +1364,7 @@ namespace Bookstore
             textBoxFindBook.Size = new Size(821, 38);
             textBoxFindBook.TabIndex = 7;
             textBoxFindBook.Multiline = true;
-            textBoxFindBook.TextChanged += MyClassLibrary.textBoxFindBook_TextChanged;
+            textBoxFindBook.TextChanged += textBoxFindBook_TextChanged;
             // 
             // labelFindBook
             // 
@@ -1413,7 +1413,7 @@ namespace Bookstore
             buttonNewBook.TabIndex = 2;
             buttonNewBook.Text = "Новая книга";
             buttonNewBook.UseVisualStyleBackColor = true;
-            buttonNewBook.Click += MyClassLibrary.buttonNewBook_Click;
+            buttonNewBook.Click += buttonNewBook_Click;
             // 
             // buttonStore
             // 
@@ -1424,7 +1424,7 @@ namespace Bookstore
             buttonStore.TabIndex = 1;
             buttonStore.Text = "Магазин";
             buttonStore.UseVisualStyleBackColor = true;
-            buttonStore.Click += MyClassLibrary.buttonStore_Click;
+            buttonStore.Click += buttonStore_Click;
             // 
             // Store
             // 
@@ -1441,7 +1441,7 @@ namespace Bookstore
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Store";
             Text = "МагаZин";
-            Load += MyClassLibrary.Store_Load;
+            Load += Store_Load;
             panelNewBook.ResumeLayout(false);
             panelNewBook.PerformLayout();
             panelStore.ResumeLayout(false);

@@ -1,4 +1,5 @@
 using System.Runtime;
+using System.Security.Policy;
 
 namespace lab3Lib;
 
@@ -71,4 +72,5 @@ public class Book {
     public int GetId() { return this.id; }
     public int GetPageAmount() { return this.pageAmount; }
     public int GetPrice() { return this.price; }
+    public int GetCopyId() { return this.copyId; }
 }
