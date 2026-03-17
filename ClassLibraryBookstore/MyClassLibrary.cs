@@ -1,7 +1,5 @@
 ﻿using System.Timers
 
-using lab3Lib;
-
 namespace ClassLibraryBookstore
 {
     public class MyClassLibrary
