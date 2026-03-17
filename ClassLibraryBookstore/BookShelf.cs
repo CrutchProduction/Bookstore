@@ -3,6 +3,7 @@ using System.Runtime;
 namespace lab3Lib;
 
 public class BookShelf {
+    // Данные о шкафе
     private string genre;
     private Book[] books;
     private int lastBookId;
@@ -91,4 +92,5 @@ public class BookShelf {
     // Внешне-доступные функции
     public Book[] GetBooks() { return this.books; }
     public string GetGenre() { return this.genre; }
+    public bool IsntFull() { return this.size - 1 <= this.lastBookId; }
 }

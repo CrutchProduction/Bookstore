@@ -3,6 +3,7 @@ using System.Runtime;
 namespace lab3Lib;
 
 public class Shop {
+    // Данные о магазине
     private BookShelf[] shelfs;
     private int balance;
     private int maxShelfs;
@@ -14,7 +15,7 @@ public class Shop {
         this.rnd = new Random((int) DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         this.maxShelfs = this.rnd.Next(4, 10);
         this.shelfs = new BookShelf[11];
-        this.balance = this.rnd.Next(67, 676);
+        this.balance = 1100;
         for (int i = 0; i < this.maxShelfs; i++) {
             this.shelfs[i] = new BookShelf(this.rnd);
         }
@@ -50,32 +51,62 @@ public class Shop {
 
     // Проверка книги на копии названия
     public void CheckBookName(Book book) {
-        int maxCopyId = 0;
+        int amount = 0;
         foreach (BookShelf shelf in this.shelfs) {
             if (shelf != null) {
                 foreach (Book book_ in shelf.GetBooks())
                 {
                     if (book_ != null)
                     {
-                        if (book_.GetName(false).StartsWith(book.GetName(false)))
+                        if (book_.GetName(false).StartsWith(book.GetName(false)) && book_.GetAuthor() == book.GetAuthor())
                         {
-                            if (maxCopyId < book_.GetCopyId())
-                            {
-                                maxCopyId = book_.GetCopyId();
-                            }
+                            amount++;
                         }
                     }
                 }
             }
         }
-        book.SetCopyId(maxCopyId + 1);
+        int[] copySequence = new int[amount];
+        int i = 0;
+        foreach (BookShelf shelf in this.shelfs) {
+            if (shelf != null) {
+                foreach (Book book_ in shelf.GetBooks()) {
+                    if (book_ != null) {
+                        if (book_.GetName(false).StartsWith(book.GetName(false)) && book_.GetAuthor() == book.GetAuthor()) {
+                            copySequence[i] = book_.GetCopyId(); 
+                            i++;
+                        }
+                    }
+                }
+            }
+        }
+        Array.Sort(copySequence);
+        for (int j = 0; j < amount - 1; j++) {
+            if (copySequence[j + 1] - copySequence[j] != 1) {
+                book.SetCopyId(copySequence[j] + 1);
+                return;
+            }
+        }
+        book.SetCopyId(0);
+    }
+
+    // Проверка книги на наличие в базе данных
+    public bool IsBookValid(Book book, string[] labels, string[] authors) {
+        int i = 0;
+        foreach (string label in labels) {
+            if (label == book.GetName(false) && authors[i] == book.GetAuthor()) {
+                return true;
+            }
+            i++;
+        }
+        return false;
     }
 
     // Поиск шкафа с заданным жанром
     public BookShelf FindBookShelf(string genre) {
         foreach (BookShelf shelf in this.shelfs) {
             if (shelf != null) {
-                if (shelf.GetGenre() == genre)
+                if (shelf.GetGenre() == genre && shelf.IsntFull() )
                 {
                     return shelf;
                 }
