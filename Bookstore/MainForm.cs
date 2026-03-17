@@ -22,7 +22,7 @@ namespace Bookstore
         private const int constPanelX = 72;
         private const int constPanelY = 80;
         private const int constPanelBack = 860;
-        private static readonly string[] alphabets = { "0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "��������������������������������", " !,.<>:;-\"\'[]{}()?", "\n" };
+        private static readonly string[] alphabets = { "0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
 
         // Конструктор
         public Store()

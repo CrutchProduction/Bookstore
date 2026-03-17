@@ -60,7 +60,7 @@ public class Book {
 
     // Генерация рандомной неправильной книги
     private void AbsoluteRandomGenerate(Random rnd, string[] labels, string[] authors, string[] genres) {
-        bool shouldMakeMistake = rnd.Next(100) <= 57;
+        bool shouldMakeMistake = rnd.Next(100) <= 100;
         if (!shouldMakeMistake) {
             RandomGenerate(rnd, labels, authors, genres);
         } else {
@@ -69,9 +69,9 @@ public class Book {
                 case 0:
                     int nameIndex = rnd.Next(labels.Length);
                     this.name = labels[nameIndex];
-                    int authorIndex = rnd.next(authors.Length);
+                    int authorIndex = rnd.Next(authors.Length);
                     while (authorIndex == nameIndex) {
-                        authorIndex = rnd.next(authors.Length);
+                        authorIndex = rnd.Next(authors.Length);
                     }
                     this.author = authors[authorIndex];
                     this.genre = genres[rnd.Next(genres.Length)];
@@ -80,22 +80,23 @@ public class Book {
                     break;
                 case 1:
                     RandomGenerate(rnd, labels, authors, genres);
-                    string bookNewName = this.name.Clone();
-                    int mistakesAmount = rnd.Next((int) this.name.Length / 2);
+                    string bookNewName = (string) this.name.Clone();
+                    int mistakesAmount = rnd.Next(4) + 1;
                     int mistakesMade = 0;
                     int i = 0;
                     while (mistakesMade != mistakesAmount && i < this.name.Length * 2) {
                         int letterId = rnd.Next(bookNewName.Length);
                         char[] bookNewNameArray = bookNewName.ToCharArray();
                         if (bookNewNameArray[letterId] == this.name.ToCharArray()[letterId]) {
-                            if (Char.ToLower(bookNewNameArray[letterId]) != 'е' && !Char.IsNumber(bookNewNameArray[letterId])) {
+                            if (Char.ToLower(bookNewNameArray[letterId]) != 'е' && bookNewNameArray[letterId] != ' ' && !Char.IsNumber(bookNewNameArray[letterId])) {
                                 bookNewNameArray[letterId] = mistakesAlphabet[rnd.Next(mistakesAlphabet.Length)];
                                 mistakesMade++;
                             }
                         }
+                        bookNewName = string.Join("", bookNewNameArray);
                         i++;
                     }
-                    this.name = bookNewName.Clone();
+                    this.name = (string) bookNewName.Clone();
                     break;
             }
             isFake = true;
@@ -115,4 +116,5 @@ public class Book {
     public int GetPrice() { return this.price; }
     public int GetCopyId() { return this.copyId; }
     public bool IsFake() { return this.isFake; }
+    public bool IsRandomized() { return this.isRandomized; }
 }

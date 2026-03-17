@@ -1,6 +1,8 @@
-﻿using System.Timers
+﻿using System.Timers;
+using System.Collections;
 
 using lab3Lib;
+using Timer = System.Timers.Timer;
 
 namespace ClassLibraryBookstore
 {
@@ -41,8 +43,10 @@ namespace ClassLibraryBookstore
         // Загрузка данных из файлов
         private static void loadData() {
             string[] rawData = System.IO.File.ReadAllLines("booksData.txt");
+            labels = new string[rawData.Length];
+            authors = new string[rawData.Length];
             for (int i = 0; i < rawData.Length; i++) {
-                string[] curLineS = rawData[i].Split("|");
+                string[] curLineS = rawData[i].Replace("\n", "").Split("|");
 
                 labels[i] = curLineS[0];
                 authors[i] = curLineS[1];
@@ -118,7 +122,7 @@ namespace ClassLibraryBookstore
         }
 
         // Проверка на правильность ввода
-        public static string checkInput(string text, string alphabet, bool isNumber) {
+        public static string checkInput(string text, string alphabet, bool isNumber_) {
             String newText = "";
             foreach (char letter in text)
             {
@@ -127,9 +131,9 @@ namespace ClassLibraryBookstore
                     newText += letter;
                 }
             }
-            if (newText != "" && isNumber)
+            if (newText != "" && isNumber_)
             {
-                if (!MyClassLibrary.isNumber(newText))
+                if (!isNumber(newText))
                 {
                     newText = Int32.MaxValue.ToString();
                 }
@@ -143,7 +147,7 @@ namespace ClassLibraryBookstore
 
         // Генерация книги с рандомными данными
         public static Book generateRandomBook(bool absoluteRandom) {
-            return new Book(-1, myShop.GetRandom(), labels, authors, genres, absoluteRandom);
+            return new Book(-1, myShop.GetRandom(), labels, authors, genres, true);
         }
 
         // Проверка текста на число

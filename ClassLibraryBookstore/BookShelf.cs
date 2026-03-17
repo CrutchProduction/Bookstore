@@ -11,7 +11,7 @@ public class BookShelf {
 
     // Конструктор
     public BookShelf(Random rnd) {
-        this.size = rnd.Next(8, 16);
+        this.size = rnd.Next(7, 11);
         this.books = new Book[this.size];
         this.genre = "";
         this.lastBookId = 0;
@@ -92,5 +92,5 @@ public class BookShelf {
     // Внешне-доступные функции
     public Book[] GetBooks() { return this.books; }
     public string GetGenre() { return this.genre; }
-    public bool IsntFull() { return this.size - 1 <= this.lastBookId; }
+    public bool IsFull() { return this.size - 1 <= this.lastBookId; }
 }

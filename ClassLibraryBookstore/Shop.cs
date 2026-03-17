@@ -81,13 +81,17 @@ public class Shop {
             }
         }
         Array.Sort(copySequence);
+        if (copySequence.Length >= 1 && copySequence[0] != 1) {
+            book.SetCopyId(1);
+            return;
+        }
         for (int j = 0; j < amount - 1; j++) {
             if (copySequence[j + 1] - copySequence[j] != 1) {
                 book.SetCopyId(copySequence[j] + 1);
                 return;
             }
         }
-        book.SetCopyId(0);
+        book.SetCopyId(copySequence.Length + 1);
     }
 
     // Проверка книги на наличие в базе данных
@@ -106,7 +110,7 @@ public class Shop {
     public BookShelf FindBookShelf(string genre) {
         foreach (BookShelf shelf in this.shelfs) {
             if (shelf != null) {
-                if (shelf.GetGenre() == genre && shelf.IsntFull() )
+                if (shelf.GetGenre() == genre && !shelf.IsFull() )
                 {
                     return shelf;
                 }
