@@ -25,9 +25,9 @@ namespace ClassLibraryBookstore
 
         // Константы
         private static readonly float[] difficultyDayTimes = {120, 240, 480};
-        private static readonly float[] difficultyRndBookTimes = {10, 30, 60};
-        private static readonly float[] difficultyClientTimes = {15, 20, 30};
-        private static readonly float[] difficultyPenBookTimes = {15, 45, 75};
+        private static readonly float[] difficultyRndBookTimes = {20, 30, 48};
+        private static readonly float[] difficultyClientTimes = {10, 15, 24};
+        private static readonly float[] difficultyPenBookTimes = {9, 14.5f, 25};
         private static readonly int[] maxClientsQueue = {7, 5, 3};
 
         // Конструктор
