@@ -147,7 +147,7 @@ namespace ClassLibraryBookstore
 
         // Генерация книги с рандомными данными
         public static Book generateRandomBook(bool absoluteRandom) {
-            return new Book(-1, myShop.GetRandom(), labels, authors, genres, true);
+            return new Book(-1, myShop.GetRandom(), labels, authors, genres, absoluteRandom);
         }
 
         // Проверка текста на число
