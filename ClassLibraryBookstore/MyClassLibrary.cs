@@ -30,7 +30,7 @@ namespace ClassLibraryBookstore
 
         // Конструктор
         public MyClassLibrary() {
-            System.IO.File.WriteAllText("booksData.txt", "");
+            System.IO.File.WriteAllText("dataBase.txt", "");
             loadData();
             myShop = new Shop();
             clientsQueue = new Queue();
