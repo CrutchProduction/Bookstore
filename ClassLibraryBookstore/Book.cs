@@ -4,6 +4,7 @@ using System.Security.Policy;
 namespace lab3Lib;
 
 public class Book {
+    // Данные о книге
     private const string mistakesAlphabet = "qwertyuiopasdfghjklzxcvbnm";
     private string name;
     private string author;
