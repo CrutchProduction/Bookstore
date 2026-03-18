@@ -6,7 +6,9 @@ namespace lab3Lib;
 public class Client {
     // Данные о клиенте
     private string prompt;
-    private int promptType;   
+    private string name;
+    private int appearanceImage;
+    private int promptType;
     
     // Конструктор
     public Client(Random rnd, string[] labels, string[] authors, string[] genres) {
@@ -25,9 +27,25 @@ public class Client {
                 this.prompt = genres[rnd.Next(genres.Length)];
                 break;
         }
+
+        bool gender = rnd.Next(2) == 0;
+        string[] firtsNames;
+        string[] lastNames;
+        if (gender) {
+            firtsNames = System.IO.File.ReadAllText("firstNamesM.txt").Split(" ");
+            lastNames = System.IO.File.ReadAllText("lastNamesM.txt").Split(" ");
+        } else
+        {
+            firtsNames = System.IO.File.ReadAllText("firstNamesF.txt").Split(" ");
+            lastNames = System.IO.File.ReadAllText("lastNamesF.txt").Split(" ");
+        }
+        this.name = firtsNames[rnd.Next(firtsNames.Length)] + lastNames[rnd.Next(lastNames.Length)];
+        this.appearanceImage = rnd.Next(10);
     }
 
     // Внешне-доступные функции
     public string GetPrompt() { return this.prompt; }
+    public string GetName() { return this.name; }
+    public int GetAppearanceImage() { return this.appearanceImage; }
     public int GetPromptType() { return this.promptType; }
 }

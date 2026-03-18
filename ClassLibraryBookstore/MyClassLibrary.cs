@@ -120,7 +120,7 @@ namespace ClassLibraryBookstore
         private static void pendingBookArriveEvent(Object source, ElapsedEventArgs e) {
             booksArrivedQueue.Enqueue(booksPendingQueue.Dequeue());
         }
-
+        
         // Проверка на правильность ввода
         public static string checkInput(string text, string alphabet, bool isNumber_) {
             String newText = "";
