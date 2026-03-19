@@ -16,6 +16,7 @@ namespace Bookstore
         private static int tempY;
         private static int currentShelfId;
 
+
         // Константы
         private const int constX = 10;
         private const int constY = 80;
@@ -23,6 +24,8 @@ namespace Bookstore
         private const int constPanelY = 80;
         private const int constPanelBack = 860;
         private static readonly string[] alphabets = { "0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
+        private const int sizeButton1 = 400;
+        private const int sizeButton2 = 300;
 
         // Конструктор
         public Store()
@@ -84,6 +87,7 @@ namespace Bookstore
             }
             textBoxBalance.Text = MyClassLibrary.GetShop().GetBalance().ToString();
             textBoxIDBook.Text = MyClassLibrary.GetShop().GetLastBookId().ToString();
+            
         }
 
         // ��������� ���������� �����
@@ -107,6 +111,7 @@ namespace Bookstore
                     listBoxPrice.Items.Add(book.GetPrice().ToString());
                 }
             }
+
         }
 
         public void buttonAddBook_Click(object sender, EventArgs e)
@@ -177,6 +182,12 @@ namespace Bookstore
                             tempX = buttons[i].Location.X;
                             tempY = buttons[i].Location.Y;
                             buttons[i].Location = new Point(constX, constY);
+                            //чтобы кнопка была видна
+                            buttons[i].Visible = true;
+                            //блокируем вкладки
+                            buttonStore.Enabled = false;
+                            buttonBuyers.Enabled = false;
+
                             enabled_buttons(buttons[i], closet_choice != false);
                             panelBookInfo.Location = new Point(constPanelX, constPanelY);
                             loadBooks(i);
@@ -255,10 +266,26 @@ namespace Bookstore
         public void buttonStore_Click(object sender, EventArgs e)
         {
             panelNewBook.Visible = false;
+            panelBookInfo.Visible = true;
             panelStore.Visible = true;
             buttonStore.BackColor = Color.Gray;
             buttonNewBook.BackColor = Color.White;
+            buttonBuyers.BackColor = Color.White;
+            buttonDelivery.BackColor = Color.White;
             panelStore.Location = new Point(0, 40);
+            pictureBoxClient.Visible = false;
+            labelClient.Visible = false;
+            panelStore.BackgroundImage = Properties.Resources.backgroundLibraryTwo;
+
+            //вроде работает
+            for (int i = 0; i < 11; i++)
+            {
+                if (i < MyClassLibrary.GetShop().GetMaxShelfs())
+                {
+                    buttons[i].Visible = true;
+                }
+                
+            }
             updateClosets();
         }
 
@@ -266,8 +293,22 @@ namespace Bookstore
         {
             panelNewBook.Visible = true;
             panelStore.Visible = false;
+
+            buttonAccept.Visible = false;
+            buttonReject.Visible = false;
+            buttonAddBook.Visible = true;
+            buttonRandom.Visible = true;
+
+            textBoxNameBook.Enabled = true;
+            textBoxAuthor.Enabled = true;
+            textBoxGenre.Enabled = true;
+            textBoxPages.Enabled = true;
+            textBoxPrice.Enabled = true;
             buttonNewBook.BackColor = Color.Gray;
             buttonStore.BackColor = Color.White;
+            buttonBuyers.BackColor = Color.White;
+            buttonDelivery.BackColor = Color.White;
+
             updateClosets();
         }
         public void enabled_buttons(Button but, bool enabled)
@@ -296,6 +337,7 @@ namespace Bookstore
 
         public void buttonCloset1_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -315,12 +357,15 @@ namespace Bookstore
                 //�� ���������� ����� � �����
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
+            
             updateClosets();
             loadBooks(0);
+
         }
 
         public void buttonCloset2_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -346,6 +391,7 @@ namespace Bookstore
 
         public void buttonCloset3_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -371,6 +417,7 @@ namespace Bookstore
 
         public void buttonCloset4_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -396,6 +443,7 @@ namespace Bookstore
 
         public void buttonCloset5_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -421,6 +469,7 @@ namespace Bookstore
 
         public void buttonCloset6_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -446,6 +495,7 @@ namespace Bookstore
 
         public void buttonCloset7_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -471,11 +521,16 @@ namespace Bookstore
 
         public void Store_Load(object sender, EventArgs e)
         {
-
+            panelNewBook.Location = new Point(0, 40);
+            panelStore.Location = new Point(1500, 40);
+            buttonDelivery.Visible = false;
+            buttonAccept.Visible = false;
+            buttonReject.Visible = false;
         }
 
         public void buttonCloset8_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -501,6 +556,7 @@ namespace Bookstore
 
         public void buttonCloset9_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -526,6 +582,7 @@ namespace Bookstore
 
         public void buttonCloset10_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -551,6 +608,7 @@ namespace Bookstore
 
         public void buttonCloset11_Click(object sender, EventArgs e)
         {
+            //если нажать на кнопку на странице покупатели то кнопка пропадает
             closet_choice = closet_choice == false;
             if (closet_choice)
             {
@@ -573,5 +631,69 @@ namespace Bookstore
             updateClosets();
             loadBooks(10);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            buttonNewBook.Width = sizeButton2;
+            buttonStore.Width = sizeButton2;
+            buttonBuyers.Width = sizeButton2;
+            buttonStore.Location = new Point(buttonNewBook.Location.X + buttonNewBook.Width + 10, buttonStore.Location.Y);
+            buttonBuyers.Location = new Point(buttonStore.Location.X + buttonStore.Width + 10, buttonBuyers.Location.Y);
+            buttonDelivery.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            buttonNewBook.Width = sizeButton1;
+            buttonStore.Width = sizeButton1;
+            buttonBuyers.Width = sizeButton1;
+            buttonStore.Location = new Point(buttonNewBook.Location.X + buttonNewBook.Width + 10, buttonStore.Location.Y);
+            buttonBuyers.Location = new Point(buttonStore.Location.X + buttonStore.Width + 10, buttonBuyers.Location.Y);
+            buttonDelivery.Visible = false;
+        }
+
+        private void buttonDelivery_Click(object sender, EventArgs e)
+        {
+            buttonDelivery.BackColor = Color.Gray;
+            buttonNewBook.BackColor = Color.White;
+            buttonStore.BackColor = Color.White;
+            buttonBuyers.BackColor = Color.White;
+            buttonAccept.Visible = true;
+            buttonReject.Visible = true;
+            buttonAddBook.Visible = false;
+            buttonRandom.Visible = false;
+
+            panelNewBook.Visible = true;
+            panelStore.Visible = false;
+            
+            textBoxNameBook.Enabled = false;
+            textBoxAuthor.Enabled = false;
+            textBoxGenre.Enabled = false;
+            textBoxPages.Enabled = false;
+            textBoxPrice.Enabled = false;
+        }
+
+        private void buttonBuyers_Click(object sender, EventArgs e)
+        {
+            buttonBuyers.BackColor = Color.Gray;
+            buttonDelivery.BackColor = Color.White;
+            buttonNewBook.BackColor = Color.White;
+            buttonStore.BackColor = Color.White;
+            panelStore.Location = new Point(0, 40);
+            panelStore.BackgroundImage = Properties.Resources.shopBook;
+            panelNewBook.Visible = false;
+            panelStore.Visible = true;
+            updateClosets();
+            pictureBoxClient.Visible = true;
+            //panelBookInfo.Visible = true;
+            if (1 == 1) labelClient.Visible = true;
+            foreach (Button button in buttons)
+            {
+                    button.Visible = false;
+            }
+            
+        }
+
+        
     }
 }

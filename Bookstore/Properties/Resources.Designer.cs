@@ -63,9 +63,29 @@ namespace Bookstore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgroundLibrary {
+            get {
+                object obj = ResourceManager.GetObject("backgroundLibrary", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap backgroundLibrary2 {
             get {
                 object obj = ResourceManager.GetObject("backgroundLibrary2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundLibraryTwo {
+            get {
+                object obj = ResourceManager.GetObject("backgroundLibraryTwo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +113,39 @@ namespace Bookstore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap photo_2026_03_17_23_00_28 {
+            get {
+                object obj = ResourceManager.GetObject("photo_2026-03-17_23-00-28", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shelf9 {
             get {
                 object obj = ResourceManager.GetObject("shelf9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shopBook {
+            get {
+                object obj = ResourceManager.GetObject("shopBook", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap titleform {
+            get {
+                object obj = ResourceManager.GetObject("titleform", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

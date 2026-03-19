@@ -32,6 +32,10 @@ namespace Bookstore
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store));
             panelNewBook = new Panel();
+            buttonReject = new Button();
+            buttonAccept = new Button();
+            button2 = new Button();
+            button1 = new Button();
             buttonAddBook = new Button();
             buttonRandom = new Button();
             labelRUB = new Label();
@@ -48,6 +52,8 @@ namespace Bookstore
             textBoxNameBook = new TextBox();
             labelNameBook = new Label();
             panelStore = new Panel();
+            labelClient = new Label();
+            
             buttonSellBook = new Button();
             panelBookInfo = new Panel();
             listBoxPrice = new ListBox();
@@ -71,6 +77,7 @@ namespace Bookstore
             buttonCloset3 = new Button();
             buttonCloset2 = new Button();
             buttonCloset1 = new Button();
+            
             textBoxFindBook = new TextBox();
             labelFindBook = new Label();
             labelRUBL = new Label();
@@ -78,14 +85,22 @@ namespace Bookstore
             labelBalance = new Label();
             buttonNewBook = new Button();
             buttonStore = new Button();
+            buttonDelivery = new Button();
+            buttonBuyers = new Button();
             panelNewBook.SuspendLayout();
             panelStore.SuspendLayout();
+            pictureBoxClient = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxClient).BeginInit();
             panelBookInfo.SuspendLayout();
             SuspendLayout();
             // 
             // panelNewBook
             // 
-            panelNewBook.BackgroundImage = Properties.Resources.library_backgroud;
+            panelNewBook.BackgroundImage = Properties.Resources.backgroundLibrary;
+            panelNewBook.Controls.Add(buttonReject);
+            panelNewBook.Controls.Add(buttonAccept);
+            panelNewBook.Controls.Add(button2);
+            panelNewBook.Controls.Add(button1);
             panelNewBook.Controls.Add(buttonAddBook);
             panelNewBook.Controls.Add(buttonRandom);
             panelNewBook.Controls.Add(labelRUB);
@@ -101,10 +116,52 @@ namespace Bookstore
             panelNewBook.Controls.Add(labelAuthor);
             panelNewBook.Controls.Add(textBoxNameBook);
             panelNewBook.Controls.Add(labelNameBook);
-            panelNewBook.Location = new Point(0, 40);
+            panelNewBook.Location = new Point(12, 870);
             panelNewBook.Name = "panelNewBook";
-            panelNewBook.Size = new Size(916, 500);
+            panelNewBook.Size = new Size(1227, 733);
             panelNewBook.TabIndex = 0;
+            // 
+            // buttonReject
+            // 
+            buttonReject.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonReject.Location = new Point(967, 350);
+            buttonReject.Margin = new Padding(10);
+            buttonReject.Name = "buttonReject";
+            buttonReject.Size = new Size(250, 50);
+            buttonReject.TabIndex = 17;
+            buttonReject.Text = "Отклонить";
+            buttonReject.UseVisualStyleBackColor = true;
+            // 
+            // buttonAccept
+            // 
+            buttonAccept.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonAccept.Location = new Point(19, 350);
+            buttonAccept.Margin = new Padding(10);
+            buttonAccept.Name = "buttonAccept";
+            buttonAccept.Size = new Size(250, 50);
+            buttonAccept.TabIndex = 16;
+            buttonAccept.Text = "Принять";
+            buttonAccept.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(557, 376);
+            button2.Name = "button2";
+            button2.Size = new Size(105, 86);
+            button2.TabIndex = 15;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(363, 374);
+            button1.Name = "button1";
+            button1.Size = new Size(128, 88);
+            button1.TabIndex = 14;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // buttonAddBook
             // 
@@ -114,14 +171,14 @@ namespace Bookstore
             buttonAddBook.Name = "buttonAddBook";
             buttonAddBook.Size = new Size(250, 50);
             buttonAddBook.TabIndex = 12;
-            buttonAddBook.Text = "Добавить книгу";
+            buttonAddBook.Text = "Заказать";
             buttonAddBook.UseVisualStyleBackColor = true;
             buttonAddBook.Click += buttonAddBook_Click;
             // 
             // buttonRandom
             // 
             buttonRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonRandom.Location = new Point(628, 280);
+            buttonRandom.Location = new Point(967, 280);
             buttonRandom.Margin = new Padding(10);
             buttonRandom.Name = "buttonRandom";
             buttonRandom.Size = new Size(250, 50);
@@ -134,7 +191,7 @@ namespace Bookstore
             // 
             labelRUB.AutoSize = true;
             labelRUB.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUB.Location = new Point(810, 178);
+            labelRUB.Location = new Point(1142, 182);
             labelRUB.Margin = new Padding(1, 10, 10, 10);
             labelRUB.Name = "labelRUB";
             labelRUB.Size = new Size(52, 30);
@@ -165,10 +222,10 @@ namespace Bookstore
             // textBoxPrice
             // 
             textBoxPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxPrice.Location = new Point(534, 175);
+            textBoxPrice.Location = new Point(718, 177);
             textBoxPrice.Margin = new Padding(10, 10, 1, 10);
             textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new Size(270, 35);
+            textBoxPrice.Size = new Size(422, 35);
             textBoxPrice.TabIndex = 7;
             textBoxPrice.TextChanged += textBoxPrice_TextChanged;
             // 
@@ -176,7 +233,7 @@ namespace Bookstore
             // 
             labelPrice.AutoSize = true;
             labelPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPrice.Location = new Point(451, 180);
+            labelPrice.Location = new Point(649, 180);
             labelPrice.Margin = new Padding(10);
             labelPrice.Name = "labelPrice";
             labelPrice.Size = new Size(63, 30);
@@ -189,7 +246,7 @@ namespace Bookstore
             textBoxPages.Location = new Point(135, 175);
             textBoxPages.Margin = new Padding(10);
             textBoxPages.Name = "textBoxPages";
-            textBoxPages.Size = new Size(296, 35);
+            textBoxPages.Size = new Size(506, 35);
             textBoxPages.TabIndex = 6;
             textBoxPages.TextChanged += textBoxPages_TextChanged;
             // 
@@ -205,12 +262,12 @@ namespace Bookstore
             labelPages.Text = "Страницы";
             // 
             // textBoxGenre
-            //  
+            // 
             textBoxGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             textBoxGenre.Location = new Point(135, 120);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
-            textBoxGenre.Size = new Size(731, 35);
+            textBoxGenre.Size = new Size(1082, 35);
             textBoxGenre.TabIndex = 5;
             textBoxGenre.TextChanged += textBoxGenre_TextChanged;
             // 
@@ -231,7 +288,7 @@ namespace Bookstore
             textBoxAuthor.Location = new Point(135, 65);
             textBoxAuthor.Margin = new Padding(10);
             textBoxAuthor.Name = "textBoxAuthor";
-            textBoxAuthor.Size = new Size(731, 35);
+            textBoxAuthor.Size = new Size(1082, 35);
             textBoxAuthor.TabIndex = 4;
             textBoxAuthor.TextChanged += textBoxAuthor_TextChanged;
             // 
@@ -252,7 +309,7 @@ namespace Bookstore
             textBoxNameBook.Location = new Point(135, 10);
             textBoxNameBook.Margin = new Padding(10);
             textBoxNameBook.Name = "textBoxNameBook";
-            textBoxNameBook.Size = new Size(731, 35);
+            textBoxNameBook.Size = new Size(1082, 35);
             textBoxNameBook.TabIndex = 3;
             textBoxNameBook.TextChanged += textBoxNameBook_TextChanged;
             // 
@@ -269,7 +326,9 @@ namespace Bookstore
             // 
             // panelStore
             // 
-            panelStore.BackgroundImage = Properties.Resources.backgroundLibrary2;
+            panelStore.BackgroundImage = Properties.Resources.backgroundLibraryTwo;
+            
+            
             panelStore.Controls.Add(buttonSellBook);
             panelStore.Controls.Add(panelBookInfo);
             panelStore.Controls.Add(buttonCloset11);
@@ -288,15 +347,35 @@ namespace Bookstore
             panelStore.Controls.Add(labelRUBL);
             panelStore.Controls.Add(textBoxBalance);
             panelStore.Controls.Add(labelBalance);
-            panelStore.Location = new Point(1061, 40);
+            panelStore.Controls.Add(pictureBoxClient);
+            panelStore.Controls.Add(labelClient);
+            panelStore.Location = new Point(6, 40);
             panelStore.Name = "panelStore";
-            panelStore.Size = new Size(915, 1310);
+            panelStore.Size = new Size(1200, 1310);
             panelStore.TabIndex = 1;
+            // 
+            // labelClient
+            // 
+            labelClient.AutoSize = true;
+            labelClient.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelClient.Location = new Point(566, 69);
+            labelClient.Name = "labelClient";
+            labelClient.Size = new Size(477, 37);
+            labelClient.TabIndex = 21;
+            labelClient.Text = "У Вас пока нет ни одного покупателя";
+            // 
+            // pictureBoxClient
+            // 
+            pictureBoxClient.Location = new Point(741, 200);
+            pictureBoxClient.Name = "pictureBoxClient";
+            pictureBoxClient.Size = new Size(196, 439);
+            pictureBoxClient.TabIndex = 20;
+            pictureBoxClient.TabStop = false;
             // 
             // buttonSellBook
             // 
             buttonSellBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonSellBook.Location = new Point(10, 457);
+            buttonSellBook.Location = new Point(3, 628);
             buttonSellBook.Name = "buttonSellBook";
             buttonSellBook.Size = new Size(233, 43);
             buttonSellBook.TabIndex = 19;
@@ -317,9 +396,9 @@ namespace Bookstore
             panelBookInfo.Controls.Add(listBoxID);
             panelBookInfo.Controls.Add(label_panel_namebook);
             panelBookInfo.Controls.Add(label_panel_id);
-            panelBookInfo.Location = new Point(82, 864);
+            panelBookInfo.Location = new Point(72, 859);
             panelBookInfo.Name = "panelBookInfo";
-            panelBookInfo.Size = new Size(800, 323);
+            panelBookInfo.Size = new Size(1050, 323);
             panelBookInfo.TabIndex = 3;
             // 
             // listBoxPrice
@@ -327,10 +406,9 @@ namespace Bookstore
             listBoxPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBoxPrice.FormattingEnabled = true;
             listBoxPrice.HorizontalScrollbar = true;
-            listBoxPrice.Items.AddRange(new object[] { "666", "100", "999", "1234" });
-            listBoxPrice.Location = new Point(737, 30);
+            listBoxPrice.Location = new Point(963, 30);
             listBoxPrice.Name = "listBoxPrice";
-            listBoxPrice.Size = new Size(58, 279);
+            listBoxPrice.Size = new Size(75, 279);
             listBoxPrice.TabIndex = 9;
             listBoxPrice.SelectedIndexChanged += listBoxPrice_SelectedIndexChanged;
             // 
@@ -338,7 +416,7 @@ namespace Bookstore
             // 
             label_panel_price.AutoSize = true;
             label_panel_price.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_price.Location = new Point(737, 3);
+            label_panel_price.Location = new Point(963, 3);
             label_panel_price.Margin = new Padding(3);
             label_panel_price.Name = "label_panel_price";
             label_panel_price.Size = new Size(57, 25);
@@ -350,10 +428,9 @@ namespace Bookstore
             listBoxPages.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBoxPages.FormattingEnabled = true;
             listBoxPages.HorizontalScrollbar = true;
-            listBoxPages.Items.AddRange(new object[] { "100", "67", "123", "1234567" });
-            listBoxPages.Location = new Point(673, 30);
+            listBoxPages.Location = new Point(886, 30);
             listBoxPages.Name = "listBoxPages";
-            listBoxPages.Size = new Size(58, 279);
+            listBoxPages.Size = new Size(71, 279);
             listBoxPages.TabIndex = 7;
             listBoxPages.SelectedIndexChanged += listBoxPages_SelectedIndexChanged;
             // 
@@ -361,7 +438,7 @@ namespace Bookstore
             // 
             label_panel_pages.AutoSize = true;
             label_panel_pages.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_pages.Location = new Point(673, 3);
+            label_panel_pages.Location = new Point(886, 3);
             label_panel_pages.Margin = new Padding(3);
             label_panel_pages.Name = "label_panel_pages";
             label_panel_pages.Size = new Size(47, 25);
@@ -373,10 +450,9 @@ namespace Bookstore
             listBoxAuthor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBoxAuthor.FormattingEnabled = true;
             listBoxAuthor.HorizontalScrollbar = true;
-            listBoxAuthor.Items.AddRange(new object[] { "пушкин", "александр", "хз кто", "долбоеб" });
-            listBoxAuthor.Location = new Point(466, 30);
+            listBoxAuthor.Location = new Point(574, 30);
             listBoxAuthor.Name = "listBoxAuthor";
-            listBoxAuthor.Size = new Size(201, 279);
+            listBoxAuthor.Size = new Size(306, 279);
             listBoxAuthor.TabIndex = 5;
             listBoxAuthor.SelectedIndexChanged += listBoxAuthor_SelectedIndexChanged;
             // 
@@ -384,7 +460,7 @@ namespace Bookstore
             // 
             label_panel_author.AutoSize = true;
             label_panel_author.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_panel_author.Location = new Point(470, 3);
+            label_panel_author.Location = new Point(574, 3);
             label_panel_author.Margin = new Padding(3);
             label_panel_author.Name = "label_panel_author";
             label_panel_author.Size = new Size(64, 25);
@@ -396,10 +472,9 @@ namespace Bookstore
             listBoxNameBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBoxNameBook.FormattingEnabled = true;
             listBoxNameBook.HorizontalScrollbar = true;
-            listBoxNameBook.Items.AddRange(new object[] { "алые паруса fodsajfldsjfjsdlkfjsfjsdjksl;jf;sdj;fsdk;fjkalfd", "залупа", "коля", "гей" });
             listBoxNameBook.Location = new Point(39, 30);
             listBoxNameBook.Name = "listBoxNameBook";
-            listBoxNameBook.Size = new Size(421, 279);
+            listBoxNameBook.Size = new Size(529, 279);
             listBoxNameBook.TabIndex = 3;
             listBoxNameBook.SelectedIndexChanged += listBoxNameBook_SelectedIndexChanged;
             // 
@@ -408,7 +483,6 @@ namespace Bookstore
             listBoxID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             listBoxID.FormattingEnabled = true;
             listBoxID.HorizontalScrollbar = true;
-            listBoxID.Items.AddRange(new object[] { "1", "2", "3", "4" });
             listBoxID.Location = new Point(3, 30);
             listBoxID.Name = "listBoxID";
             listBoxID.Size = new Size(30, 279);
@@ -442,14 +516,14 @@ namespace Bookstore
             buttonCloset11.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset11.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset11.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset11.Location = new Point(672, 80);
-            buttonCloset11.Margin = new Padding(5);
+            buttonCloset11.Location = new Point(1076, 231);
+            buttonCloset11.Margin = new Padding(25);
             buttonCloset11.Name = "buttonCloset11";
             buttonCloset11.Size = new Size(50, 323);
             buttonCloset11.TabIndex = 18;
-            buttonCloset11.Text = "Хуйня";
-            buttonCloset11.UseVisualStyleBackColor = true;
+            buttonCloset11.Text = "genre";
             buttonCloset11.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset11.UseVisualStyleBackColor = true;
             buttonCloset11.Click += buttonCloset11_Click;
             // 
             // buttonCloset10
@@ -457,14 +531,14 @@ namespace Bookstore
             buttonCloset10.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset10.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset10.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset10.Location = new Point(612, 80);
-            buttonCloset10.Margin = new Padding(5);
+            buttonCloset10.Location = new Point(976, 231);
+            buttonCloset10.Margin = new Padding(25);
             buttonCloset10.Name = "buttonCloset10";
             buttonCloset10.Size = new Size(50, 323);
             buttonCloset10.TabIndex = 17;
-            buttonCloset10.Text = "Хоррор";
-            buttonCloset10.UseVisualStyleBackColor = true;
+            buttonCloset10.Text = "genre";
             buttonCloset10.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset10.UseVisualStyleBackColor = true;
             buttonCloset10.Click += buttonCloset10_Click;
             // 
             // buttonCloset9
@@ -472,14 +546,14 @@ namespace Bookstore
             buttonCloset9.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset9.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset9.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset9.Location = new Point(552, 80);
-            buttonCloset9.Margin = new Padding(5);
+            buttonCloset9.Location = new Point(876, 231);
+            buttonCloset9.Margin = new Padding(25);
             buttonCloset9.Name = "buttonCloset9";
             buttonCloset9.Size = new Size(50, 323);
             buttonCloset9.TabIndex = 16;
-            buttonCloset9.Text = "Научная литература";
-            buttonCloset9.UseVisualStyleBackColor = true;
+            buttonCloset9.Text = "genre";
             buttonCloset9.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset9.UseVisualStyleBackColor = true;
             buttonCloset9.Click += buttonCloset9_Click;
             // 
             // buttonCloset8
@@ -487,14 +561,14 @@ namespace Bookstore
             buttonCloset8.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset8.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset8.Location = new Point(492, 80);
-            buttonCloset8.Margin = new Padding(5);
+            buttonCloset8.Location = new Point(776, 231);
+            buttonCloset8.Margin = new Padding(25);
             buttonCloset8.Name = "buttonCloset8";
             buttonCloset8.Size = new Size(50, 323);
             buttonCloset8.TabIndex = 15;
-            buttonCloset8.Text = "Биография";
-            buttonCloset8.UseVisualStyleBackColor = true;
+            buttonCloset8.Text = "genre";
             buttonCloset8.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset8.UseVisualStyleBackColor = true;
             buttonCloset8.Click += buttonCloset8_Click;
             // 
             // buttonCloset7
@@ -502,14 +576,14 @@ namespace Bookstore
             buttonCloset7.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset7.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset7.Location = new Point(432, 80);
-            buttonCloset7.Margin = new Padding(5);
+            buttonCloset7.Location = new Point(676, 231);
+            buttonCloset7.Margin = new Padding(25);
             buttonCloset7.Name = "buttonCloset7";
             buttonCloset7.Size = new Size(50, 323);
             buttonCloset7.TabIndex = 14;
-            buttonCloset7.Text = "Психология";
-            buttonCloset7.UseVisualStyleBackColor = true;
+            buttonCloset7.Text = "genre";
             buttonCloset7.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset7.UseVisualStyleBackColor = true;
             buttonCloset7.Click += buttonCloset7_Click;
             // 
             // buttonCloset6
@@ -517,14 +591,14 @@ namespace Bookstore
             buttonCloset6.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset6.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset6.Location = new Point(372, 80);
-            buttonCloset6.Margin = new Padding(5);
+            buttonCloset6.Location = new Point(576, 231);
+            buttonCloset6.Margin = new Padding(25);
             buttonCloset6.Name = "buttonCloset6";
             buttonCloset6.Size = new Size(50, 323);
             buttonCloset6.TabIndex = 13;
-            buttonCloset6.Text = "Классическая литература";
-            buttonCloset6.UseVisualStyleBackColor = true;
+            buttonCloset6.Text = "genre";
             buttonCloset6.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset6.UseVisualStyleBackColor = true;
             buttonCloset6.Click += buttonCloset6_Click;
             // 
             // buttonCloset5
@@ -532,14 +606,14 @@ namespace Bookstore
             buttonCloset5.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset5.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset5.Location = new Point(312, 80);
-            buttonCloset5.Margin = new Padding(5);
+            buttonCloset5.Location = new Point(476, 231);
+            buttonCloset5.Margin = new Padding(25);
             buttonCloset5.Name = "buttonCloset5";
             buttonCloset5.Size = new Size(50, 323);
             buttonCloset5.TabIndex = 12;
-            buttonCloset5.Text = "Поэзия";
-            buttonCloset5.UseVisualStyleBackColor = true;
+            buttonCloset5.Text = "genre";
             buttonCloset5.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset5.UseVisualStyleBackColor = true;
             buttonCloset5.Click += buttonCloset5_Click;
             // 
             // buttonCloset4
@@ -547,14 +621,14 @@ namespace Bookstore
             buttonCloset4.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset4.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset4.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset4.Location = new Point(252, 80);
-            buttonCloset4.Margin = new Padding(5);
+            buttonCloset4.Location = new Point(376, 231);
+            buttonCloset4.Margin = new Padding(25);
             buttonCloset4.Name = "buttonCloset4";
             buttonCloset4.Size = new Size(50, 323);
             buttonCloset4.TabIndex = 11;
-            buttonCloset4.Text = "Приключение";
-            buttonCloset4.UseVisualStyleBackColor = true;
+            buttonCloset4.Text = "genre";
             buttonCloset4.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset4.UseVisualStyleBackColor = true;
             buttonCloset4.Click += buttonCloset4_Click;
             // 
             // buttonCloset3
@@ -562,14 +636,14 @@ namespace Bookstore
             buttonCloset3.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset3.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset3.Location = new Point(192, 80);
-            buttonCloset3.Margin = new Padding(5);
+            buttonCloset3.Location = new Point(276, 231);
+            buttonCloset3.Margin = new Padding(25);
             buttonCloset3.Name = "buttonCloset3";
             buttonCloset3.Size = new Size(50, 323);
             buttonCloset3.TabIndex = 10;
-            buttonCloset3.Text = "Роман";
-            buttonCloset3.UseVisualStyleBackColor = true;
+            buttonCloset3.Text = "genre";
             buttonCloset3.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset3.UseVisualStyleBackColor = true;
             buttonCloset3.Click += buttonCloset3_Click;
             // 
             // buttonCloset2
@@ -577,47 +651,46 @@ namespace Bookstore
             buttonCloset2.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset2.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset2.Location = new Point(132, 80);
-            buttonCloset2.Margin = new Padding(5);
+            buttonCloset2.Location = new Point(176, 231);
+            buttonCloset2.Margin = new Padding(25);
             buttonCloset2.Name = "buttonCloset2";
             buttonCloset2.Size = new Size(50, 323);
             buttonCloset2.TabIndex = 9;
-            buttonCloset2.Text = "Фентези";
-            buttonCloset2.UseVisualStyleBackColor = true;
+            buttonCloset2.Text = "genre";
             buttonCloset2.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset2.UseVisualStyleBackColor = true;
             buttonCloset2.Click += buttonCloset2_Click;
-            textBoxBalance.Enabled = false;
             // 
             // buttonCloset1
             // 
             buttonCloset1.BackgroundImage = Properties.Resources.shelf9;
             buttonCloset1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonCloset1.ForeColor = SystemColors.ControlLightLight;
-            buttonCloset1.Location = new Point(72, 80);
-            buttonCloset1.Margin = new Padding(5);
+            buttonCloset1.Location = new Point(76, 231);
+            buttonCloset1.Margin = new Padding(25);
             buttonCloset1.Name = "buttonCloset1";
             buttonCloset1.Size = new Size(50, 323);
             buttonCloset1.TabIndex = 8;
-            buttonCloset1.Text = "Философия";
-            buttonCloset1.UseVisualStyleBackColor = true;
+            buttonCloset1.Text = "genre";
             buttonCloset1.TextAlign = ContentAlignment.MiddleLeft;
+            buttonCloset1.UseVisualStyleBackColor = true;
             buttonCloset1.Click += buttonCloset1_Click;
             // 
             // textBoxFindBook
             // 
             textBoxFindBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxFindBook.Location = new Point(82, 411);
-            textBoxFindBook.Name = "textBoxFindBook";
-            textBoxFindBook.Size = new Size(821, 38);
-            textBoxFindBook.TabIndex = 7;
+            textBoxFindBook.Location = new Point(75, 582);
             textBoxFindBook.Multiline = true;
+            textBoxFindBook.Name = "textBoxFindBook";
+            textBoxFindBook.Size = new Size(474, 38);
+            textBoxFindBook.TabIndex = 7;
             textBoxFindBook.TextChanged += textBoxFindBook_TextChanged;
             // 
             // labelFindBook
             // 
             labelFindBook.AutoSize = true;
             labelFindBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelFindBook.Location = new Point(10, 414);
+            labelFindBook.Location = new Point(3, 585);
             labelFindBook.Name = "labelFindBook";
             labelFindBook.Size = new Size(66, 25);
             labelFindBook.TabIndex = 6;
@@ -627,7 +700,7 @@ namespace Bookstore
             // 
             labelRUBL.AutoSize = true;
             labelRUBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUBL.Location = new Point(856, 10);
+            labelRUBL.Location = new Point(1139, 16);
             labelRUBL.Name = "labelRUBL";
             labelRUBL.Size = new Size(47, 25);
             labelRUBL.TabIndex = 2;
@@ -635,8 +708,9 @@ namespace Bookstore
             // 
             // textBoxBalance
             // 
+            textBoxBalance.Enabled = false;
             textBoxBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxBalance.Location = new Point(660, 7);
+            textBoxBalance.Location = new Point(943, 13);
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(190, 33);
             textBoxBalance.TabIndex = 1;
@@ -645,7 +719,7 @@ namespace Bookstore
             // 
             labelBalance.AutoSize = true;
             labelBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelBalance.Location = new Point(581, 10);
+            labelBalance.Location = new Point(864, 16);
             labelBalance.Name = "labelBalance";
             labelBalance.Size = new Size(73, 25);
             labelBalance.TabIndex = 0;
@@ -656,36 +730,59 @@ namespace Bookstore
             buttonNewBook.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonNewBook.Location = new Point(0, 0);
             buttonNewBook.Name = "buttonNewBook";
-            buttonNewBook.Size = new Size(445, 34);
+            buttonNewBook.Size = new Size(400, 34);
             buttonNewBook.TabIndex = 2;
-            buttonNewBook.Text = "Новая книга";
+            buttonNewBook.Text = "Заказать книгу";
             buttonNewBook.UseVisualStyleBackColor = true;
             buttonNewBook.Click += buttonNewBook_Click;
             // 
             // buttonStore
             // 
             buttonStore.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonStore.Location = new Point(451, 0);
+            buttonStore.Location = new Point(406, 0);
             buttonStore.Name = "buttonStore";
-            buttonStore.Size = new Size(445, 34);
+            buttonStore.Size = new Size(400, 34);
             buttonStore.TabIndex = 1;
             buttonStore.Text = "Магазин";
             buttonStore.UseVisualStyleBackColor = true;
             buttonStore.Click += buttonStore_Click;
+            // 
+            // buttonDelivery
+            // 
+            buttonDelivery.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonDelivery.Location = new Point(927, 0);
+            buttonDelivery.Name = "buttonDelivery";
+            buttonDelivery.Size = new Size(290, 34);
+            buttonDelivery.TabIndex = 3;
+            buttonDelivery.Text = "Поставки";
+            buttonDelivery.UseVisualStyleBackColor = true;
+            buttonDelivery.Click += buttonDelivery_Click;
+            // 
+            // buttonBuyers
+            // 
+            buttonBuyers.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonBuyers.Location = new Point(812, 0);
+            buttonBuyers.Name = "buttonBuyers";
+            buttonBuyers.Size = new Size(400, 34);
+            buttonBuyers.TabIndex = 4;
+            buttonBuyers.Text = "Покупатели";
+            buttonBuyers.UseVisualStyleBackColor = true;
+            buttonBuyers.Click += buttonBuyers_Click;
             // 
             // Store
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(910, 561);
+            ClientSize = new Size(1231, 783);
+            Controls.Add(buttonBuyers);
+            Controls.Add(buttonDelivery);
             Controls.Add(buttonStore);
             Controls.Add(buttonNewBook);
             Controls.Add(panelStore);
             Controls.Add(panelNewBook);
-            MinimumSize = new Size(930, 600);
-            MaximumSize = new Size(930, 600);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(930, 600);
             Name = "Store";
             Text = "МагаZин";
             Load += Store_Load;
@@ -693,6 +790,7 @@ namespace Bookstore
             panelNewBook.PerformLayout();
             panelStore.ResumeLayout(false);
             panelStore.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxClient).EndInit();
             panelBookInfo.ResumeLayout(false);
             panelBookInfo.PerformLayout();
             ResumeLayout(false);
@@ -747,5 +845,13 @@ namespace Bookstore
         private Label label_panel_price;
         private ListBox listBoxPages;
         private Button buttonSellBook;
+        private Button button1;
+        private Button buttonDelivery;
+        private Button button2;
+        private Button buttonBuyers;
+        private Button buttonAccept;
+        private Button buttonReject;
+        private PictureBox pictureBoxClient;
+        private Label labelClient;
     }
 }

@@ -22,3 +22,15 @@ D:\source\repos\BookStore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLi
 D:\source\repos\BookStore\ClassLibraryBookstore\obj\Debug\net9.0-windows\refint\ClassLibraryBookstore.dll
 D:\source\repos\BookStore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.pdb
 D:\source\repos\BookStore\ClassLibraryBookstore\obj\Debug\net9.0-windows\ref\ClassLibraryBookstore.dll
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.deps.json
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.dll
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\bin\Debug\net9.0-windows\ClassLibraryBookstore.pdb
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.AssemblyInfoInputs.cache
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.AssemblyInfo.cs
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.csproj.CoreCompileInputs.cache
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.sourcelink.json
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.dll
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\refint\ClassLibraryBookstore.dll
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ClassLibraryBookstore.pdb
+D:\source\repos\Bookstore4lab\ClassLibraryBookstore\obj\Debug\net9.0-windows\ref\ClassLibraryBookstore.dll
