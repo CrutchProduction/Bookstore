@@ -50,7 +50,11 @@ namespace Bookstore
             labelRUB = new Label();
             textBoxPrice = new TextBox();
             panelStore = new Panel();
-            promptLabel = new Label();
+            panel_inputBox = new Panel();
+            button_sell = new Button();
+            buttonCancel = new Button();
+            textBox_inputBox = new TextBox();
+            label_inputBox = new Label();
             buttonSellBook = new Button();
             panelBookInfo = new Panel();
             listBoxPrice = new ListBox();
@@ -77,6 +81,7 @@ namespace Bookstore
             textBoxFindBook = new TextBox();
             labelFindBook = new Label();
             pictureBoxClient = new PictureBox();
+            promptLabel = new Label();
             labelClient = new Label();
             labelRUBL = new Label();
             textBoxBalance = new TextBox();
@@ -87,6 +92,7 @@ namespace Bookstore
             buttonBuyers = new Button();
             panelNewBook.SuspendLayout();
             panelStore.SuspendLayout();
+            panel_inputBox.SuspendLayout();
             panelBookInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxClient).BeginInit();
             SuspendLayout();
@@ -111,7 +117,7 @@ namespace Bookstore
             panelNewBook.Controls.Add(labelPrice);
             panelNewBook.Controls.Add(labelRUB);
             panelNewBook.Controls.Add(textBoxPrice);
-            panelNewBook.Location = new Point(0, 0);
+            panelNewBook.Location = new Point(12, 834);
             panelNewBook.Name = "panelNewBook";
             panelNewBook.Size = new Size(1227, 733);
             panelNewBook.TabIndex = 0;
@@ -304,6 +310,7 @@ namespace Bookstore
             // panelStore
             // 
             panelStore.BackgroundImage = Properties.Resources.backgroundLibraryTwo;
+            panelStore.Controls.Add(panel_inputBox);
             panelStore.Controls.Add(buttonSellBook);
             panelStore.Controls.Add(panelBookInfo);
             panelStore.Controls.Add(buttonCloset11);
@@ -322,19 +329,63 @@ namespace Bookstore
             panelStore.Controls.Add(pictureBoxClient);
             panelStore.Controls.Add(promptLabel);
             panelStore.Controls.Add(labelClient);
-            panelStore.Location = new Point(6, 40);
+            panelStore.Location = new Point(129, 40);
             panelStore.Name = "panelStore";
             panelStore.Size = new Size(1200, 1310);
             panelStore.TabIndex = 1;
             // 
-            // promptLabel
+            // panel_inputBox
             // 
-            promptLabel.BackColor = Color.Transparent;
-            promptLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            promptLabel.Location = new Point(741, 127);
-            promptLabel.Name = "promptLabel";
-            promptLabel.Size = new Size(341, 70);
-            promptLabel.TabIndex = 22;
+            panel_inputBox.Controls.Add(button_sell);
+            panel_inputBox.Controls.Add(buttonCancel);
+            panel_inputBox.Controls.Add(textBox_inputBox);
+            panel_inputBox.Controls.Add(label_inputBox);
+            panel_inputBox.Location = new Point(333, 164);
+            panel_inputBox.Name = "panel_inputBox";
+            panel_inputBox.Size = new Size(415, 252);
+            panel_inputBox.TabIndex = 23;
+            // 
+            // button_sell
+            // 
+            button_sell.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button_sell.Location = new Point(20, 140);
+            button_sell.Name = "button_sell";
+            button_sell.Size = new Size(164, 67);
+            button_sell.TabIndex = 3;
+            button_sell.Text = "Продать";
+            button_sell.UseVisualStyleBackColor = true;
+            button_sell.Click += button_sell_Click;
+            // 
+            // buttonCancel
+            // 
+            buttonCancel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCancel.Location = new Point(221, 140);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(164, 67);
+            buttonCancel.TabIndex = 2;
+            buttonCancel.Text = "Отмена";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
+            // 
+            // textBox_inputBox
+            // 
+            textBox_inputBox.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBox_inputBox.Location = new Point(20, 80);
+            textBox_inputBox.Name = "textBox_inputBox";
+            textBox_inputBox.Size = new Size(370, 43);
+            textBox_inputBox.TabIndex = 1;
+            textBox_inputBox.TextChanged += textBox_inputBox_TextChanged;
+            // 
+            // label_inputBox
+            // 
+            label_inputBox.AutoSize = true;
+            label_inputBox.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label_inputBox.Location = new Point(20, 20);
+            label_inputBox.Margin = new Padding(20);
+            label_inputBox.Name = "label_inputBox";
+            label_inputBox.Size = new Size(370, 37);
+            label_inputBox.TabIndex = 0;
+            label_inputBox.Text = "Выберите сумму продажи";
             // 
             // buttonSellBook
             // 
@@ -669,6 +720,15 @@ namespace Bookstore
             pictureBoxClient.TabIndex = 20;
             pictureBoxClient.TabStop = false;
             // 
+            // promptLabel
+            // 
+            promptLabel.BackColor = Color.Transparent;
+            promptLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            promptLabel.Location = new Point(741, 127);
+            promptLabel.Name = "promptLabel";
+            promptLabel.Size = new Size(341, 70);
+            promptLabel.TabIndex = 22;
+            // 
             // labelClient
             // 
             labelClient.AutoSize = true;
@@ -757,7 +817,7 @@ namespace Bookstore
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1231, 749);
+            ClientSize = new Size(1389, 905);
             Controls.Add(textBoxBalance);
             Controls.Add(labelBalance);
             Controls.Add(labelRUBL);
@@ -776,6 +836,8 @@ namespace Bookstore
             panelNewBook.PerformLayout();
             panelStore.ResumeLayout(false);
             panelStore.PerformLayout();
+            panel_inputBox.ResumeLayout(false);
+            panel_inputBox.PerformLayout();
             panelBookInfo.ResumeLayout(false);
             panelBookInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxClient).EndInit();
@@ -839,5 +901,10 @@ namespace Bookstore
         private PictureBox pictureBoxClient;
         private Label labelClient;
         private Label promptLabel;
+        private Panel panel_inputBox;
+        private TextBox textBox_inputBox;
+        private Label label_inputBox;
+        private Button buttonCancel;
+        private Button button_sell;
     }
 }

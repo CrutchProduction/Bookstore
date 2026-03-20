@@ -108,19 +108,19 @@ namespace Bookstore
         {
             curGameDifficulty = gameDifficulty;
 
-            Timer gameTimer = new Timer((int) difficultyDayTimes[gameDifficulty] * 1000);
+            Timer gameTimer = new Timer((int)difficultyDayTimes[gameDifficulty] * 1000);
             gameTimer.Elapsed += stopGameEvent;
             gameTimer.Start();
 
-            Timer randomBookArrive = new Timer((int) difficultyRndBookTimes[gameDifficulty] * 1000);
+            Timer randomBookArrive = new Timer((int)difficultyRndBookTimes[gameDifficulty] * 1000);
             randomBookArrive.Elapsed += randomBookArriveEvent;
             randomBookArrive.Start();
 
-            Timer randomClientArrive = new Timer((int) difficultyClientTimes[gameDifficulty] * 1000);
+            Timer randomClientArrive = new Timer((int)difficultyClientTimes[gameDifficulty] * 1000);
             randomClientArrive.Elapsed += randomClientArriveEvent;
             randomClientArrive.Start();
 
-            Timer pendingBookArrive = new Timer((int) difficultyPenBookTimes[gameDifficulty] * 1000);
+            Timer pendingBookArrive = new Timer((int)difficultyPenBookTimes[gameDifficulty] * 1000);
             pendingBookArrive.Elapsed += pendingBookArriveEvent;
 
             isGameStarted = true;
@@ -135,7 +135,8 @@ namespace Bookstore
                     pendingBookArrive.Stop();
                 }
 
-                if (currentMenu != 3) {
+                if (currentMenu != 3)
+                {
                     if (booksArrivedQueue.Count == 0 && buttonDelivery.Visible)
                     {
                         buttonNewBook.Width = sizeButton1;
@@ -175,9 +176,11 @@ namespace Bookstore
                 }
                 else if (currentMenu == 3)
                 {
-                    if (booksArrivedQueue.Count != 0) {
-                        textBoxIDBook.Text = ((Book) booksArrivedQueue.Peek()).GetId().ToString();
-                    } else
+                    if (booksArrivedQueue.Count != 0)
+                    {
+                        textBoxIDBook.Text = ((Book)booksArrivedQueue.Peek()).GetId().ToString();
+                    }
+                    else
                     {
                         textBoxIDBook.Text = "";
                     }
@@ -226,7 +229,7 @@ namespace Bookstore
             MyClassLibrary.GetShop().AddLastBookId();
             if (booksArrivedQueue.Count == 1)
             {
-                changeTextInBoxes((Book) booksArrivedQueue.Peek());
+                changeTextInBoxes((Book)booksArrivedQueue.Peek());
             }
         }
 
@@ -256,17 +259,22 @@ namespace Bookstore
 
         private void changeTextInBoxes(Book book)
         {
-            if (book != null) {
+            if (book != null)
+            {
                 MyClassLibrary.GetShop().CheckBookName(book);
             }
-            if (currentMenu == 3 && book != null) {
+            if (currentMenu == 3 && book != null)
+            {
                 textBoxNameBook.Text = book.GetName(true);
                 textBoxAuthor.Text = book.GetAuthor();
                 textBoxGenre.Text = book.GetGenre();
                 textBoxPages.Text = book.GetPageAmount().ToString();
                 textBoxPrice.Text = book.GetPrice().ToString();
-            } else {
-                if (currentMenu != 0 || book == null) {
+            }
+            else
+            {
+                if (currentMenu != 0 || book == null)
+                {
                     textBoxNameBook.Text = "";
                     textBoxAuthor.Text = "";
                     textBoxGenre.Text = "";
@@ -278,17 +286,19 @@ namespace Bookstore
 
         private void changeImage(int id)
         {
-            if (id != -1) {
+            if (id != -1)
+            {
                 object obj = Resources.ResourceManager.GetObject("appearance" + id, Resources.Culture);
                 pictureBoxClient.Image = ((System.Drawing.Bitmap)(obj));
-                
-            } else
+
+            }
+            else
             {
                 object obj = Resources.ResourceManager.GetObject("appearanceE", Resources.Culture);
                 pictureBoxClient.Image = ((System.Drawing.Bitmap)(obj));
             }
 
-            Client curClient = (Client) clientsQueue.Peek();
+            Client curClient = (Client)clientsQueue.Peek();
             switch (curClient.GetPromptType())
             {
                 case 0:
@@ -373,7 +383,8 @@ namespace Bookstore
                 }
 
                 Book newBook = new Book(textBoxNameBook.Text, textBoxAuthor.Text, textBoxGenre.Text, MyClassLibrary.GetShop().GetLastBookId(), Convert.ToInt32(textBoxPages.Text), Convert.ToInt32(textBoxPrice.Text), MyClassLibrary.GetShop().GetRandom());
-                if (MyClassLibrary.GetShop().GetBalance() - Convert.ToInt32(textBoxPrice.Text) >= 0) {
+                if (MyClassLibrary.GetShop().GetBalance() - Convert.ToInt32(textBoxPrice.Text) >= 0)
+                {
                     MyClassLibrary.GetShop().AddLastBookId();
                     booksPendingQueue.Enqueue(newBook);
                     MyClassLibrary.GetShop().AddBalance(-Convert.ToInt32(textBoxPrice.Text));
@@ -450,42 +461,45 @@ namespace Bookstore
             }
         }
 
+
         public void buttonSellBook_Click(object sender, EventArgs e)
         {
-            try
+            if (currentMenu == 2)
             {
-                Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
-                if (bookToSell != null)
+                //делаем окно видимым
+                panel_inputBox.Visible = true;
+                //блокируем кнопку
+                buttonSellBook.Enabled = false;
+                //блокируем вкладки
+                buttonStore.Enabled = false;
+                buttonDelivery.Enabled = false;
+                buttonNewBook.Enabled = false;
+                buttonBuyers.Enabled = false;
+                //блокируем шкафы
+                foreach (Button button in buttons)
                 {
-                    int income = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
-                    MyClassLibrary.GetShop().AddBalance(income);
-                    updateClosets();
-                    loadBooks(currentShelfId);
-                    if (currentMenu == 2)
+                    button.Enabled = false;
+                }
+
+                Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
+                textBox_inputBox.Text = bookToSell.GetPrice().ToString();
+            }
+            else
+            {
+                try
+                {
+                    Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
+                    if (bookToSell != null)
                     {
-                        if (clientsQueue.Count != 0)
-                        {
-                            Client curClient = (Client)clientsQueue.Peek();
-                            switch (curClient.GetPromptType())
-                            {
-                                case 0:
-                                    if (bookToSell.GetName(false) + "|" + bookToSell.GetAuthor() != curClient.GetPrompt())
-                                    {
-                                    //    --Dildo
-                                    }
-                                    break;
-                                case 1:
-                                    if (bookToSell.GetGenre() != curClient.GetPrompt())
-                                    {
-                                    //    --Dildo
-                                    }
-                                    break;
-                            }
-                        }
+                        int income = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
+                        MyClassLibrary.GetShop().AddBalance(income);
+                        updateClosets();
+                        loadBooks(currentShelfId);
+
                     }
                 }
+                catch (Exception ignored) { }
             }
-            catch (Exception ignored) { }
         }
 
         public void listBoxID_SelectedIndexChanged(object sender, EventArgs e)
@@ -801,6 +815,7 @@ namespace Bookstore
 
         public void Store_Load(object sender, EventArgs e)
         {
+            panel_inputBox.Visible = false;
             panelNewBook.Location = new Point(0, 40);
             panelStore.Location = new Point(1500, 40);
             buttonDelivery.Visible = false;
@@ -966,7 +981,7 @@ namespace Bookstore
         {
             if (booksArrivedQueue.Count != 0)
             {
-                Book book = (Book) booksArrivedQueue.Dequeue();
+                Book book = (Book)booksArrivedQueue.Dequeue();
                 if (book.IsFake())
                 {
                     MyClassLibrary.GetShop().AddBalance(10);
@@ -993,7 +1008,8 @@ namespace Bookstore
                 {
                     if (lastBook.IsRandomized())
                     {
-                        if (MyClassLibrary.GetShop().GetBalance() - lastBook.GetPrice() >= 0) {
+                        if (MyClassLibrary.GetShop().GetBalance() - lastBook.GetPrice() >= 0)
+                        {
                             MyClassLibrary.GetShop().AddBalance(-lastBook.GetPrice());
                         }
                         else
@@ -1017,10 +1033,93 @@ namespace Bookstore
                     {
                         changeTextInBoxes(null);
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Пожалуйста, освободите место для книги и повторите попытку", "Недостаточно места!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void textBox_inputBox_TextChanged(object sender, EventArgs e)
+        {
+            textBox_inputBox.Text = MyClassLibrary.checkInput(textBox_inputBox.Text, alphabets[0], true);
+
+        }
+
+        private void button_sell_Click(object sender, EventArgs e)
+        {
+            panel_inputBox.Visible = false;
+            buttonSellBook.Enabled = true;
+            //разблокировка вкладок
+            buttonStore.Enabled = true;
+            buttonDelivery.Enabled = true;
+            buttonNewBook.Enabled = true;
+            buttonBuyers.Enabled = true;
+            //разблокируем шкафы
+            foreach (Button button in buttons)
+            {
+                button.Enabled = true;
+            }
+
+            int summa;
+            try
+            {
+                summa = Convert.ToInt32(textBox_inputBox.Text);
+            }
+            catch (Exception ex) { return; }
+            if (summa < 0) return;
+
+            try
+            {
+                Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
+                if (bookToSell != null)
+                {
+                    int income = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
+                    //MyClassLibrary.GetShop().AddBalance(income);
+                    MyClassLibrary.GetShop().AddBalance(summa);
+                    updateClosets();
+                    loadBooks(currentShelfId);
+                    if (currentMenu == 2)
+                    {
+                        if (clientsQueue.Count != 0)
+                        {
+                            Client curClient = (Client)clientsQueue.Peek();
+                            switch (curClient.GetPromptType())
+                            {
+                                case 0:
+                                    if (bookToSell.GetName(false) + "|" + bookToSell.GetAuthor() != curClient.GetPrompt())
+                                    {
+                                        //    --Dildo
+                                    }
+                                    break;
+                                case 1:
+                                    if (bookToSell.GetGenre() != curClient.GetPrompt())
+                                    {
+                                        //    --Dildo
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ignored) { }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            panel_inputBox.Visible = false;
+            buttonSellBook.Enabled = true;
+            //разблокировка вкладок
+            buttonStore.Enabled = true;
+            buttonDelivery.Enabled = true;
+            buttonNewBook.Enabled = true;
+            buttonBuyers.Enabled = true;
+            //разблокируем шкафы
+            foreach (Button button in buttons)
+            {
+                button.Enabled = true;
             }
         }
     }
