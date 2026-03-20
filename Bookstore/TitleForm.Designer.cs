@@ -48,11 +48,11 @@
             titlelabel.AutoSize = true;
             titlelabel.BackColor = Color.LightGray;
             titlelabel.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            titlelabel.Location = new Point(463, 51);
+            titlelabel.Location = new Point(411, 46);
             titlelabel.Name = "titlelabel";
-            titlelabel.Size = new Size(242, 50);
+            titlelabel.Size = new Size(353, 50);
             titlelabel.TabIndex = 0;
-            titlelabel.Text = "Какаято игра";
+            titlelabel.Text = "Симулятор кассира";
             // 
             // buttonEasy
             // 

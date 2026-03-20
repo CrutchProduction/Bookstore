@@ -80,13 +80,8 @@ public class BookShelf {
 
     // Продажа книги
     public int SellBook(Book book) {
-        if (book.GetGenre() != "ZOV") {
-            RemoveBook(book);
-            return book.GetPrice();
-        } else
-        {
-            return 0;
-        }
+        RemoveBook(book);
+        return book.GetPrice();
     }
 
     // Внешне-доступные функции

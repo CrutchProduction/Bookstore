@@ -45,6 +45,7 @@ public class Book {
         } else {
             AbsoluteRandomGenerate(rnd, labels, authors, genres);
         }
+        this.isRandomized = true;
     }
 
     // Генерация рандомной правильной книги
@@ -55,7 +56,6 @@ public class Book {
         this.genre = genres[rnd.Next(genres.Length)];
         this.pageAmount = rnd.Next(15, 1489);
         this.price = rnd.Next(200, 1500);
-        this.isRandomized = true;
     }
 
     // Генерация рандомной неправильной книги

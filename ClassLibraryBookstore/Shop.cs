@@ -21,34 +21,6 @@ public class Shop {
         }
     }
 
-    // Добавление книги в магазин
-    public void AddBook(string name, string author, string genre, int pageAmount, int price) {
-        BookShelf curShelf;
-        if (genre != "ZOV")
-        {
-            curShelf = FindBookShelf(genre);
-        } else
-        {
-            curShelf = new BookShelf(this.rnd);
-            this.shelfs[10] = curShelf;
-        }
-
-        if (curShelf != null)
-        {
-            Book newBook = new Book(name, author, genre, this.lastBookId, pageAmount, price, this.rnd);
-            CheckBookName(newBook);
-            curShelf.AddBook(newBook);
-            if (this.lastBookId != Int32.MaxValue)
-            {
-                this.lastBookId++;
-            }
-            else
-            {
-                this.lastBookId = 0;
-            }
-        }
-    }
-
     // Проверка книги на копии названия
     public void CheckBookName(Book book) {
         int amount = 0;
@@ -94,11 +66,6 @@ public class Shop {
         book.SetCopyId(copySequence.Length + 1);
     }
 
-    // Проверка книги на наличие в базе данных
-    public bool IsBookValid(Book book) {
-        return !book.IsFake();
-    }
-
     // Поиск шкафа с заданным жанром
     public BookShelf FindBookShelf(string genre) {
         foreach (BookShelf shelf in this.shelfs) {
@@ -123,6 +90,8 @@ public class Shop {
     // Внешне-доступные функции
     public void AddBalance(int income) { this.balance += income; }
     public void AddLastBookId() { this.lastBookId++; }
+    public void AddZOVShelf(BookShelf shelf) { this.shelfs[10] = shelf; }
+    public void RemoveZOVShelf() { this.shelfs[10] = null; }
     public int GetMaxShelfs() { return this.maxShelfs; }
     public Random GetRandom() { return this.rnd; }
     public BookShelf[] GetShelfs() { return this.shelfs; }

@@ -14,15 +14,16 @@ namespace ClassLibraryBookstore
         private static Shop myShop;
 
         // Конструктор
-        public MyClassLibrary() {
-            System.IO.File.WriteAllText("dataBase.txt", "");
+        public MyClassLibrary()
+        {
+            System.IO.File.WriteAllText("dataBase.txt", System.IO.File.ReadAllText("booksData.txt"));
             loadData();
             myShop = new Shop();
         }
 
         // Загрузка данных из файлов
-        private static void loadData() {
-            string[] rawData = System.IO.File.ReadAllLines("booksData.txt");
+        public static void loadData() {
+            string[] rawData = System.IO.File.ReadAllLines("dataBase.txt");
             labels = new string[rawData.Length];
             authors = new string[rawData.Length];
             for (int i = 0; i < rawData.Length; i++) {
@@ -59,11 +60,6 @@ namespace ClassLibraryBookstore
             return newText;
         }
 
-        public static bool isBookValid(Book book)
-        {
-            return myShop.IsBookValid(book);
-        }
-
         // Генерация книги с рандомными данными
         public static Book generateRandomBook(bool absoluteRandom) {
             Book newBook = new Book(myShop.GetLastBookId(), myShop.GetRandom(), labels, authors, genres, absoluteRandom);
@@ -87,9 +83,6 @@ namespace ClassLibraryBookstore
         }
 
         // Внешне-доступные функции
-        public static string[] GetLabels() { return labels; }
-        public static string[] GetAuthors() { return authors; }
-        public static string[] GetGenres() { return genres; }
         public static Shop GetShop() { return myShop; }
     }
 }

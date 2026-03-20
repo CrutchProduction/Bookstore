@@ -40,12 +40,14 @@ public class Client {
             lastNames = System.IO.File.ReadAllText("lastNamesF.txt").Split(" ");
         }
         this.name = firtsNames[rnd.Next(firtsNames.Length)] + lastNames[rnd.Next(lastNames.Length)];
-        bool isPutin = rnd.Next(500) == 499;
+        bool isPutin = rnd.Next(500) == 200;
         if (!isPutin) {
             this.appearanceImage = rnd.Next(17);
         } else
         {
             this.appearanceImage = -1;
+            this.promptType = 2;
+            this.prompt = "ZOV zOV voZ OZoV ZOV zOOooV ZOooOOV zov oVz";
         }
     }
 

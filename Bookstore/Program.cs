@@ -22,15 +22,24 @@ namespace Bookstore
             ApplicationConfiguration.Initialize();
             
             //сначала запускается титульный экран
-            titleform = new TitleForm();
-            Application.Run(titleform);
-            if (yes) {
-                store = new Store();
-                Thread newThread = new Thread(gameThread);
-                newThread.Start();
-                Application.Run(store);
-                store.stopGame();
-                newThread.Join();
+            while (true) {
+                titleform = new TitleForm();
+                Application.Run(titleform);
+                if (yes)
+                {
+                    store = new Store();
+                    Thread newThread = new Thread(gameThread);
+                    newThread.Start();
+                    Application.Run(store);
+                    store.stopGame();
+                    newThread.Join();
+                }
+
+                if (!yes)
+                {
+                    break;
+                }
+                yes = false;
             }
         }
 

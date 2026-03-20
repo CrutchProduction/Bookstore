@@ -18,13 +18,11 @@ namespace Bookstore
         private static bool closet_choice = false;
         private static Button[] buttons;
         private static int[][] buttonsInitialPos;
-        private static bool closet_choice_peek = false;
         private static bool easterEggActive = false;
         private static int tempX;
         private static int tempY;
         private static int currentShelfId;
         private static int currentMenu = 0;
-
 
         // Константы
         private const int constX = 10;
@@ -35,7 +33,11 @@ namespace Bookstore
         private static readonly string[] alphabets = { "0123456789", "QWERTYUIOPASDFGHJKLZXCVBNM", "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ", " !,.<>:;-\"\'[]{}()?", "\n" };
         private const int sizeButton1 = 400;
         private const int sizeButton2 = 300;
-
+        private static readonly float[] difficultyDayTimes = { 480, 240, 120 };
+        private static readonly float[] difficultyRndBookTimes = { 51.4f, 24, 15 };
+        private static readonly float[] difficultyClientTimes = { 34.2f, 16, 10 };
+        private static readonly float[] difficultyPenBookTimes = { 29, 14, 11 };
+        private static readonly int[] maxClientsQueue = { 7, 5, 3 };
 
         // Очереди игры
         private static Queue clientsQueue;
@@ -45,13 +47,7 @@ namespace Bookstore
         // Параметры игры
         private static bool isGameStarted = false;
         private static int curGameDifficulty;
-
-        // Константы
-        private static readonly float[] difficultyDayTimes = { 120, 240, 480 };
-        private static readonly float[] difficultyRndBookTimes = { 20, 30, 48 };
-        private static readonly float[] difficultyClientTimes = { 10, 15, 24 };
-        private static readonly float[] difficultyPenBookTimes = { 9, 14.5f, 25 };
-        private static readonly int[] maxClientsQueue = { 7, 5, 3 };
+        private static int mistakesMade = 0;
 
         // Конструктор
         public Store()
@@ -192,10 +188,13 @@ namespace Bookstore
                     if (promptLabel.Visible) promptLabel.Visible = false;
                 }
 
+                if (mistakesMade >= 3)
+                {
+                    isGameStarted = false;
+                }
+
                 textBoxBalance.Text = MyClassLibrary.GetShop().GetBalance().ToString();
             }
-
-            Application.Exit();
 
             gameTimer.Stop();
             gameTimer.Dispose();
@@ -208,6 +207,8 @@ namespace Bookstore
 
             pendingBookArrive.Stop();
             pendingBookArrive.Dispose();
+
+            Application.Exit();
         }
 
         public void stopGame()
@@ -307,6 +308,9 @@ namespace Bookstore
                 case 1:
                     promptLabel.Text = "Здравствуйте, мне нужна книга с жанром " + curClient.GetPrompt();
                     break;
+                case 2:
+                    promptLabel.Text = curClient.GetPrompt();
+                    break;
             }
         }
 
@@ -318,7 +322,7 @@ namespace Bookstore
             {
                 buttons[i].Text = String.Join("\n", shelves.ElementAt(i).GetGenre().ToString().ToCharArray());
             }
-            if (easterEggActive)
+            if (easterEggActive && buttons[10].Text != "ZOV")
             {
                 buttons[10].Enabled = true;
                 buttons[10].Visible = true;
@@ -353,7 +357,7 @@ namespace Bookstore
             listBoxNameBook.Items.Clear();
             listBoxPages.Items.Clear();
             listBoxPrice.Items.Clear();
-
+            
             foreach (Book book in MyClassLibrary.GetShop().GetShelfs().ElementAt(shelfId).GetBooks())
             {
                 if (book != null)
@@ -375,11 +379,6 @@ namespace Bookstore
                 if (textBoxNameBook.Text.Split(" ").Length != 1 && MyClassLibrary.isNumber(textBoxNameBook.Text.Split(" ").ElementAt(textBoxNameBook.Text.Split(" ").Length - 1)))
                 {
                     textBoxNameBook.Text = string.Join(" ", textBoxNameBook.Text.Split(" ")[..^1]);
-                }
-
-                if (textBoxGenre.Text == "ZOV")
-                {
-                    easterEggActive = true;
                 }
 
                 Book newBook = new Book(textBoxNameBook.Text, textBoxAuthor.Text, textBoxGenre.Text, MyClassLibrary.GetShop().GetLastBookId(), Convert.ToInt32(textBoxPages.Text), Convert.ToInt32(textBoxPrice.Text), MyClassLibrary.GetShop().GetRandom());
@@ -455,8 +454,8 @@ namespace Bookstore
                             textBoxFindBook.Enabled = false;
                             return;
                         }
-                        i++;
                     }
+                    i++;
                 }
             }
         }
@@ -1023,7 +1022,24 @@ namespace Bookstore
                         MyClassLibrary.GetShop().AddBalance(-15);
                     }
 
+
+                    if (lastBook.GetGenre() == "ZOV")
+                    {
+                        easterEggActive = true;
+                        bookShelf = new BookShelf(MyClassLibrary.GetShop().GetRandom());
+                        MyClassLibrary.GetShop().AddZOVShelf(bookShelf);
+                    }
                     bookShelf.AddBook(lastBook);
+
+                    if (!lastBook.IsFake()) {
+                        String newData = lastBook.GetName(false) + "|" + lastBook.GetAuthor();
+                        String dataBase = System.IO.File.ReadAllText("dataBase.txt");
+                        if (!dataBase.Contains(newData)) {
+                            System.IO.File.WriteAllText("dataBase.txt", dataBase + "\n" + newData);
+                            MyClassLibrary.loadData(); 
+                        }
+                    }
+
                     booksArrivedQueue.Dequeue();
                     if (booksArrivedQueue.Count != 0)
                     {
@@ -1062,49 +1078,83 @@ namespace Bookstore
                 button.Enabled = true;
             }
 
-            int summa;
-            try
-            {
-                summa = Convert.ToInt32(textBox_inputBox.Text);
-            }
-            catch (Exception ex) { return; }
-            if (summa < 0) return;
-
-            try
-            {
-                Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
-                if (bookToSell != null)
+            Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
+            if (bookToSell != null) {
+                int summa = bookToSell.GetPrice();
+                if (textBox_inputBox.Text != "")
                 {
-                    int income = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
-                    //MyClassLibrary.GetShop().AddBalance(income);
-                    MyClassLibrary.GetShop().AddBalance(summa);
+                    summa = Convert.ToInt32(textBox_inputBox.Text);
+                }
+
+                if (summa > bookToSell.GetPrice() * 1.15f)
+                {
+                    mistakesMade++;
+                    Client curClient = (Client)clientsQueue.Dequeue();
+                    changeImage(((Client)clientsQueue.Peek()).GetAppearanceImage());
+                    return;
+                }
+
+                try
+                {
+                    if (clientsQueue.Count != 0)
+                    {
+                        Client curClient = (Client)clientsQueue.Peek();
+                        
+                        if (curClient.GetPromptType() != 2 && bookToSell.GetGenre() == "ZOV")
+                        {
+                            return;
+                        }
+
+                        switch (curClient.GetPromptType())
+                        {
+                            case 0:
+                                if (bookToSell.GetName(false) + "|" + bookToSell.GetAuthor() != curClient.GetPrompt())
+                                {
+                                    mistakesMade++;
+                                }
+                                else
+                                {
+                                    MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
+                                    MyClassLibrary.GetShop().AddBalance(summa);
+                                }
+                                break;
+                            case 1:
+                                if (bookToSell.GetGenre() != curClient.GetPrompt())
+                                {
+                                    mistakesMade++;
+                                }
+                                else
+                                {
+                                    MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
+                                    MyClassLibrary.GetShop().AddBalance(summa);
+                                }
+                                break;
+                            case 2:
+                                if (bookToSell.GetGenre() == "ZOV")
+                                {
+                                    MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
+                                    MyClassLibrary.GetShop().AddBalance(summa);
+                                    clientsQueue.Dequeue();
+                                    buttonCloset11.Visible = false;
+                                    buttonCloset11.Enabled = false;
+                                    buttonCloset11.Text = "";
+                                    easterEggActive = false;
+                                    MyClassLibrary.GetShop().RemoveZOVShelf();
+                                    unloadClosets();
+                                } else
+                                {
+                                    return;
+                                }
+                                break;
+                        }
+                        clientsQueue.Dequeue();
+                        changeImage(((Client)clientsQueue.Peek()).GetAppearanceImage());
+                    }
                     updateClosets();
                     loadBooks(currentShelfId);
-                    if (currentMenu == 2)
-                    {
-                        if (clientsQueue.Count != 0)
-                        {
-                            Client curClient = (Client)clientsQueue.Peek();
-                            switch (curClient.GetPromptType())
-                            {
-                                case 0:
-                                    if (bookToSell.GetName(false) + "|" + bookToSell.GetAuthor() != curClient.GetPrompt())
-                                    {
-                                        //    --Dildo
-                                    }
-                                    break;
-                                case 1:
-                                    if (bookToSell.GetGenre() != curClient.GetPrompt())
-                                    {
-                                        //    --Dildo
-                                    }
-                                    break;
-                            }
-                        }
-                    }
                 }
+                catch (Exception ignored) { }
             }
-            catch (Exception ignored) { }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
