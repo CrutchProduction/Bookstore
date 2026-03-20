@@ -1,10 +1,15 @@
+using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 namespace Bookstore
 {
     internal static class Program
     {
         public static bool yes = false;
+        private static Store store;
+        private static TitleForm titleform;
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -17,8 +22,21 @@ namespace Bookstore
             ApplicationConfiguration.Initialize();
             
             //сначала запускается титульный экран
-            Application.Run(new TitleForm());
-            if (yes) Application.Run(new Store());
+            titleform = new TitleForm();
+            Application.Run(titleform);
+            if (yes) {
+                store = new Store();
+                Thread newThread = new Thread(gameThread);
+                newThread.Start();
+                Application.Run(store);
+                store.stopGame();
+                newThread.Join();
+            }
+        }
+
+        static void gameThread()
+        {
+            store.startGame(titleform.GetCurDifficulty());
         }
     }
 }

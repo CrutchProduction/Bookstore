@@ -34,15 +34,10 @@ namespace Bookstore
             panelNewBook = new Panel();
             buttonReject = new Button();
             buttonAccept = new Button();
-            button2 = new Button();
-            button1 = new Button();
             buttonAddBook = new Button();
             buttonRandom = new Button();
-            labelRUB = new Label();
             textBoxIDBook = new TextBox();
             label_idBook = new Label();
-            textBoxPrice = new TextBox();
-            labelPrice = new Label();
             textBoxPages = new TextBox();
             labelPages = new Label();
             textBoxGenre = new TextBox();
@@ -51,9 +46,11 @@ namespace Bookstore
             labelAuthor = new Label();
             textBoxNameBook = new TextBox();
             labelNameBook = new Label();
+            labelPrice = new Label();
+            labelRUB = new Label();
+            textBoxPrice = new TextBox();
             panelStore = new Panel();
-            labelClient = new Label();
-            
+            promptLabel = new Label();
             buttonSellBook = new Button();
             panelBookInfo = new Panel();
             listBoxPrice = new ListBox();
@@ -77,9 +74,10 @@ namespace Bookstore
             buttonCloset3 = new Button();
             buttonCloset2 = new Button();
             buttonCloset1 = new Button();
-            
             textBoxFindBook = new TextBox();
             labelFindBook = new Label();
+            pictureBoxClient = new PictureBox();
+            labelClient = new Label();
             labelRUBL = new Label();
             textBoxBalance = new TextBox();
             labelBalance = new Label();
@@ -89,9 +87,8 @@ namespace Bookstore
             buttonBuyers = new Button();
             panelNewBook.SuspendLayout();
             panelStore.SuspendLayout();
-            pictureBoxClient = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxClient).BeginInit();
             panelBookInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxClient).BeginInit();
             SuspendLayout();
             // 
             // panelNewBook
@@ -99,15 +96,10 @@ namespace Bookstore
             panelNewBook.BackgroundImage = Properties.Resources.backgroundLibrary;
             panelNewBook.Controls.Add(buttonReject);
             panelNewBook.Controls.Add(buttonAccept);
-            panelNewBook.Controls.Add(button2);
-            panelNewBook.Controls.Add(button1);
             panelNewBook.Controls.Add(buttonAddBook);
             panelNewBook.Controls.Add(buttonRandom);
-            panelNewBook.Controls.Add(labelRUB);
             panelNewBook.Controls.Add(textBoxIDBook);
             panelNewBook.Controls.Add(label_idBook);
-            panelNewBook.Controls.Add(textBoxPrice);
-            panelNewBook.Controls.Add(labelPrice);
             panelNewBook.Controls.Add(textBoxPages);
             panelNewBook.Controls.Add(labelPages);
             panelNewBook.Controls.Add(textBoxGenre);
@@ -116,7 +108,10 @@ namespace Bookstore
             panelNewBook.Controls.Add(labelAuthor);
             panelNewBook.Controls.Add(textBoxNameBook);
             panelNewBook.Controls.Add(labelNameBook);
-            panelNewBook.Location = new Point(12, 870);
+            panelNewBook.Controls.Add(labelPrice);
+            panelNewBook.Controls.Add(labelRUB);
+            panelNewBook.Controls.Add(textBoxPrice);
+            panelNewBook.Location = new Point(0, 0);
             panelNewBook.Name = "panelNewBook";
             panelNewBook.Size = new Size(1227, 733);
             panelNewBook.TabIndex = 0;
@@ -124,49 +119,31 @@ namespace Bookstore
             // buttonReject
             // 
             buttonReject.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonReject.Location = new Point(967, 350);
+            buttonReject.Location = new Point(967, 439);
             buttonReject.Margin = new Padding(10);
             buttonReject.Name = "buttonReject";
             buttonReject.Size = new Size(250, 50);
             buttonReject.TabIndex = 17;
             buttonReject.Text = "Отклонить";
             buttonReject.UseVisualStyleBackColor = true;
+            buttonReject.Click += buttonReject_Click;
             // 
             // buttonAccept
             // 
             buttonAccept.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonAccept.Location = new Point(19, 350);
+            buttonAccept.Location = new Point(19, 439);
             buttonAccept.Margin = new Padding(10);
             buttonAccept.Name = "buttonAccept";
             buttonAccept.Size = new Size(250, 50);
             buttonAccept.TabIndex = 16;
             buttonAccept.Text = "Принять";
             buttonAccept.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(557, 376);
-            button2.Name = "button2";
-            button2.Size = new Size(105, 86);
-            button2.TabIndex = 15;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(363, 374);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 88);
-            button1.TabIndex = 14;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonAccept.Click += buttonAccept_Click;
             // 
             // buttonAddBook
             // 
             buttonAddBook.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonAddBook.Location = new Point(19, 280);
+            buttonAddBook.Location = new Point(19, 369);
             buttonAddBook.Margin = new Padding(10);
             buttonAddBook.Name = "buttonAddBook";
             buttonAddBook.Size = new Size(250, 50);
@@ -178,7 +155,7 @@ namespace Bookstore
             // buttonRandom
             // 
             buttonRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonRandom.Location = new Point(967, 280);
+            buttonRandom.Location = new Point(967, 369);
             buttonRandom.Margin = new Padding(10);
             buttonRandom.Name = "buttonRandom";
             buttonRandom.Size = new Size(250, 50);
@@ -187,22 +164,11 @@ namespace Bookstore
             buttonRandom.UseVisualStyleBackColor = true;
             buttonRandom.Click += buttonRandom_Click;
             // 
-            // labelRUB
-            // 
-            labelRUB.AutoSize = true;
-            labelRUB.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUB.Location = new Point(1142, 182);
-            labelRUB.Margin = new Padding(1, 10, 10, 10);
-            labelRUB.Name = "labelRUB";
-            labelRUB.Size = new Size(52, 30);
-            labelRUB.TabIndex = 11;
-            labelRUB.Text = "руб.";
-            // 
             // textBoxIDBook
             // 
             textBoxIDBook.Enabled = false;
             textBoxIDBook.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxIDBook.Location = new Point(135, 227);
+            textBoxIDBook.Location = new Point(135, 316);
             textBoxIDBook.Margin = new Padding(10);
             textBoxIDBook.Name = "textBoxIDBook";
             textBoxIDBook.Size = new Size(196, 35);
@@ -212,38 +178,17 @@ namespace Bookstore
             // 
             label_idBook.AutoSize = true;
             label_idBook.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label_idBook.Location = new Point(10, 230);
+            label_idBook.Location = new Point(10, 319);
             label_idBook.Margin = new Padding(10);
             label_idBook.Name = "label_idBook";
             label_idBook.Size = new Size(94, 30);
             label_idBook.TabIndex = 9;
             label_idBook.Text = "ID книги";
             // 
-            // textBoxPrice
-            // 
-            textBoxPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxPrice.Location = new Point(718, 177);
-            textBoxPrice.Margin = new Padding(10, 10, 1, 10);
-            textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new Size(422, 35);
-            textBoxPrice.TabIndex = 7;
-            textBoxPrice.TextChanged += textBoxPrice_TextChanged;
-            // 
-            // labelPrice
-            // 
-            labelPrice.AutoSize = true;
-            labelPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPrice.Location = new Point(649, 180);
-            labelPrice.Margin = new Padding(10);
-            labelPrice.Name = "labelPrice";
-            labelPrice.Size = new Size(63, 30);
-            labelPrice.TabIndex = 8;
-            labelPrice.Text = "Цена";
-            // 
             // textBoxPages
             // 
             textBoxPages.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxPages.Location = new Point(135, 175);
+            textBoxPages.Location = new Point(135, 264);
             textBoxPages.Margin = new Padding(10);
             textBoxPages.Name = "textBoxPages";
             textBoxPages.Size = new Size(506, 35);
@@ -254,7 +199,7 @@ namespace Bookstore
             // 
             labelPages.AutoSize = true;
             labelPages.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPages.Location = new Point(10, 180);
+            labelPages.Location = new Point(10, 269);
             labelPages.Margin = new Padding(10);
             labelPages.Name = "labelPages";
             labelPages.Size = new Size(110, 30);
@@ -264,7 +209,7 @@ namespace Bookstore
             // textBoxGenre
             // 
             textBoxGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxGenre.Location = new Point(135, 120);
+            textBoxGenre.Location = new Point(135, 209);
             textBoxGenre.Margin = new Padding(10);
             textBoxGenre.Name = "textBoxGenre";
             textBoxGenre.Size = new Size(1082, 35);
@@ -275,7 +220,7 @@ namespace Bookstore
             // 
             labelGenre.AutoSize = true;
             labelGenre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelGenre.Location = new Point(10, 123);
+            labelGenre.Location = new Point(10, 212);
             labelGenre.Margin = new Padding(10);
             labelGenre.Name = "labelGenre";
             labelGenre.Size = new Size(66, 30);
@@ -285,7 +230,7 @@ namespace Bookstore
             // textBoxAuthor
             // 
             textBoxAuthor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxAuthor.Location = new Point(135, 65);
+            textBoxAuthor.Location = new Point(135, 154);
             textBoxAuthor.Margin = new Padding(10);
             textBoxAuthor.Name = "textBoxAuthor";
             textBoxAuthor.Size = new Size(1082, 35);
@@ -296,7 +241,7 @@ namespace Bookstore
             // 
             labelAuthor.AutoSize = true;
             labelAuthor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelAuthor.Location = new Point(10, 68);
+            labelAuthor.Location = new Point(10, 157);
             labelAuthor.Margin = new Padding(10);
             labelAuthor.Name = "labelAuthor";
             labelAuthor.Size = new Size(71, 30);
@@ -306,7 +251,7 @@ namespace Bookstore
             // textBoxNameBook
             // 
             textBoxNameBook.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxNameBook.Location = new Point(135, 10);
+            textBoxNameBook.Location = new Point(135, 99);
             textBoxNameBook.Margin = new Padding(10);
             textBoxNameBook.Name = "textBoxNameBook";
             textBoxNameBook.Size = new Size(1082, 35);
@@ -317,18 +262,48 @@ namespace Bookstore
             // 
             labelNameBook.AutoSize = true;
             labelNameBook.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelNameBook.Location = new Point(10, 10);
+            labelNameBook.Location = new Point(10, 99);
             labelNameBook.Margin = new Padding(10);
             labelNameBook.Name = "labelNameBook";
             labelNameBook.Size = new Size(105, 30);
             labelNameBook.TabIndex = 0;
             labelNameBook.Text = "Название";
             // 
+            // labelPrice
+            // 
+            labelPrice.AutoSize = true;
+            labelPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelPrice.Location = new Point(654, 264);
+            labelPrice.Margin = new Padding(10);
+            labelPrice.Name = "labelPrice";
+            labelPrice.Size = new Size(63, 30);
+            labelPrice.TabIndex = 8;
+            labelPrice.Text = "Цена";
+            // 
+            // labelRUB
+            // 
+            labelRUB.AutoSize = true;
+            labelRUB.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelRUB.Location = new Point(1155, 264);
+            labelRUB.Margin = new Padding(1, 10, 10, 10);
+            labelRUB.Name = "labelRUB";
+            labelRUB.Size = new Size(52, 30);
+            labelRUB.TabIndex = 11;
+            labelRUB.Text = "руб.";
+            // 
+            // textBoxPrice
+            // 
+            textBoxPrice.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBoxPrice.Location = new Point(731, 264);
+            textBoxPrice.Margin = new Padding(10, 10, 1, 10);
+            textBoxPrice.Name = "textBoxPrice";
+            textBoxPrice.Size = new Size(422, 35);
+            textBoxPrice.TabIndex = 7;
+            textBoxPrice.TextChanged += textBoxPrice_TextChanged;
+            // 
             // panelStore
             // 
             panelStore.BackgroundImage = Properties.Resources.backgroundLibraryTwo;
-            
-            
             panelStore.Controls.Add(buttonSellBook);
             panelStore.Controls.Add(panelBookInfo);
             panelStore.Controls.Add(buttonCloset11);
@@ -344,33 +319,22 @@ namespace Bookstore
             panelStore.Controls.Add(buttonCloset1);
             panelStore.Controls.Add(textBoxFindBook);
             panelStore.Controls.Add(labelFindBook);
-            panelStore.Controls.Add(labelRUBL);
-            panelStore.Controls.Add(textBoxBalance);
-            panelStore.Controls.Add(labelBalance);
             panelStore.Controls.Add(pictureBoxClient);
+            panelStore.Controls.Add(promptLabel);
             panelStore.Controls.Add(labelClient);
             panelStore.Location = new Point(6, 40);
             panelStore.Name = "panelStore";
             panelStore.Size = new Size(1200, 1310);
             panelStore.TabIndex = 1;
             // 
-            // labelClient
+            // promptLabel
             // 
-            labelClient.AutoSize = true;
-            labelClient.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelClient.Location = new Point(566, 69);
-            labelClient.Name = "labelClient";
-            labelClient.Size = new Size(477, 37);
-            labelClient.TabIndex = 21;
-            labelClient.Text = "У Вас пока нет ни одного покупателя";
-            // 
-            // pictureBoxClient
-            // 
-            pictureBoxClient.Location = new Point(741, 200);
-            pictureBoxClient.Name = "pictureBoxClient";
-            pictureBoxClient.Size = new Size(196, 439);
-            pictureBoxClient.TabIndex = 20;
-            pictureBoxClient.TabStop = false;
+            promptLabel.BackColor = Color.Transparent;
+            promptLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            promptLabel.Location = new Point(741, 127);
+            promptLabel.Name = "promptLabel";
+            promptLabel.Size = new Size(341, 70);
+            promptLabel.TabIndex = 22;
             // 
             // buttonSellBook
             // 
@@ -696,11 +660,30 @@ namespace Bookstore
             labelFindBook.TabIndex = 6;
             labelFindBook.Text = "Поиск";
             // 
+            // pictureBoxClient
+            // 
+            pictureBoxClient.BackColor = Color.Transparent;
+            pictureBoxClient.Location = new Point(741, 200);
+            pictureBoxClient.Name = "pictureBoxClient";
+            pictureBoxClient.Size = new Size(341, 439);
+            pictureBoxClient.TabIndex = 20;
+            pictureBoxClient.TabStop = false;
+            // 
+            // labelClient
+            // 
+            labelClient.AutoSize = true;
+            labelClient.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelClient.Location = new Point(566, 69);
+            labelClient.Name = "labelClient";
+            labelClient.Size = new Size(477, 37);
+            labelClient.TabIndex = 21;
+            labelClient.Text = "У Вас пока нет ни одного покупателя";
+            // 
             // labelRUBL
             // 
             labelRUBL.AutoSize = true;
             labelRUBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelRUBL.Location = new Point(1139, 16);
+            labelRUBL.Location = new Point(1146, 55);
             labelRUBL.Name = "labelRUBL";
             labelRUBL.Size = new Size(47, 25);
             labelRUBL.TabIndex = 2;
@@ -710,7 +693,7 @@ namespace Bookstore
             // 
             textBoxBalance.Enabled = false;
             textBoxBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBoxBalance.Location = new Point(943, 13);
+            textBoxBalance.Location = new Point(950, 52);
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(190, 33);
             textBoxBalance.TabIndex = 1;
@@ -719,7 +702,7 @@ namespace Bookstore
             // 
             labelBalance.AutoSize = true;
             labelBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelBalance.Location = new Point(864, 16);
+            labelBalance.Location = new Point(871, 55);
             labelBalance.Name = "labelBalance";
             labelBalance.Size = new Size(73, 25);
             labelBalance.TabIndex = 0;
@@ -774,13 +757,16 @@ namespace Bookstore
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1231, 783);
+            ClientSize = new Size(1231, 749);
+            Controls.Add(textBoxBalance);
+            Controls.Add(labelBalance);
+            Controls.Add(labelRUBL);
             Controls.Add(buttonBuyers);
             Controls.Add(buttonDelivery);
             Controls.Add(buttonStore);
             Controls.Add(buttonNewBook);
-            Controls.Add(panelStore);
             Controls.Add(panelNewBook);
+            Controls.Add(panelStore);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(930, 600);
             Name = "Store";
@@ -790,10 +776,11 @@ namespace Bookstore
             panelNewBook.PerformLayout();
             panelStore.ResumeLayout(false);
             panelStore.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxClient).EndInit();
             panelBookInfo.ResumeLayout(false);
             panelBookInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxClient).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -845,13 +832,12 @@ namespace Bookstore
         private Label label_panel_price;
         private ListBox listBoxPages;
         private Button buttonSellBook;
-        private Button button1;
         private Button buttonDelivery;
-        private Button button2;
         private Button buttonBuyers;
         private Button buttonAccept;
         private Button buttonReject;
         private PictureBox pictureBoxClient;
         private Label labelClient;
+        private Label promptLabel;
     }
 }

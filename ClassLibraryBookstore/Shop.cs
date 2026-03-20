@@ -95,15 +95,8 @@ public class Shop {
     }
 
     // Проверка книги на наличие в базе данных
-    public bool IsBookValid(Book book, string[] labels, string[] authors) {
-        int i = 0;
-        foreach (string label in labels) {
-            if (label == book.GetName(false) && authors[i] == book.GetAuthor()) {
-                return true;
-            }
-            i++;
-        }
-        return false;
+    public bool IsBookValid(Book book) {
+        return !book.IsFake();
     }
 
     // Поиск шкафа с заданным жанром
@@ -128,9 +121,10 @@ public class Shop {
     }
 
     // Внешне-доступные функции
+    public void AddBalance(int income) { this.balance += income; }
+    public void AddLastBookId() { this.lastBookId++; }
     public int GetMaxShelfs() { return this.maxShelfs; }
     public Random GetRandom() { return this.rnd; }
-    public void AddBalance(int income) { this.balance += income; }
     public BookShelf[] GetShelfs() { return this.shelfs; }
     public int GetBalance() { return this.balance; }
     public int GetLastBookId() { return this.lastBookId; }

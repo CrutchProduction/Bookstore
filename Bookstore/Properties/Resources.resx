@@ -118,31 +118,85 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="titleform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\titleform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="library_backgroud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\library_backgroud.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shelf9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shelf9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="backgroundLibrary2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\backgroundLibrary2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backgroundLibraryTwo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backgroundLibraryTwo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="appearanceE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearanceE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="backgroundLibrary2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgroundLibrary2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="backgroundLibrary" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backgroundLibrary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bordersBook1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bordersBook1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="appearance2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopBook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopBook.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="photo_2026-03-17_23-00-28" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\photo_2026-03-17_23-00-28.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="shopBook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopBook.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="appearance1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bordersBook1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bordersBook1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shelf9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shelf9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="titleform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\titleform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="appearance16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appearance16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

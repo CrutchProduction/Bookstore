@@ -40,7 +40,13 @@ public class Client {
             lastNames = System.IO.File.ReadAllText("lastNamesF.txt").Split(" ");
         }
         this.name = firtsNames[rnd.Next(firtsNames.Length)] + lastNames[rnd.Next(lastNames.Length)];
-        this.appearanceImage = rnd.Next(10);
+        bool isPutin = rnd.Next(500) == 499;
+        if (!isPutin) {
+            this.appearanceImage = rnd.Next(17);
+        } else
+        {
+            this.appearanceImage = -1;
+        }
     }
 
     // Внешне-доступные функции

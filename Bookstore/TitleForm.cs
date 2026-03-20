@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibraryBookstore;
 
 namespace Bookstore
 {
     public partial class TitleForm : Form
     {
-
+        private static int curDifficulty = 0;
         public TitleForm()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Bookstore
             buttonNormal.Enabled = buttonNormal.Enabled == false;
             buttonHard.Enabled = buttonHard.Enabled == false;
 
+            curDifficulty = 0;
             buttonsEasyNormalHard_Click();
         }
 
@@ -33,6 +35,7 @@ namespace Bookstore
             buttonEasy.Enabled = buttonEasy.Enabled == false;
             buttonHard.Enabled = buttonHard.Enabled == false;
 
+            curDifficulty = 1;
             buttonsEasyNormalHard_Click();
         }
 
@@ -42,6 +45,7 @@ namespace Bookstore
             buttonEasy.Enabled = buttonEasy.Enabled == false;
             buttonNormal.Enabled = buttonNormal.Enabled == false;
 
+            curDifficulty = 2;
             buttonsEasyNormalHard_Click();
         }
 
@@ -79,5 +83,6 @@ namespace Bookstore
             labelAboutGame.Visible = labelAboutGame.Visible == false;
         }
 
+        public int GetCurDifficulty() { return curDifficulty; }
     }
 }

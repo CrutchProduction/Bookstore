@@ -2,7 +2,6 @@
 using System.Collections;
 
 using lab3Lib;
-using Timer = System.Timers.Timer;
 
 namespace ClassLibraryBookstore
 {
@@ -14,30 +13,11 @@ namespace ClassLibraryBookstore
         private static string[] genres;
         private static Shop myShop;
 
-        // Очереди игры
-        private static Queue clientsQueue;
-        private static Queue booksPendingQueue;
-        private static Queue booksArrivedQueue;
-
-        // Параметры игры
-        private static bool isGameStarted = false;
-        private static int curGameDifficulty;
-
-        // Константы
-        private static readonly float[] difficultyDayTimes = {120, 240, 480};
-        private static readonly float[] difficultyRndBookTimes = {20, 30, 48};
-        private static readonly float[] difficultyClientTimes = {10, 15, 24};
-        private static readonly float[] difficultyPenBookTimes = {9, 14.5f, 25};
-        private static readonly int[] maxClientsQueue = {7, 5, 3};
-
         // Конструктор
         public MyClassLibrary() {
             System.IO.File.WriteAllText("dataBase.txt", "");
             loadData();
             myShop = new Shop();
-            clientsQueue = new Queue();
-            booksPendingQueue = new Queue();
-            booksArrivedQueue = new Queue();
         }
 
         // Загрузка данных из файлов
@@ -53,72 +33,6 @@ namespace ClassLibraryBookstore
             }
 
             genres = System.IO.File.ReadAllText("genres.txt").Split(" ");
-        }
-
-        // Запуск цикла игры
-        public static void startGame(int gameDifficulty) {
-            curGameDifficulty = gameDifficulty;
-
-            Timer gameTimer = new Timer(difficultyDayTimes[gameDifficulty] * 1000);
-            gameTimer.Elapsed += stopGameEvent;
-            gameTimer.Start();
-            
-            Timer randomBookArrive = new Timer(difficultyRndBookTimes[gameDifficulty] * 1000);
-            randomBookArrive.Elapsed += randomBookArriveEvent;
-            randomBookArrive.Start();
-            
-            Timer randomClientArrive = new Timer(difficultyClientTimes[gameDifficulty] * 1000);
-            randomClientArrive.Elapsed += randomClientArriveEvent;
-            randomClientArrive.Start();
-            
-            Timer pendingBookArrive = new Timer(difficultyPenBookTimes[gameDifficulty] * 1000);
-            pendingBookArrive.Elapsed += pendingBookArriveEvent;
-
-            isGameStarted = true;
-            while (isGameStarted) {
-                if (booksPendingQueue.Count == 0) {
-                    pendingBookArrive.Start();
-                } else {
-                    pendingBookArrive.Stop();
-                }
-
-
-            }
-
-            gameTimer.Stop();
-            gameTimer.Dispose();
-
-            randomBookArrive.Stop();
-            randomBookArrive.Dispose();
-
-            randomClientArrive.Stop();
-            randomClientArrive.Dispose();
-
-            pendingBookArrive.Stop();
-            pendingBookArrive.Dispose();
-        }
-
-        // Событие остановки игры по таймеру
-        private static void stopGameEvent(Object source, ElapsedEventArgs e) {
-            isGameStarted = false;
-        }
-
-        // Событие добавление в очередь рандомной книги по таймеру
-        private static void randomBookArriveEvent(Object source, ElapsedEventArgs e) {
-            booksArrivedQueue.Enqueue(generateRandomBook(true));
-        }
-
-        // Событие добавление в очерель нового клиента по таймеру
-        private static void randomClientArriveEvent(Object source, ElapsedEventArgs e) {
-            clientsQueue.Enqueue(new Client(myShop.GetRandom(), labels, authors, genres));
-            if (clientsQueue.Count > maxClientsQueue[curGameDifficulty]) {
-                isGameStarted = false;
-            }
-        }
-
-        // Событие добавление в очередь книги из очереди добавленных книг по таймеру
-        private static void pendingBookArriveEvent(Object source, ElapsedEventArgs e) {
-            booksArrivedQueue.Enqueue(booksPendingQueue.Dequeue());
         }
         
         // Проверка на правильность ввода
@@ -145,9 +59,20 @@ namespace ClassLibraryBookstore
             return newText;
         }
 
+        public static bool isBookValid(Book book)
+        {
+            return myShop.IsBookValid(book);
+        }
+
         // Генерация книги с рандомными данными
         public static Book generateRandomBook(bool absoluteRandom) {
-            return new Book(-1, myShop.GetRandom(), labels, authors, genres, absoluteRandom);
+            Book newBook = new Book(myShop.GetLastBookId(), myShop.GetRandom(), labels, authors, genres, absoluteRandom);
+            return newBook;
+        }
+
+        public static Client generateRandomClient()
+        {
+            return new Client(myShop.GetRandom(), labels, authors, genres);
         }
 
         // Проверка текста на число

@@ -1,7 +1,14 @@
+using Bookstore.Properties;
 using ClassLibraryBookstore;
 using lab3Lib;
+using System.Collections;
+using System.Reflection.Emit;
+using System.Resources;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
+using System.Timers;
+
+using Timer = System.Timers.Timer;
 
 namespace Bookstore
 {
@@ -10,11 +17,13 @@ namespace Bookstore
         // ���������� ����������
         private static bool closet_choice = false;
         private static Button[] buttons;
+        private static int[][] buttonsInitialPos;
         private static bool closet_choice_peek = false;
         private static bool easterEggActive = false;
         private static int tempX;
         private static int tempY;
         private static int currentShelfId;
+        private static int currentMenu = 0;
 
 
         // Константы
@@ -27,12 +36,33 @@ namespace Bookstore
         private const int sizeButton1 = 400;
         private const int sizeButton2 = 300;
 
+
+        // Очереди игры
+        private static Queue clientsQueue;
+        private static Queue booksPendingQueue;
+        private static Queue booksArrivedQueue;
+
+        // Параметры игры
+        private static bool isGameStarted = false;
+        private static int curGameDifficulty;
+
+        // Константы
+        private static readonly float[] difficultyDayTimes = { 120, 240, 480 };
+        private static readonly float[] difficultyRndBookTimes = { 20, 30, 48 };
+        private static readonly float[] difficultyClientTimes = { 10, 15, 24 };
+        private static readonly float[] difficultyPenBookTimes = { 9, 14.5f, 25 };
+        private static readonly int[] maxClientsQueue = { 7, 5, 3 };
+
         // Конструктор
         public Store()
         {
             InitializeComponent();
 
             new MyClassLibrary();
+
+            clientsQueue = new Queue();
+            booksPendingQueue = new Queue();
+            booksArrivedQueue = new Queue();
 
             buttons = new Button[11];
             buttons[0] = buttonCloset1;
@@ -46,6 +76,7 @@ namespace Bookstore
             buttons[8] = buttonCloset9;
             buttons[9] = buttonCloset10;
             buttons[10] = buttonCloset11;
+            buttonsInitialPos = new int[buttons.Length][];
             BookShelf[] shelves = MyClassLibrary.GetShop().GetShelfs();
             for (int i = 0; i < 11; i++)
             {
@@ -58,6 +89,7 @@ namespace Bookstore
                 {
                     buttons[i].Text = shelves.ElementAt(i).GetGenre();
                 }
+                buttonsInitialPos[i] = new int[] { buttons[i].Location.X, buttons[i].Location.Y };
             }
             textBoxBalance.Text = MyClassLibrary.GetShop().GetBalance().ToString();
             listBoxID.Items.Clear();
@@ -69,6 +101,203 @@ namespace Bookstore
             panelStore.Visible = false;
             textBoxIDBook.Text = MyClassLibrary.GetShop().GetLastBookId().ToString();
 
+        }
+
+        // Запуск цикла игры
+        public void startGame(int gameDifficulty)
+        {
+            curGameDifficulty = gameDifficulty;
+
+            Timer gameTimer = new Timer((int) difficultyDayTimes[gameDifficulty] * 1000);
+            gameTimer.Elapsed += stopGameEvent;
+            gameTimer.Start();
+
+            Timer randomBookArrive = new Timer((int) difficultyRndBookTimes[gameDifficulty] * 1000);
+            randomBookArrive.Elapsed += randomBookArriveEvent;
+            randomBookArrive.Start();
+
+            Timer randomClientArrive = new Timer((int) difficultyClientTimes[gameDifficulty] * 1000);
+            randomClientArrive.Elapsed += randomClientArriveEvent;
+            randomClientArrive.Start();
+
+            Timer pendingBookArrive = new Timer((int) difficultyPenBookTimes[gameDifficulty] * 1000);
+            pendingBookArrive.Elapsed += pendingBookArriveEvent;
+
+            isGameStarted = true;
+            while (isGameStarted)
+            {
+                if (booksPendingQueue.Count != 0)
+                {
+                    pendingBookArrive.Start();
+                }
+                else
+                {
+                    pendingBookArrive.Stop();
+                }
+
+                if (currentMenu != 3) {
+                    if (booksArrivedQueue.Count == 0 && buttonDelivery.Visible)
+                    {
+                        buttonNewBook.Width = sizeButton1;
+                        buttonStore.Width = sizeButton1;
+                        buttonBuyers.Width = sizeButton1;
+                        buttonStore.Location = new Point(buttonNewBook.Location.X + buttonNewBook.Width + 10, buttonStore.Location.Y);
+                        buttonBuyers.Location = new Point(buttonStore.Location.X + buttonStore.Width + 10, buttonBuyers.Location.Y);
+                        buttonDelivery.Visible = false;
+                    }
+                    else if (booksArrivedQueue.Count != 0 && !buttonDelivery.Visible)
+                    {
+                        buttonNewBook.Width = sizeButton2;
+                        buttonStore.Width = sizeButton2;
+                        buttonBuyers.Width = sizeButton2;
+                        buttonStore.Location = new Point(buttonNewBook.Location.X + buttonNewBook.Width + 10, buttonStore.Location.Y);
+                        buttonBuyers.Location = new Point(buttonStore.Location.X + buttonStore.Width + 10, buttonBuyers.Location.Y);
+                        buttonDelivery.Visible = true;
+                    }
+                }
+
+                if (currentMenu == 0)
+                {
+                    textBoxIDBook.Text = MyClassLibrary.GetShop().GetLastBookId().ToString();
+                    if (promptLabel.Visible) promptLabel.Visible = false;
+                }
+                else if (currentMenu == 2)
+                {
+                    if (clientsQueue.Count != 0)
+                    {
+                        if (labelClient.Visible) labelClient.Visible = false;
+                    }
+                    else
+                    {
+                        if (!labelClient.Visible) labelClient.Visible = true;
+                    }
+                    if (!promptLabel.Visible) promptLabel.Visible = true;
+                }
+                else if (currentMenu == 3)
+                {
+                    if (booksArrivedQueue.Count != 0) {
+                        textBoxIDBook.Text = ((Book) booksArrivedQueue.Peek()).GetId().ToString();
+                    } else
+                    {
+                        textBoxIDBook.Text = "";
+                    }
+                    if (promptLabel.Visible) promptLabel.Visible = false;
+                }
+                else
+                {
+                    if (labelClient.Visible) labelClient.Visible = false;
+                    if (promptLabel.Visible) promptLabel.Visible = false;
+                }
+
+                textBoxBalance.Text = MyClassLibrary.GetShop().GetBalance().ToString();
+            }
+
+            Application.Exit();
+
+            gameTimer.Stop();
+            gameTimer.Dispose();
+
+            randomBookArrive.Stop();
+            randomBookArrive.Dispose();
+
+            randomClientArrive.Stop();
+            randomClientArrive.Dispose();
+
+            pendingBookArrive.Stop();
+            pendingBookArrive.Dispose();
+        }
+
+        public void stopGame()
+        {
+            isGameStarted = false;
+        }
+
+
+        // Событие остановки игры по таймеру
+        private void stopGameEvent(Object source, ElapsedEventArgs e)
+        {
+            stopGame();
+        }
+
+        // Событие добавление в очередь рандомной книги по таймеру
+        private void randomBookArriveEvent(Object source, ElapsedEventArgs e)
+        {
+            booksArrivedQueue.Enqueue(MyClassLibrary.generateRandomBook(true));
+            MyClassLibrary.GetShop().AddLastBookId();
+            if (booksArrivedQueue.Count == 1)
+            {
+                changeTextInBoxes((Book) booksArrivedQueue.Peek());
+            }
+        }
+
+        // Событие добавление в очерель нового клиента по таймеру
+        private void randomClientArriveEvent(Object source, ElapsedEventArgs e)
+        {
+            clientsQueue.Enqueue(MyClassLibrary.generateRandomClient());
+            if (clientsQueue.Count > maxClientsQueue[curGameDifficulty])
+            {
+                isGameStarted = false;
+            }
+            if (clientsQueue.Count == 1)
+            {
+                changeImage(((Client)clientsQueue.Peek()).GetAppearanceImage());
+            }
+        }
+
+        // Событие добавление в очередь книги из очереди добавленных книг по таймеру
+        private void pendingBookArriveEvent(Object source, ElapsedEventArgs e)
+        {
+            booksArrivedQueue.Enqueue(booksPendingQueue.Dequeue());
+            if (booksArrivedQueue.Count == 1)
+            {
+                changeTextInBoxes((Book)booksArrivedQueue.Peek());
+            }
+        }
+
+        private void changeTextInBoxes(Book book)
+        {
+            if (book != null) {
+                MyClassLibrary.GetShop().CheckBookName(book);
+            }
+            if (currentMenu == 3 && book != null) {
+                textBoxNameBook.Text = book.GetName(true);
+                textBoxAuthor.Text = book.GetAuthor();
+                textBoxGenre.Text = book.GetGenre();
+                textBoxPages.Text = book.GetPageAmount().ToString();
+                textBoxPrice.Text = book.GetPrice().ToString();
+            } else {
+                if (currentMenu != 0 || book == null) {
+                    textBoxNameBook.Text = "";
+                    textBoxAuthor.Text = "";
+                    textBoxGenre.Text = "";
+                    textBoxPages.Text = "";
+                    textBoxPrice.Text = "";
+                }
+            }
+        }
+
+        private void changeImage(int id)
+        {
+            if (id != -1) {
+                object obj = Resources.ResourceManager.GetObject("appearance" + id, Resources.Culture);
+                pictureBoxClient.Image = ((System.Drawing.Bitmap)(obj));
+                
+            } else
+            {
+                object obj = Resources.ResourceManager.GetObject("appearanceE", Resources.Culture);
+                pictureBoxClient.Image = ((System.Drawing.Bitmap)(obj));
+            }
+
+            Client curClient = (Client) clientsQueue.Peek();
+            switch (curClient.GetPromptType())
+            {
+                case 0:
+                    promptLabel.Text = "Здравствуйте, мне нужна книга \"" + curClient.GetPrompt().Split("|")[0] + "\", от " + curClient.GetPrompt().Split("|")[1];
+                    break;
+                case 1:
+                    promptLabel.Text = "Здравствуйте, мне нужна книга с жанром " + curClient.GetPrompt();
+                    break;
+            }
         }
 
         // ���������� ������ � ����������
@@ -87,12 +316,27 @@ namespace Bookstore
             }
             textBoxBalance.Text = MyClassLibrary.GetShop().GetBalance().ToString();
             textBoxIDBook.Text = MyClassLibrary.GetShop().GetLastBookId().ToString();
-            
+        }
+
+        public void unloadClosets()
+        {
+            changeTextInBoxes(null);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].Location = new Point(buttonsInitialPos[i][0], buttonsInitialPos[i][1]);
+            }
+            panelBookInfo.Visible = false;
+            panelBookInfo.Enabled = false;
+            closet_choice = false;
+            buttonSellBook.Enabled = false;
+            textBoxFindBook.Enabled = true;
         }
 
         // ��������� ���������� �����
         public void loadBooks(int shelfId)
         {
+            panelBookInfo.Visible = true;
+            panelBookInfo.Enabled = true;
             currentShelfId = shelfId;
             listBoxID.Items.Clear();
             listBoxAuthor.Items.Clear();
@@ -128,14 +372,19 @@ namespace Bookstore
                     easterEggActive = true;
                 }
 
-                MyClassLibrary.GetShop().AddBook(textBoxNameBook.Text, textBoxAuthor.Text, textBoxGenre.Text, Convert.ToInt32(textBoxPages.Text), Convert.ToInt32(textBoxPrice.Text));
-                textBoxNameBook.Text = "";
-                textBoxAuthor.Text = "";
-                textBoxGenre.Text = "";
-                textBoxPages.Text = "";
-                textBoxPrice.Text = "";
+                Book newBook = new Book(textBoxNameBook.Text, textBoxAuthor.Text, textBoxGenre.Text, MyClassLibrary.GetShop().GetLastBookId(), Convert.ToInt32(textBoxPages.Text), Convert.ToInt32(textBoxPrice.Text), MyClassLibrary.GetShop().GetRandom());
+                if (MyClassLibrary.GetShop().GetBalance() - Convert.ToInt32(textBoxPrice.Text) >= 0) {
+                    MyClassLibrary.GetShop().AddLastBookId();
+                    booksPendingQueue.Enqueue(newBook);
+                    MyClassLibrary.GetShop().AddBalance(-Convert.ToInt32(textBoxPrice.Text));
+                    textBoxNameBook.Text = "";
+                    textBoxAuthor.Text = "";
+                    textBoxGenre.Text = "";
+                    textBoxPages.Text = "";
+                    textBoxPrice.Text = "";
 
-                updateClosets();
+                    updateClosets();
+                }
             }
         }
 
@@ -185,8 +434,7 @@ namespace Bookstore
                             //чтобы кнопка была видна
                             buttons[i].Visible = true;
                             //блокируем вкладки
-                            buttonStore.Enabled = false;
-                            buttonBuyers.Enabled = false;
+                            panelBookInfo.Visible = true;
 
                             enabled_buttons(buttons[i], closet_choice != false);
                             panelBookInfo.Location = new Point(constPanelX, constPanelY);
@@ -213,6 +461,28 @@ namespace Bookstore
                     MyClassLibrary.GetShop().AddBalance(income);
                     updateClosets();
                     loadBooks(currentShelfId);
+                    if (currentMenu == 2)
+                    {
+                        if (clientsQueue.Count != 0)
+                        {
+                            Client curClient = (Client)clientsQueue.Peek();
+                            switch (curClient.GetPromptType())
+                            {
+                                case 0:
+                                    if (bookToSell.GetName(false) + "|" + bookToSell.GetAuthor() != curClient.GetPrompt())
+                                    {
+                                    //    --Dildo
+                                    }
+                                    break;
+                                case 1:
+                                    if (bookToSell.GetGenre() != curClient.GetPrompt())
+                                    {
+                                    //    --Dildo
+                                    }
+                                    break;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ignored) { }
@@ -265,8 +535,10 @@ namespace Bookstore
 
         public void buttonStore_Click(object sender, EventArgs e)
         {
+            currentMenu = 1;
+            unloadClosets();
             panelNewBook.Visible = false;
-            panelBookInfo.Visible = true;
+            panelBookInfo.Visible = false;
             panelStore.Visible = true;
             buttonStore.BackColor = Color.Gray;
             buttonNewBook.BackColor = Color.White;
@@ -284,13 +556,15 @@ namespace Bookstore
                 {
                     buttons[i].Visible = true;
                 }
-                
+
             }
             updateClosets();
         }
 
         public void buttonNewBook_Click(object sender, EventArgs e)
         {
+            currentMenu = 0;
+            unloadClosets();
             panelNewBook.Visible = true;
             panelStore.Visible = false;
 
@@ -344,23 +618,23 @@ namespace Bookstore
                 tempX = buttonCloset1.Location.X;
                 tempY = buttonCloset1.Location.Y;
                 buttonCloset1.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset1, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset1.Visible = false;
                 buttonCloset1.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset1, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
-            
+
             updateClosets();
             loadBooks(0);
-
         }
 
         public void buttonCloset2_Click(object sender, EventArgs e)
@@ -372,17 +646,18 @@ namespace Bookstore
                 tempX = buttonCloset2.Location.X;
                 tempY = buttonCloset2.Location.Y;
                 buttonCloset2.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset2, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset2.Visible = false;
                 buttonCloset2.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset2, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -398,17 +673,18 @@ namespace Bookstore
                 tempX = buttonCloset3.Location.X;
                 tempY = buttonCloset3.Location.Y;
                 buttonCloset3.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset3, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset3.Visible = false;
                 buttonCloset3.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset3, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -424,17 +700,18 @@ namespace Bookstore
                 tempX = buttonCloset4.Location.X;
                 tempY = buttonCloset4.Location.Y;
                 buttonCloset4.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset4, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset4.Visible = false;
                 buttonCloset4.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset4, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -450,17 +727,18 @@ namespace Bookstore
                 tempX = buttonCloset5.Location.X;
                 tempY = buttonCloset5.Location.Y;
                 buttonCloset5.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset5, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset5.Visible = false;
                 buttonCloset5.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset5, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -476,17 +754,18 @@ namespace Bookstore
                 tempX = buttonCloset6.Location.X;
                 tempY = buttonCloset6.Location.Y;
                 buttonCloset6.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset6, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset6.Visible = false;
                 buttonCloset6.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset6, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -502,17 +781,18 @@ namespace Bookstore
                 tempX = buttonCloset7.Location.X;
                 tempY = buttonCloset7.Location.Y;
                 buttonCloset7.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset7, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset7.Visible = false;
                 buttonCloset7.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset7, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -537,17 +817,18 @@ namespace Bookstore
                 tempX = buttonCloset8.Location.X;
                 tempY = buttonCloset8.Location.Y;
                 buttonCloset8.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset8, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset8.Visible = false;
                 buttonCloset8.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset8, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -563,17 +844,18 @@ namespace Bookstore
                 tempX = buttonCloset9.Location.X;
                 tempY = buttonCloset9.Location.Y;
                 buttonCloset9.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset9, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset9.Visible = false;
                 buttonCloset9.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset9, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -589,17 +871,18 @@ namespace Bookstore
                 tempX = buttonCloset10.Location.X;
                 tempY = buttonCloset10.Location.Y;
                 buttonCloset10.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset10, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset10.Visible = false;
                 buttonCloset10.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset10, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
@@ -615,45 +898,29 @@ namespace Bookstore
                 tempX = buttonCloset11.Location.X;
                 tempY = buttonCloset11.Location.Y;
                 buttonCloset11.Location = new Point(constX, constY);
-                //��������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset11, false);
-                //���������� ����� � �����
+
                 panelBookInfo.Location = new Point(constPanelX, constPanelY);
             }
             else
             {
+                if (currentMenu == 2) buttonCloset11.Visible = false;
                 buttonCloset11.Location = new Point(tempX, tempY);
-                //�������� ��� ��������� ������
+
                 enabled_buttons(buttonCloset11, true);
-                //�� ���������� ����� � �����
+
                 panelBookInfo.Location = new Point(82, constPanelBack);
             }
             updateClosets();
             loadBooks(10);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            buttonNewBook.Width = sizeButton2;
-            buttonStore.Width = sizeButton2;
-            buttonBuyers.Width = sizeButton2;
-            buttonStore.Location = new Point(buttonNewBook.Location.X + buttonNewBook.Width + 10, buttonStore.Location.Y);
-            buttonBuyers.Location = new Point(buttonStore.Location.X + buttonStore.Width + 10, buttonBuyers.Location.Y);
-            buttonDelivery.Visible = true;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            buttonNewBook.Width = sizeButton1;
-            buttonStore.Width = sizeButton1;
-            buttonBuyers.Width = sizeButton1;
-            buttonStore.Location = new Point(buttonNewBook.Location.X + buttonNewBook.Width + 10, buttonStore.Location.Y);
-            buttonBuyers.Location = new Point(buttonStore.Location.X + buttonStore.Width + 10, buttonBuyers.Location.Y);
-            buttonDelivery.Visible = false;
-        }
-
         private void buttonDelivery_Click(object sender, EventArgs e)
         {
+            currentMenu = 3;
+            unloadClosets();
+            changeTextInBoxes((Book)booksArrivedQueue.Peek());
             buttonDelivery.BackColor = Color.Gray;
             buttonNewBook.BackColor = Color.White;
             buttonStore.BackColor = Color.White;
@@ -665,7 +932,7 @@ namespace Bookstore
 
             panelNewBook.Visible = true;
             panelStore.Visible = false;
-            
+
             textBoxNameBook.Enabled = false;
             textBoxAuthor.Enabled = false;
             textBoxGenre.Enabled = false;
@@ -675,6 +942,8 @@ namespace Bookstore
 
         private void buttonBuyers_Click(object sender, EventArgs e)
         {
+            unloadClosets();
+            currentMenu = 2;
             buttonBuyers.BackColor = Color.Gray;
             buttonDelivery.BackColor = Color.White;
             buttonNewBook.BackColor = Color.White;
@@ -685,15 +954,74 @@ namespace Bookstore
             panelStore.Visible = true;
             updateClosets();
             pictureBoxClient.Visible = true;
-            //panelBookInfo.Visible = true;
-            if (1 == 1) labelClient.Visible = true;
+            panelBookInfo.Visible = false;
             foreach (Button button in buttons)
             {
-                    button.Visible = false;
+                button.Visible = false;
             }
-            
+
         }
 
-        
+        private void buttonReject_Click(object sender, EventArgs e)
+        {
+            if (booksArrivedQueue.Count != 0)
+            {
+                Book book = (Book) booksArrivedQueue.Dequeue();
+                if (book.IsFake())
+                {
+                    MyClassLibrary.GetShop().AddBalance(10);
+                    textBoxBalance.Text = MyClassLibrary.GetShop().GetBalance().ToString();
+                }
+                if (booksArrivedQueue.Count != 0)
+                {
+                    changeTextInBoxes((Book)booksArrivedQueue.Peek());
+                }
+                else
+                {
+                    changeTextInBoxes(null);
+                }
+            }
+        }
+
+        private void buttonAccept_Click(object sender, EventArgs e)
+        {
+            if (booksArrivedQueue.Count != 0)
+            {
+                Book lastBook = (Book)booksArrivedQueue.Peek();
+                BookShelf bookShelf = MyClassLibrary.GetShop().FindBookShelf(lastBook.GetGenre());
+                if (bookShelf != null)
+                {
+                    if (lastBook.IsRandomized())
+                    {
+                        if (MyClassLibrary.GetShop().GetBalance() - lastBook.GetPrice() >= 0) {
+                            MyClassLibrary.GetShop().AddBalance(-lastBook.GetPrice());
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+
+                    if (lastBook.IsFake())
+                    {
+                        MyClassLibrary.GetShop().AddBalance(-15);
+                    }
+
+                    bookShelf.AddBook(lastBook);
+                    booksArrivedQueue.Dequeue();
+                    if (booksArrivedQueue.Count != 0)
+                    {
+                        changeTextInBoxes((Book)booksArrivedQueue.Peek());
+                    }
+                    else
+                    {
+                        changeTextInBoxes(null);
+                    }
+                } else
+                {
+                    MessageBox.Show("Пожалуйста, освободите место для книги и повторите попытку", "Недостаточно места!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

@@ -40,7 +40,6 @@ public class Book {
     // Конструктор для рандомной генерации
     public Book(int id, Random rnd, string[] labels, string[] authors, string[] genres, bool absoluteRandom) {
         this.id = id;
-        this.isRandomized = true;
         if (!absoluteRandom) {
             RandomGenerate(rnd, labels, authors, genres);
         } else {
@@ -56,11 +55,12 @@ public class Book {
         this.genre = genres[rnd.Next(genres.Length)];
         this.pageAmount = rnd.Next(15, 1489);
         this.price = rnd.Next(200, 1500);
+        this.isRandomized = true;
     }
 
     // Генерация рандомной неправильной книги
     private void AbsoluteRandomGenerate(Random rnd, string[] labels, string[] authors, string[] genres) {
-        bool shouldMakeMistake = rnd.Next(100) <= 100;
+        bool shouldMakeMistake = rnd.Next(100) <= 43;
         if (!shouldMakeMistake) {
             RandomGenerate(rnd, labels, authors, genres);
         } else {
@@ -99,7 +99,7 @@ public class Book {
                     this.name = (string) bookNewName.Clone();
                     break;
             }
-            isFake = true;
+            this.isFake = true;
         }
     }
 
