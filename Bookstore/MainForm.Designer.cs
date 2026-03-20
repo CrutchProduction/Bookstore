@@ -817,7 +817,7 @@ namespace Bookstore
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1389, 905);
+            ClientSize = new Size(1250, 905);
             Controls.Add(textBoxBalance);
             Controls.Add(labelBalance);
             Controls.Add(labelRUBL);
@@ -828,7 +828,8 @@ namespace Bookstore
             Controls.Add(panelNewBook);
             Controls.Add(panelStore);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(930, 600);
+            MinimumSize = new Size(1250, 905);
+            MaximumSize = new Size(1250, 905);
             Name = "Store";
             Text = "МагаZин";
             Load += Store_Load;

@@ -172,6 +172,9 @@
             Controls.Add(buttonNormal);
             Controls.Add(buttonEasy);
             Controls.Add(titlelabel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1214, 866);
+            MinimumSize = new Size(1214, 866);
             Name = "TitleForm";
             Text = "TitleForm";
             Load += TitleForm_Load;

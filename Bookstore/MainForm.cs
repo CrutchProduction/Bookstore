@@ -820,6 +820,23 @@ namespace Bookstore
             buttonDelivery.Visible = false;
             buttonAccept.Visible = false;
             buttonReject.Visible = false;
+            if (curGameDifficulty == 0)
+            {
+                System.Drawing.Bitmap bitmap = Properties.Resources.easy;
+                IntPtr iconHandle = bitmap.GetHicon();
+                this.Icon = System.Drawing.Icon.FromHandle(iconHandle);
+            }
+            else if (curGameDifficulty == 1)
+            {
+                System.Drawing.Bitmap bitmap = Properties.Resources.normal2;
+                IntPtr iconHandle = bitmap.GetHicon();
+                this.Icon = System.Drawing.Icon.FromHandle(iconHandle);
+            } else if (curGameDifficulty == 2)
+            {
+                System.Drawing.Bitmap bitmap = Properties.Resources.hard;
+                IntPtr iconHandle = bitmap.GetHicon();
+                this.Icon = System.Drawing.Icon.FromHandle(iconHandle);
+            }
         }
 
         public void buttonCloset8_Click(object sender, EventArgs e)
