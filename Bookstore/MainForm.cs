@@ -48,6 +48,8 @@ namespace Bookstore
         private static bool isGameStarted = false;
         private static int curGameDifficulty;
         private static int mistakesMade = 0;
+        private static int clientsServed = 0;
+        private static int timeElapsed = 0;
 
         // Конструктор
         public Store()
@@ -96,17 +98,23 @@ namespace Bookstore
             buttonSellBook.Enabled = false;
             panelStore.Visible = false;
             textBoxIDBook.Text = MyClassLibrary.GetShop().GetLastBookId().ToString();
-
         }
 
         // Запуск цикла игры
         public void startGame(int gameDifficulty)
         {
+            timeElapsed = 0;
+            clientsServed = 0;
+            mistakesMade = 0;
             curGameDifficulty = gameDifficulty;
 
             Timer gameTimer = new Timer((int)difficultyDayTimes[gameDifficulty] * 1000);
             gameTimer.Elapsed += stopGameEvent;
             gameTimer.Start();
+
+            Timer secondsTimer = new Timer(1000);
+            secondsTimer.Elapsed += secondElapsedEvent;
+            secondsTimer.Start();
 
             Timer randomBookArrive = new Timer((int)difficultyRndBookTimes[gameDifficulty] * 1000);
             randomBookArrive.Elapsed += randomBookArriveEvent;
@@ -199,6 +207,9 @@ namespace Bookstore
             gameTimer.Stop();
             gameTimer.Dispose();
 
+            secondsTimer.Stop();
+            secondsTimer.Dispose();
+
             randomBookArrive.Stop();
             randomBookArrive.Dispose();
 
@@ -208,7 +219,27 @@ namespace Bookstore
             pendingBookArrive.Stop();
             pendingBookArrive.Dispose();
 
-            Application.Exit();
+            // Вывод статы
+            panelStore.Visible = false;
+            panelNewBook.Visible = false;
+            labelCount.Text = clientsServed.ToString();
+            labelTime.Text = timeElapsed.ToString();
+            switch (curGameDifficulty)
+            {
+                case 0:
+                    labelCurrentDiff.Text = "Лёгкая";
+                    break;
+                case 1:
+                    labelCurrentDiff.Text = "Нормальная";
+                    break;
+                case 2:
+                    labelCurrentDiff.Text = "Сложная";
+                    break;
+            }
+            buttonNewBook.Visible = false;
+            buttonStore.Visible = false;
+            buttonBuyers.Visible = false;
+            buttonDelivery.Visible = false;
         }
 
         public void stopGame()
@@ -216,6 +247,11 @@ namespace Bookstore
             isGameStarted = false;
         }
 
+        // Событие прошествия 1 секунды по таймеру
+        private void secondElapsedEvent(Object source, ElapsedEventArgs e)
+        {
+            timeElapsed++;
+        }
 
         // Событие остановки игры по таймеру
         private void stopGameEvent(Object source, ElapsedEventArgs e)
@@ -1137,6 +1173,7 @@ namespace Bookstore
                                 {
                                     MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
                                     MyClassLibrary.GetShop().AddBalance(summa);
+                                    clientsServed++;
                                 }
                                 break;
                             case 1:
@@ -1148,6 +1185,7 @@ namespace Bookstore
                                 {
                                     MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SellBook(bookToSell);
                                     MyClassLibrary.GetShop().AddBalance(summa);
+                                    clientsServed++;
                                 }
                                 break;
                             case 2:
@@ -1162,6 +1200,7 @@ namespace Bookstore
                                     easterEggActive = false;
                                     MyClassLibrary.GetShop().RemoveZOVShelf();
                                     unloadClosets();
+                                    clientsServed++;
                                 }
                                 else
                                 {
@@ -1198,6 +1237,11 @@ namespace Bookstore
         private void labelClient_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
