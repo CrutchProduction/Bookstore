@@ -66,3 +66,4 @@ D:\source\repos\Bookstore4lab\Bookstore\obj\Debug\net9.0-windows\Bookstore.genru
 D:\source\repos\Bookstore4lab\Bookstore\obj\Debug\net9.0-windows\ref\Bookstore.dll
 D:\source\repos\Bookstore4lab\Bookstore\obj\Debug\net9.0-windows\Bookstore.TitleForm.resources
 D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.TitleForm.resources
+D:\Projects\Bookstore\Bookstore\obj\Debug\net9.0-windows\Bookstore.Form1.resources
