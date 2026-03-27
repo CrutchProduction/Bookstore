@@ -90,11 +90,21 @@ namespace Bookstore
             buttonStore = new Button();
             buttonDelivery = new Button();
             buttonBuyers = new Button();
+            panelScore = new Panel();
+            labelWinLose = new Label();
+            labelPlayTime = new Label();
+            labelTime = new Label();
+            labelSEC = new Label();
+            labelDifficult = new Label();
+            labelCurrentDiff = new Label();
+            labelCountClient = new Label();
+            labelCount = new Label();
             panelNewBook.SuspendLayout();
             panelStore.SuspendLayout();
             panel_inputBox.SuspendLayout();
             panelBookInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxClient).BeginInit();
+            panelScore.SuspendLayout();
             SuspendLayout();
             // 
             // panelNewBook
@@ -117,7 +127,7 @@ namespace Bookstore
             panelNewBook.Controls.Add(labelPrice);
             panelNewBook.Controls.Add(labelRUB);
             panelNewBook.Controls.Add(textBoxPrice);
-            panelNewBook.Location = new Point(12, 834);
+            panelNewBook.Location = new Point(28, 52);
             panelNewBook.Name = "panelNewBook";
             panelNewBook.Size = new Size(1227, 733);
             panelNewBook.TabIndex = 0;
@@ -733,11 +743,12 @@ namespace Bookstore
             // 
             labelClient.AutoSize = true;
             labelClient.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelClient.Location = new Point(566, 69);
+            labelClient.Location = new Point(554, 75);
             labelClient.Name = "labelClient";
             labelClient.Size = new Size(477, 37);
             labelClient.TabIndex = 21;
             labelClient.Text = "У Вас пока нет ни одного покупателя";
+            labelClient.Click += labelClient_Click;
             // 
             // labelRUBL
             // 
@@ -812,12 +823,109 @@ namespace Bookstore
             buttonBuyers.UseVisualStyleBackColor = true;
             buttonBuyers.Click += buttonBuyers_Click;
             // 
+            // panelScore
+            // 
+            panelScore.Controls.Add(labelCount);
+            panelScore.Controls.Add(labelCountClient);
+            panelScore.Controls.Add(labelCurrentDiff);
+            panelScore.Controls.Add(labelDifficult);
+            panelScore.Controls.Add(labelSEC);
+            panelScore.Controls.Add(labelTime);
+            panelScore.Controls.Add(labelPlayTime);
+            panelScore.Controls.Add(labelWinLose);
+            panelScore.Location = new Point(827, 261);
+            panelScore.Name = "panelScore";
+            panelScore.Size = new Size(652, 414);
+            panelScore.TabIndex = 18;
+            // 
+            // labelWinLose
+            // 
+            labelWinLose.AutoSize = true;
+            labelWinLose.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelWinLose.Location = new Point(106, 36);
+            labelWinLose.Name = "labelWinLose";
+            labelWinLose.Size = new Size(456, 65);
+            labelWinLose.TabIndex = 0;
+            labelWinLose.Text = "победа/поражение";
+            // 
+            // labelPlayTime
+            // 
+            labelPlayTime.AutoSize = true;
+            labelPlayTime.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelPlayTime.Location = new Point(47, 129);
+            labelPlayTime.Name = "labelPlayTime";
+            labelPlayTime.Size = new Size(163, 37);
+            labelPlayTime.TabIndex = 1;
+            labelPlayTime.Text = "Время игры";
+            // 
+            // labelTime
+            // 
+            labelTime.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelTime.ImageAlign = ContentAlignment.MiddleRight;
+            labelTime.Location = new Point(216, 129);
+            labelTime.Name = "labelTime";
+            labelTime.Size = new Size(77, 37);
+            labelTime.TabIndex = 2;
+            labelTime.Text = "67";
+            labelTime.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // labelSEC
+            // 
+            labelSEC.AutoSize = true;
+            labelSEC.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelSEC.Location = new Point(294, 129);
+            labelSEC.Name = "labelSEC";
+            labelSEC.Size = new Size(56, 37);
+            labelSEC.TabIndex = 3;
+            labelSEC.Text = "сек";
+            // 
+            // labelDifficult
+            // 
+            labelDifficult.AutoSize = true;
+            labelDifficult.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelDifficult.Location = new Point(47, 200);
+            labelDifficult.Name = "labelDifficult";
+            labelDifficult.Size = new Size(153, 37);
+            labelDifficult.TabIndex = 4;
+            labelDifficult.Text = "Сложность";
+            // 
+            // labelCurrentDiff
+            // 
+            labelCurrentDiff.AutoSize = true;
+            labelCurrentDiff.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelCurrentDiff.Location = new Point(214, 201);
+            labelCurrentDiff.Name = "labelCurrentDiff";
+            labelCurrentDiff.Size = new Size(173, 37);
+            labelCurrentDiff.TabIndex = 5;
+            labelCurrentDiff.Text = "Нормальная";
+            // 
+            // labelCountClient
+            // 
+            labelCountClient.AutoSize = true;
+            labelCountClient.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelCountClient.Location = new Point(47, 278);
+            labelCountClient.Name = "labelCountClient";
+            labelCountClient.Size = new Size(457, 37);
+            labelCountClient.TabIndex = 6;
+            labelCountClient.Text = "Количество обслуженных клиентов";
+            // 
+            // labelCount
+            // 
+            labelCount.AutoSize = true;
+            labelCount.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelCount.Location = new Point(528, 278);
+            labelCount.Name = "labelCount";
+            labelCount.Size = new Size(77, 37);
+            labelCount.TabIndex = 7;
+            labelCount.Text = "1488";
+            // 
             // Store
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1250, 905);
+            ClientSize = new Size(1635, 866);
+            Controls.Add(panelScore);
             Controls.Add(textBoxBalance);
             Controls.Add(labelBalance);
             Controls.Add(labelRUBL);
@@ -829,7 +937,6 @@ namespace Bookstore
             Controls.Add(panelStore);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1250, 905);
-            MaximumSize = new Size(1250, 905);
             Name = "Store";
             Text = "МагаZин";
             Load += Store_Load;
@@ -842,6 +949,8 @@ namespace Bookstore
             panelBookInfo.ResumeLayout(false);
             panelBookInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxClient).EndInit();
+            panelScore.ResumeLayout(false);
+            panelScore.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -907,5 +1016,14 @@ namespace Bookstore
         private Label label_inputBox;
         private Button buttonCancel;
         private Button button_sell;
+        private Panel panelScore;
+        private Label labelWinLose;
+        private Label labelDifficult;
+        private Label labelSEC;
+        private Label labelTime;
+        private Label labelPlayTime;
+        private Label labelCount;
+        private Label labelCountClient;
+        private Label labelCurrentDiff;
     }
 }
