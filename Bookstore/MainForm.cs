@@ -357,7 +357,7 @@ namespace Bookstore
             listBoxNameBook.Items.Clear();
             listBoxPages.Items.Clear();
             listBoxPrice.Items.Clear();
-            
+
             foreach (Book book in MyClassLibrary.GetShop().GetShelfs().ElementAt(shelfId).GetBooks())
             {
                 if (book != null)
@@ -831,7 +831,8 @@ namespace Bookstore
                 System.Drawing.Bitmap bitmap = Properties.Resources.normal2;
                 IntPtr iconHandle = bitmap.GetHicon();
                 this.Icon = System.Drawing.Icon.FromHandle(iconHandle);
-            } else if (curGameDifficulty == 2)
+            }
+            else if (curGameDifficulty == 2)
             {
                 System.Drawing.Bitmap bitmap = Properties.Resources.hard;
                 IntPtr iconHandle = bitmap.GetHicon();
@@ -1048,12 +1049,14 @@ namespace Bookstore
                     }
                     bookShelf.AddBook(lastBook);
 
-                    if (!lastBook.IsFake()) {
+                    if (!lastBook.IsFake())
+                    {
                         String newData = lastBook.GetName(false) + "|" + lastBook.GetAuthor();
                         String dataBase = System.IO.File.ReadAllText("dataBase.txt");
-                        if (!dataBase.Contains(newData)) {
+                        if (!dataBase.Contains(newData))
+                        {
                             System.IO.File.WriteAllText("dataBase.txt", dataBase + "\n" + newData);
-                            MyClassLibrary.loadData(); 
+                            MyClassLibrary.loadData();
                         }
                     }
 
@@ -1096,7 +1099,8 @@ namespace Bookstore
             }
 
             Book bookToSell = MyClassLibrary.GetShop().GetShelfs().ElementAt(currentShelfId).SearchBook(Convert.ToInt32(listBoxID.Items[listBoxID.SelectedIndex]));
-            if (bookToSell != null) {
+            if (bookToSell != null)
+            {
                 int summa = bookToSell.GetPrice();
                 if (textBox_inputBox.Text != "")
                 {
@@ -1116,7 +1120,7 @@ namespace Bookstore
                     if (clientsQueue.Count != 0)
                     {
                         Client curClient = (Client)clientsQueue.Peek();
-                        
+
                         if (curClient.GetPromptType() != 2 && bookToSell.GetGenre() == "ZOV")
                         {
                             return;
@@ -1158,7 +1162,8 @@ namespace Bookstore
                                     easterEggActive = false;
                                     MyClassLibrary.GetShop().RemoveZOVShelf();
                                     unloadClosets();
-                                } else
+                                }
+                                else
                                 {
                                     return;
                                 }
@@ -1188,6 +1193,11 @@ namespace Bookstore
             {
                 button.Enabled = true;
             }
+        }
+
+        private void labelClient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
